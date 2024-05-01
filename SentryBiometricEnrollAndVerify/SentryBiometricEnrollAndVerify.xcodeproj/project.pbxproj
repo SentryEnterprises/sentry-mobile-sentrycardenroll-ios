@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */; };
+		14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */; };
+		14902F312BDFF2CD007A26B9 /* CardStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */; };
+		14902F342BDFF2CD007A26B9 /* CardStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F322BDFF2CD007A26B9 /* CardStatus.storyboard */; };
+		14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14902F352BDFF2CF007A26B9 /* Assets.xcassets */; };
+		14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */; };
+		14902F462BDFF79C007A26B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 14902F452BDFF79C007A26B9 /* Lottie */; };
+		14902F482BDFFEB0007A26B9 /* SentryBiometricSDK in Resources */ = {isa = PBXBuildFile; fileRef = 14902F472BDFFEB0007A26B9 /* SentryBiometricSDK */; };
+		14902F4C2BE001AF007A26B9 /* NFCSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F4B2BE001AF007A26B9 /* NFCSessionManager.swift */; };
+		14902F502BE010D8007A26B9 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F4F2BE010D8007A26B9 /* Data+Extensions.swift */; };
+		14902F532BE01676007A26B9 /* SentryBiometricSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 14902F522BE01676007A26B9 /* SentryBiometricSDK */; };
+		14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F542BE037CC007A26B9 /* BiometricsSDK.swift */; };
+		14902F572BE12D16007A26B9 /* JavaCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F562BE12D16007A26B9 /* JavaCardManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		14902F292BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentryBiometricEnrollAndVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusViewController.swift; sourceTree = "<group>"; };
+		14902F332BDFF2CD007A26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CardStatus.storyboard; sourceTree = "<group>"; };
+		14902F352BDFF2CF007A26B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14902F382BDFF2CF007A26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		14902F3A2BDFF2CF007A26B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14902F402BDFF3FB007A26B9 /* SentryBiometricEnrollAndVerify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SentryBiometricEnrollAndVerify.entitlements; sourceTree = "<group>"; };
+		14902F472BDFFEB0007A26B9 /* SentryBiometricSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SentryBiometricSDK; path = SentryBiometricEnrollAndVerify/SentryBiometricSDK; sourceTree = "<group>"; };
+		14902F4B2BE001AF007A26B9 /* NFCSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCSessionManager.swift; sourceTree = "<group>"; };
+		14902F4F2BE010D8007A26B9 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		14902F542BE037CC007A26B9 /* BiometricsSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsSDK.swift; sourceTree = "<group>"; };
+		14902F562BE12D16007A26B9 /* JavaCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaCardManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14902F262BDFF2CD007A26B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14902F462BDFF79C007A26B9 /* Lottie in Frameworks */,
+				14902F532BE01676007A26B9 /* SentryBiometricSDK in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14902F202BDFF2CD007A26B9 = {
+			isa = PBXGroup;
+			children = (
+				14902F4E2BE010C8007A26B9 /* Extensions */,
+				14902F4D2BE00291007A26B9 /* Helpers */,
+				14902F4B2BE001AF007A26B9 /* NFCSessionManager.swift */,
+				14902F472BDFFEB0007A26B9 /* SentryBiometricSDK */,
+				14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */,
+				14902F2A2BDFF2CD007A26B9 /* Products */,
+				14902F512BE01676007A26B9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		14902F2A2BDFF2CD007A26B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14902F292BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */ = {
+			isa = PBXGroup;
+			children = (
+				14902F432BDFF70E007A26B9 /* Screens */,
+				14902F422BDFF46D007A26B9 /* Resources */,
+				14902F412BDFF44A007A26B9 /* App */,
+				14902F562BE12D16007A26B9 /* JavaCardManager.swift */,
+				14902F542BE037CC007A26B9 /* BiometricsSDK.swift */,
+			);
+			path = SentryBiometricEnrollAndVerify;
+			sourceTree = "<group>";
+		};
+		14902F412BDFF44A007A26B9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				14902F402BDFF3FB007A26B9 /* SentryBiometricEnrollAndVerify.entitlements */,
+				14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */,
+				14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */,
+				14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */,
+				14902F3A2BDFF2CF007A26B9 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		14902F422BDFF46D007A26B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				14902F352BDFF2CF007A26B9 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		14902F432BDFF70E007A26B9 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */,
+				14902F322BDFF2CD007A26B9 /* CardStatus.storyboard */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		14902F4D2BE00291007A26B9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		14902F4E2BE010C8007A26B9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				14902F4F2BE010D8007A26B9 /* Data+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		14902F512BE01676007A26B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14902F282BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14902F3D2BDFF2CF007A26B9 /* Build configuration list for PBXNativeTarget "SentryBiometricEnrollAndVerify" */;
+			buildPhases = (
+				14902F252BDFF2CD007A26B9 /* Sources */,
+				14902F262BDFF2CD007A26B9 /* Frameworks */,
+				14902F272BDFF2CD007A26B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SentryBiometricEnrollAndVerify;
+			packageProductDependencies = (
+				14902F452BDFF79C007A26B9 /* Lottie */,
+				14902F522BE01676007A26B9 /* SentryBiometricSDK */,
+			);
+			productName = SentryBiometricEnrollAndVerify;
+			productReference = 14902F292BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14902F212BDFF2CD007A26B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					14902F282BDFF2CD007A26B9 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 14902F242BDFF2CD007A26B9 /* Build configuration list for PBXProject "SentryBiometricEnrollAndVerify" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14902F202BDFF2CD007A26B9;
+			packageReferences = (
+				14902F442BDFF79C007A26B9 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
+			productRefGroup = 14902F2A2BDFF2CD007A26B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14902F282BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14902F272BDFF2CD007A26B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */,
+				14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */,
+				14902F342BDFF2CD007A26B9 /* CardStatus.storyboard in Resources */,
+				14902F482BDFFEB0007A26B9 /* SentryBiometricSDK in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14902F252BDFF2CD007A26B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14902F312BDFF2CD007A26B9 /* CardStatusViewController.swift in Sources */,
+				14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */,
+				14902F4C2BE001AF007A26B9 /* NFCSessionManager.swift in Sources */,
+				14902F502BE010D8007A26B9 /* Data+Extensions.swift in Sources */,
+				14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */,
+				14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */,
+				14902F572BE12D16007A26B9 /* JavaCardManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		14902F322BDFF2CD007A26B9 /* CardStatus.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14902F332BDFF2CD007A26B9 /* Base */,
+			);
+			name = CardStatus.storyboard;
+			sourceTree = "<group>";
+		};
+		14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14902F382BDFF2CF007A26B9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14902F3B2BDFF2CF007A26B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		14902F3C2BDFF2CF007A26B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14902F3E2BDFF2CF007A26B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7473D58AM;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sentry Enroll";
+				INFOPLIST_KEY_NFCReaderUsageDescription = "Please provide access to scan your card.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = CardStatus;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SentryEnterprises.SentryBiometricEnrollAndVerify;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		14902F3F2BDFF2CF007A26B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7473D58AM;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sentry Enroll";
+				INFOPLIST_KEY_NFCReaderUsageDescription = "Please provide access to scan your card.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = CardStatus;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SentryEnterprises.SentryBiometricEnrollAndVerify;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14902F242BDFF2CD007A26B9 /* Build configuration list for PBXProject "SentryBiometricEnrollAndVerify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14902F3B2BDFF2CF007A26B9 /* Debug */,
+				14902F3C2BDFF2CF007A26B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14902F3D2BDFF2CF007A26B9 /* Build configuration list for PBXNativeTarget "SentryBiometricEnrollAndVerify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14902F3E2BDFF2CF007A26B9 /* Debug */,
+				14902F3F2BDFF2CF007A26B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		14902F442BDFF79C007A26B9 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14902F452BDFF79C007A26B9 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14902F442BDFF79C007A26B9 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+		14902F522BE01676007A26B9 /* SentryBiometricSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SentryBiometricSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 14902F212BDFF2CD007A26B9 /* Project object */;
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bi-Cl-cLr">
+                                <rect key="frame" x="91.666666666666686" y="343.66666666666669" width="210" height="165"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_icon" translatesAutoresizingMaskIntoConstraints="NO" id="y5Y-fC-VzT">
+                                        <rect key="frame" x="54.999999999999986" y="0.0" width="100.00000000000001" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="6xl-a1-wZV"/>
+                                            <constraint firstAttribute="width" constant="100" id="HJR-rw-bbG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentry_enterprises" translatesAutoresizingMaskIntoConstraints="NO" id="yBS-dy-zZj">
+                                        <rect key="frame" x="0.0" y="124" width="210" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="HSL-B9-ASF"/>
+                                            <constraint firstAttribute="width" constant="210" id="UzE-ld-S6Z"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="WU9-9P-rCb"/>
+                                    <constraint firstItem="y5Y-fC-VzT" firstAttribute="centerX" secondItem="6Bi-Cl-cLr" secondAttribute="centerX" id="ano-7Q-bDz"/>
+                                    <constraint firstItem="yBS-dy-zZj" firstAttribute="centerX" secondItem="6Bi-Cl-cLr" secondAttribute="centerX" id="j5c-Jb-dAj"/>
+                                    <constraint firstItem="y5Y-fC-VzT" firstAttribute="top" secondItem="6Bi-Cl-cLr" secondAttribute="top" id="lmk-FM-URR"/>
+                                    <constraint firstAttribute="width" constant="210" id="mde-jC-iQF"/>
+                                    <constraint firstItem="yBS-dy-zZj" firstAttribute="top" secondItem="y5Y-fC-VzT" secondAttribute="bottom" constant="24" id="xxl-qo-q00"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Bi-Cl-cLr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Rcy-Si-Dk2"/>
+                            <constraint firstItem="6Bi-Cl-cLr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ff4-fu-vYe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="main_icon" width="300" height="334"/>
+        <image name="sentry_enterprises" width="236.5" height="68.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
