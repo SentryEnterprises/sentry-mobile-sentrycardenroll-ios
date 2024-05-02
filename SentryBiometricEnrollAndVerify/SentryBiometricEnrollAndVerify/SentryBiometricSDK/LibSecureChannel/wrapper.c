@@ -21,13 +21,14 @@ SmartCardApduCallBack pSmartCardApduCallBack = NULL;
 int ApduIsSecureChannel = 0;
 
 //----------------------------------------------------------------------------------------------------------------------
+// This simply returns whatever is returned from the swift callback (see BiometricsSDK.swiftcallback)
 int apdu_secure_channel(uint8_t* DataIn, uint32_t DataInLen, uint8_t* DataOut, uint32_t* DataOutLen)
 {
     int Ret = 0;
     uint32_t    wrap_out_len = 0;
-    uint8_t        wrap_apdu_out[300];
+    uint8_t     wrap_apdu_out[300];
     uint32_t    unwrap_out_len = 0;
-    uint8_t        unwrap_apdu_out[300];
+    uint8_t     unwrap_apdu_out[300];
 
     if (ApduIsSecureChannel > 0)
     {
@@ -41,7 +42,6 @@ int apdu_secure_channel(uint8_t* DataIn, uint32_t DataInLen, uint8_t* DataOut, u
             return pSmartCardApduCallBack(DataIn, DataInLen, DataOut, DataOutLen);
         }
     }
-
 
     if (ApduIsSecureChannel == 0)
     {
@@ -62,13 +62,10 @@ int apdu_secure_channel(uint8_t* DataIn, uint32_t DataInLen, uint8_t* DataOut, u
         {
             memcpy(DataOut, unwrap_apdu_out, unwrap_out_len);
             DataOutLen[0] = unwrap_out_len;
-
         }
-
     }
 
     return Ret;
-
 }
 
 

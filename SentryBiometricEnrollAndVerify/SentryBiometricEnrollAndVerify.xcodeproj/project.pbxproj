@@ -20,6 +20,13 @@
 		14902F532BE01676007A26B9 /* SentryBiometricSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 14902F522BE01676007A26B9 /* SentryBiometricSDK */; };
 		14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F542BE037CC007A26B9 /* BiometricsSDK.swift */; };
 		14902F572BE12D16007A26B9 /* JavaCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F562BE12D16007A26B9 /* JavaCardManager.swift */; };
+		14902F5E2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F5D2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift */; };
+		14902F602BE2CF6A007A26B9 /* CommandReturnCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F5F2BE2CF6A007A26B9 /* CommandReturnCodes.swift */; };
+		14902F622BE3D008007A26B9 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F612BE3D008007A26B9 /* ErrorHandler.swift */; };
+		14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */; };
+		14902F662BE3DEA2007A26B9 /* FingerprintVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */; };
+		14902F682BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */; };
+		14902F6A2BE3DED2007A26B9 /* FingerprintVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F692BE3DED2007A26B9 /* FingerprintVerificationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +44,13 @@
 		14902F4F2BE010D8007A26B9 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		14902F542BE037CC007A26B9 /* BiometricsSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsSDK.swift; sourceTree = "<group>"; };
 		14902F562BE12D16007A26B9 /* JavaCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaCardManager.swift; sourceTree = "<group>"; };
+		14902F5D2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricEnrollmentStatus.swift; sourceTree = "<group>"; };
+		14902F5F2BE2CF6A007A26B9 /* CommandReturnCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandReturnCodes.swift; sourceTree = "<group>"; };
+		14902F612BE3D008007A26B9 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FingerprintEnrollment.storyboard; sourceTree = "<group>"; };
+		14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FingerprintVerification.storyboard; sourceTree = "<group>"; };
+		14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintEnrollmentViewController.swift; sourceTree = "<group>"; };
+		14902F692BE3DED2007A26B9 /* FingerprintVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintVerificationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,11 +90,11 @@
 		14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */ = {
 			isa = PBXGroup;
 			children = (
+				14902F5C2BE2C137007A26B9 /* BiometricSDK */,
 				14902F432BDFF70E007A26B9 /* Screens */,
 				14902F422BDFF46D007A26B9 /* Resources */,
 				14902F412BDFF44A007A26B9 /* App */,
 				14902F562BE12D16007A26B9 /* JavaCardManager.swift */,
-				14902F542BE037CC007A26B9 /* BiometricsSDK.swift */,
 			);
 			path = SentryBiometricEnrollAndVerify;
 			sourceTree = "<group>";
@@ -108,8 +122,12 @@
 		14902F432BDFF70E007A26B9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */,
 				14902F322BDFF2CD007A26B9 /* CardStatus.storyboard */,
+				14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */,
+				14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */,
+				14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */,
+				14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */,
+				14902F692BE3DED2007A26B9 /* FingerprintVerificationViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -117,6 +135,7 @@
 		14902F4D2BE00291007A26B9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				14902F612BE3D008007A26B9 /* ErrorHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -134,6 +153,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		14902F5C2BE2C137007A26B9 /* BiometricSDK */ = {
+			isa = PBXGroup;
+			children = (
+				14902F542BE037CC007A26B9 /* BiometricsSDK.swift */,
+				14902F5D2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift */,
+				14902F5F2BE2CF6A007A26B9 /* CommandReturnCodes.swift */,
+			);
+			path = BiometricSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,9 +230,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14902F662BE3DEA2007A26B9 /* FingerprintVerification.storyboard in Resources */,
 				14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */,
 				14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */,
 				14902F342BDFF2CD007A26B9 /* CardStatus.storyboard in Resources */,
+				14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */,
 				14902F482BDFFEB0007A26B9 /* SentryBiometricSDK in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +250,14 @@
 				14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */,
 				14902F4C2BE001AF007A26B9 /* NFCSessionManager.swift in Sources */,
 				14902F502BE010D8007A26B9 /* Data+Extensions.swift in Sources */,
+				14902F5E2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift in Sources */,
 				14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */,
+				14902F682BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift in Sources */,
 				14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */,
+				14902F6A2BE3DED2007A26B9 /* FingerprintVerificationViewController.swift in Sources */,
+				14902F622BE3D008007A26B9 /* ErrorHandler.swift in Sources */,
 				14902F572BE12D16007A26B9 /* JavaCardManager.swift in Sources */,
+				14902F602BE2CF6A007A26B9 /* CommandReturnCodes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

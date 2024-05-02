@@ -12,14 +12,12 @@ import CoreNFC
 
 enum WalletError: Error {
     case unrecognisedError
-    case connectionLost
-    case connectionNotEstablished
+//    case connectionLost
+//    case connectionNotEstablished
     case incorrectCardFormat
-    case wrongSeed
-    case cardNotEnrolled
-    case cardNotPersonalized
-    case accountNotFound
-    case securityViolation
+//    case cardNotEnrolled
+//    case cardNotPersonalized
+//    case securityViolation
 }
 
 typealias Callback<T, U> = (T) -> (U)
@@ -29,16 +27,14 @@ typealias ReturnCallback<T> = Callback<T, ()>
 typealias ReturnResultCallback<T> = ReturnCallback<Result<T, Error>>
 
 final class JavaCardManager: NSObject {
+    let enrollPinCode: [UInt8] = .init(repeating: 1, count: 6)
+    
     enum Status {
         case requireBiometricEnrollment
         case notPersonalized
     }
     
-    private struct Constants {
-        static let enrollPinCode: [UInt8] = .init(repeating: 1, count: 6)
-    }
-
-    typealias NFCResult = Result<NFCISO7816Tag, WalletError>
+    typealias NFCResult = Result<NFCISO7816Tag, Error>
         
     static let shared = JavaCardManager()
     
@@ -46,174 +42,57 @@ final class JavaCardManager: NSObject {
     
     private var tag: NFCISO7816Tag?
     private var callback: ReturnCallback<NFCResult>?
-   // private let jcwWallet = JCWWallet(isSecure: true)
     private let biometricSDK = BiometricSDK(isSecure: false)
     private override init() { }
     
-//    func getCapabilities() async throws -> Capabilities {
-//        var localError: Error?
-//        defer {
-//            callback = nil
-//            if let localError {
-//                invalidateSession((localError as NSError).domain)
-//                try? jcwWallet.finalizeWallet()
-//            } else {
-//                invalidateSession()
-//            }
-//        }
-//        
-//        do {
-//            let isoTag = try await establishConnection()
-//            
-//            session?.alertMessage = "Please hold your card close to iPhone. Creation might take some time"
-//            
-//            try jcwWallet.initWallet(tag: isoTag)
-//            let capabilites = try jcwWallet.getCapabilities()
-//            try jcwWallet.finalizeWallet()
-//            return capabilites
-//        } catch {
-//            localError = error
-//            throw error
-//        }
-//    }
 
-//    func resetWallet() async throws {
+    func getEnrollmentStatus() async throws -> BiometricEnrollmentStatus  {
+        print("=== GET ENROLLMENT STATUS")
+        
 //        var localError: Error?
-//        defer {
-//            callback = nil
+        
+        defer {
+            print("=== GET ENROLLMENT STATUS - EXIT (invalidates session)")
+            callback = nil
 //            if let localError {
-//                try? jcwWallet.finalizeWallet()
 //                invalidateSession((localError as NSError).domain)
 //            } else {
-//                invalidateSession()
+                invalidateSession()
 //            }
-//        }
-//        
-//        do {
-//            let isoTag = try await establishConnection()
-//            
-//            session?.alertMessage = "Please hold your card close to iPhone. Creation might take some time"
-//            
-//            try jcwWallet.initWallet(tag: isoTag)
-//            try jcwWallet.resetWallet()
-//            try jcwWallet.finalizeWallet()
+        }
+        
+        //let isoTag: NFCISO7816Tag
+ //       do {
+            print("=== ESTABLISHING CONNECTION")
+            let isoTag = try await establishConnection()
 //        } catch {
-//            localError = error
-//            throw error
+//            localError = NSError(domain: "Connection Not Established Error", code: -1)
+//            throw WalletError.connectionNotEstablished
 //        }
-//    }
 //
-//    func createWallet(wordsCount: Int32, pincode: [UInt8] = []) async throws -> (String, [CryptoCurrency: String]) {
-//        print("\n------------- Wallet Manager Create Wallet")
-//        
-//        var localError: Error?
-//        defer {
-//            callback = nil
-//            if let localError {
-//                invalidateSession((localError as NSError).domain)
-//                try? jcwWallet.finalizeWallet()
-//            } else {
-//                invalidateSession()
-//            }
-//        }
-//        
 //        do {
-//            print("     Establishing connection")
-//            let isoTag = try await establishConnection()
-//            let setupSessionMessage = { [weak session] (progress: Int) in
-//                session?.alertMessage = "Creating... \(progress)%"
-//            }
-//            
-//            print("     Initing wallet")
-//            try jcwWallet.initWallet(tag: isoTag)
-//            setupSessionMessage(28)
-//            
-//            print("     Getting capabilities")
-//            let capabilites = try jcwWallet.getCapabilities()
-//            setupSessionMessage(45)
-//            if !capabilites.disablePin {
-//                try jcwWallet.storePin(pin: pincode)
-//            }
-//            let seed = try jcwWallet.createWallet(wordCount: wordsCount)
-//            setupSessionMessage(65)
-//            
-//            for currency in CryptoCurrency.allCases {
-//                try jcwWallet.createAccount(account: Account(for: currency).accountInfo)
-//            }
-//            setupSessionMessage(81)
-//            
-//            let accounts = try jcwWallet.getWalletAccounts()
-//            var addresses: [CryptoCurrency: String] = [:]
-//            
-//            for account in accounts.enumerated() {
-//                try jcwWallet.selectAccount(index: Int32(account.offset))
-//                let publicKey = try jcwWallet.getReceiveAddress()
-//                let currency = try CryptoCurrency(id: account.element.currency)
-//                addresses[currency] = publicKey
-//            }
-//            setupSessionMessage(100)
-//            try jcwWallet.finalizeWallet()
-//            
-//            return (seed, addresses)
+ //           try jcwWallet.initEnroll(pin: Constants.enrollPinCode, tag: isoTag)
+            
+            print("=== INITIALIZING ENROLL APPLET")
+            try biometricSDK.initEnroll(pin: enrollPinCode, tag: isoTag)
+            
+            print("=== GETTING ENROLLMENT STATUS")
+            let enrollStatus = try biometricSDK.getEnrollStatus()
+            
+            print("=== RETURNING STATUS")
+            return enrollStatus
+
 //        } catch {
 //            localError = error
 //            throw error
 //        }
-//    }
-//    
-//    func restore(seed: String, iteration: Iteration, pincode: [UInt8] = []) async throws -> [CryptoCurrency: String] {
-//        var localError: Error?
-//        defer {
-//            callback = nil
-//            if let localError {
-//                try? jcwWallet.finalizeWallet()
-//                invalidateSession((localError as NSError).domain)
-//            } else {
-//                invalidateSession()
-//            }
-//        }
-//        
-//        do {
-//            let isoTag = try await establishConnection()
-//            
-//            let setupSessionMessage = { [weak session] (progress: Int) in
-//                session?.alertMessage = "Restoring... \(progress)%"
-//            }
-//            
-//            try jcwWallet.initWallet(tag: isoTag)
-//            setupSessionMessage(28)
-//            let capabilites = try jcwWallet.getCapabilities()
-//            setupSessionMessage(45)
-//            if !capabilites.disablePin {
-//                try jcwWallet.storePin(pin: pincode)
-//            }
-////            try jcwWallet.restoreWallet(seed: seed, iterations: iteration.rawValue)
-//            try jcwWallet.restoreWallet(seed: seed, iterations: Iteration.legacy.rawValue)
-//            setupSessionMessage(65)
-//            
-//            for currency in CryptoCurrency.allCases {
-//                try jcwWallet.createAccount(account: Account(for: currency).accountInfo)
-//            }
-//            setupSessionMessage(81)
-//            
-//            let accounts = try jcwWallet.getWalletAccounts()
-//            var keys: [CryptoCurrency: String] = [:]
-//            
-//            for account in accounts.enumerated() {
-//                try jcwWallet.selectAccount(index: Int32(account.offset))
-//                let publicKey = try jcwWallet.getReceiveAddress()
-//                let currency = try CryptoCurrency(id: account.element.currency)
-//                keys[currency] = publicKey
-//            }
-//            setupSessionMessage(100)
-//            try jcwWallet.finalizeWallet()
-//            
-//            return keys
-//        } catch {
-//            localError = error
-//            throw error
-//        }
-//    }
+    }
+}
+
+
+
+
+
     
     func enrollBiometric(connected: ReturnCallback<Bool>, stepFinished: ReturnCallback<UInt8>) async throws  {
 //        var localError: Error?
@@ -361,30 +240,31 @@ final class JavaCardManager: NSObject {
 //        }
     }
     
-    func firstTest() async throws {
-        print("=== TEST")
-        defer {
-            callback = nil
-        }
-        
-        do {
-            print("=== Establishing Connection")
-            let isoTag = try await establishConnection()
-            //try await establishConnection()
-            //establishConnectionInstant()
-            
-            print("=== Selecting applet")
-            try biometricSDK.selectEnrollApplet(tag: isoTag)
-         //   try biometricSDK.initEnroll(pin: [1, 1, 1, 1, 1, 1], tag: isoTag)
-            
-            print("=== Exiting TEST")
-        } catch (let error) {
-            print("ERROR: \(error)")
-            throw error
-        }
-    }
+//    func firstTest() async throws {
+//        print("=== TEST")
+//        defer {
+//            callback = nil
+//        }
+//        
+//        do {
+//            print("=== Establishing Connection")
+//            let isoTag = try await establishConnection()
+//            //try await establishConnection()
+//            //establishConnectionInstant()
+//            
+//            print("=== Selecting applet")
+//            try biometricSDK.selectEnrollApplet(tag: isoTag)
+//            try biometricSDK.initEnroll(pin: enrollPinCode, tag: isoTag)
+//         //   try biometricSDK.initEnroll(pin: [1, 1, 1, 1, 1, 1], tag: isoTag)
+//            
+//            print("=== Exiting TEST")
+//        } catch (let error) {
+//            print("ERROR: \(error)")
+//            throw error
+//        }
+//    }
 
-}
+
 
 private extension JavaCardManager {
     func establishConnection() async throws -> NFCISO7816Tag {
@@ -420,6 +300,7 @@ private extension JavaCardManager {
     }
     
     func invalidateSession(_ errorMessage: String = "") {
+        print(" *** Invalidating Session ***")
         if errorMessage.isEmpty {
             session?.invalidate()
         } else {
@@ -434,10 +315,10 @@ extension JavaCardManager: NFCTagReaderSessionDelegate {
     func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
         print("----- Tag Reader Session - Active")
     }
-    
+
     func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
         print("----- Tag Reader Session - Invalidated with error: \(error)")
-        callback?(.failure(.unrecognisedError))
+        callback?(.failure(error))
         invalidateSession()
     }
     
@@ -453,7 +334,7 @@ extension JavaCardManager: NFCTagReaderSessionDelegate {
         })
         
         guard let cardTag = tag, case let .iso7816(isoTag) = tag else {
-            callback?(.failure(.incorrectCardFormat))
+            callback?(.failure(WalletError.incorrectCardFormat))
             invalidateSession()
             return
         }
@@ -461,7 +342,7 @@ extension JavaCardManager: NFCTagReaderSessionDelegate {
         session.connect(to: cardTag) { [weak self] error in
             if let error = error {
                 print("----- Tag Reader Session - Connection error: \(error)")
-                self?.callback?(.failure(.connectionLost))
+                self?.callback?(.failure(error))
                 self?.callback = nil
                 self?.invalidateSession()
             } else {

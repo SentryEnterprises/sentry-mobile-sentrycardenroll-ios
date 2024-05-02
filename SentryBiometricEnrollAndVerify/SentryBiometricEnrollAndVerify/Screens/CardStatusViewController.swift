@@ -25,10 +25,21 @@ class CardStatusViewController: UIViewController {
             do {
                 print("(Scan Card)")
                 //let status = try await self?.cardManager.getBiometricsStatus()
-                try await JavaCardManager.shared.firstTest()
-                print("(Scan Card - Have Status)")
+                //try await JavaCardManager.shared.firstTest()
+                let status = try await JavaCardManager.shared.getEnrollmentStatus()
+                print("(Scan Card - Have Status: \(status)")
+                
+                if status.mode == .enrollment {
+                    
+                } else {
+                    
+                }
             } catch (let error) {
-                print("ERROR: \(error)")
+                if let errorMessage = ErrorHandler().getErrorMessage(error: error) {
+                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
