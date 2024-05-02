@@ -5,4 +5,8 @@
 //  Created by John Ayres on 5/2/24.
 //
 
-import Foundation
+import UIKit
+
+class FingerprintVerificationViewController: UIViewController {
+    
+}

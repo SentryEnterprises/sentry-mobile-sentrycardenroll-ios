@@ -117,10 +117,11 @@ int lib_enroll_verify_pin(uint8_t* pin, int len)
     apdu_enroll_out_len = 0;
     returnValue = apdu_secure_channel(apdu_verify_pin, sizeof(apdu_verify_pin), apdu_enroll_out, &apdu_enroll_out_len);
     
-//    if (returnValue != 0) return returnValue;
+    if (returnValue != 0) return returnValue;
     
-    // TODO: what should this return? does this happen?
-    if (apdu_enroll_out_len != 2) return -4;
+//    // TODO: what should this return? does this happen?
+//    if (apdu_enroll_out_len != 2) 
+//        return -4;
    // if (apdu_enroll_out[0] == 0x90 && apdu_enroll_out[1] == 0x00) return 0;
    // if (apdu_enroll_out[0] == 0x69 && apdu_enroll_out[1] == 0x85) return -50;
 
@@ -228,7 +229,7 @@ int lib_enroll_status(uint8_t* max_num_fingers, uint8_t* enrolled_touches, uint8
  //       Ret = lib_enroll_check_sw(apdu_enroll_out, apdu_enroll_out_len);
         if (returnValue == 0) break;
         if (returnValue == 1) continue;
-        return -returnValue;
+        return returnValue;
     } while (1);
 
  //   if (apdu_enroll_out_len < (32 + 12)) return _SDK_ERROR_STATE_;
@@ -248,11 +249,78 @@ int lib_enroll_status(uint8_t* max_num_fingers, uint8_t* enrolled_touches, uint8
     return returnValue;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+int lib_enroll_process(uint8_t* remaining_touches)
+{
+    int returnValue = 0;
+    
+    do
+    {
+        uint8_t apdu_process[] = { 0x00, 0x59, 0x03, 0x00, 0x02, 0x00, 0x01 };
+        apdu_enroll_out_len = 0;
+        returnValue = apdu_secure_channel(apdu_process, sizeof(apdu_process), apdu_enroll_out, &apdu_enroll_out_len);
+        //      if (Ret != 0) return _SDK_ERROR_EXCHANGE_;
+        //      Ret = lib_enroll_check_sw(apdu_enroll_out, apdu_enroll_out_len);
+        if (returnValue == 0) break;
+        if (returnValue == 1) continue;
+        return returnValue;
+    } while (1);
+    
+    returnValue = lib_get_status_word(apdu_enroll_out, apdu_enroll_out_len);
+    if (returnValue != 0x9000) {
+        return returnValue;
+    }
 
+    uint8_t max_num_fingers[1];
+    uint8_t biometric_mode[1];
+    uint8_t enrolled_touches[1];
+    returnValue = lib_enroll_status(max_num_fingers, enrolled_touches, remaining_touches, biometric_mode);
+    //       if (Ret != 0) return _SDK_ERROR_EXCHANGE_;
+    //       Ret = lib_check_sw_err(apdu_enroll_out, apdu_enroll_out_len);
+    //      if (Ret != 0) return Ret;
+    
+    
+    return returnValue;
+}
 
+//----------------------------------------------------------------------------------------------------------------------
+// note that this just verifies the enrollment process
+int lib_enroll_verify(void)
+{
+    int returnValue = 0;
+    do
+    {
+        uint8_t apdu_verify[] = { 0x00, 0x59, 0x00, 0x00, 0x01, 0x00 };
+        apdu_enroll_out_len = 0;
+        returnValue = apdu_secure_channel(apdu_verify, sizeof(apdu_verify), apdu_enroll_out, &apdu_enroll_out_len);
+        
+        //      if (Ret != 0) return Ret;
+        //       Ret = lib_enroll_check_sw(apdu_enroll_out, apdu_enroll_out_len);
+        if (returnValue == 0) break;
+        if (returnValue == 1) continue;
+        return returnValue;
+    } while (1);
+    
+    returnValue = lib_get_status_word(apdu_enroll_out, apdu_enroll_out_len);
+    return returnValue;
+}
 
+int lib_verify_enrollment(uint8_t* pin, int len)
+{
+    // verify enrollment
+    int returnValue = lib_enroll_verify();
+    if (returnValue == 0x6985)      // the applet returns 'conditions not satisfied' if there isn't a pin
+    {
+        // verify the pin one more time
+        returnValue = lib_enroll_verify_pin(pin, len);
 
-
+        if (returnValue == 0x9000) {
+            returnValue = lib_enroll_verify();
+        }
+    }
+    
+    return returnValue;
+}
 
 
 
@@ -327,35 +395,7 @@ int lib_enroll_check_status_word(uint8_t* apdu_enroll, uint32_t  apdu_enroll_len
 
 
 
-//----------------------------------------------------------------------------------------------------------------------
-int lib_enroll_process(int num_finger, uint8_t* enrolled_touches, uint8_t* remaining_touches, uint8_t* biometric_mode)
-{
-    int Ret=0;
-    if (num_finger > Max_num_fingers) return -101;
-    if (Biometric_mode ==1) return -102;
 
-    do
-    {
-        uint8_t apdu_process[] = { 0x00, 0x59, 0x03, 0x00, 0x02, 0x00, 0x01 };
-        apdu_enroll_out_len = 0;
-        Ret = apdu_secure_channel(apdu_process, sizeof(apdu_process), apdu_enroll_out, &apdu_enroll_out_len);
-  //      if (Ret != 0) return _SDK_ERROR_EXCHANGE_;
-  //      Ret = lib_enroll_check_sw(apdu_enroll_out, apdu_enroll_out_len);
-        if (Ret == 0) break;
-        if (Ret == 1) continue;
-        return -Ret;
-    } while (1);
-        
-    {
-        uint8_t max_num_fingers[1];
-        Ret = lib_enroll_status(max_num_fingers, enrolled_touches, remaining_touches, biometric_mode);
- //       if (Ret != 0) return _SDK_ERROR_EXCHANGE_;
- //       Ret = lib_check_sw_err(apdu_enroll_out, apdu_enroll_out_len);
-        if (Ret != 0) return Ret;
-    }
-
-    return Ret;
-}
 //----------------------------------------------------------------------------------------------------------------------
 int lib_enroll_reprocess(int num_finger, uint8_t* enrolled_touches, uint8_t* remaining_touches, uint8_t* biometric_mode)
 {
@@ -385,22 +425,5 @@ int lib_enroll_reprocess(int num_finger, uint8_t* enrolled_touches, uint8_t* rem
 
     return Ret;
 }
-//----------------------------------------------------------------------------------------------------------------------
-int lib_enroll_verify(void)
-{
-    int Ret=0;
-    do
-    {
-        uint8_t apdu_verify[] = { 0x00, 0x59, 0x00, 0x00, 0x01, 0x00 };
-        apdu_enroll_out_len = 0;
-        Ret = apdu_secure_channel(apdu_verify, sizeof(apdu_verify), apdu_enroll_out, &apdu_enroll_out_len);
-        if (Ret != 0) return Ret;
- //       Ret = lib_enroll_check_sw(apdu_enroll_out, apdu_enroll_out_len);
-        if (Ret == 0) break;
-        if (Ret == 1) continue;
-        return -Ret;
-    } while (1);
 
-    return Ret;
-}
 //----------------------------------------------------------------------------------------------------------------------

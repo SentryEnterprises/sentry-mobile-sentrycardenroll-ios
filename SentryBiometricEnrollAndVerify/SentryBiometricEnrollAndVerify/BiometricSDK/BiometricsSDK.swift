@@ -51,7 +51,7 @@ public final class BiometricSDK {
         tag?.sendCommand(apdu: command) { response, sw1, sw2, error in
             let data = response + Data([sw1]) + Data([sw2])
 
- //           NFCReaderError(<#T##code: NFCReaderError.Code##NFCReaderError.Code#>)
+ //           NFCReaderError(T##code: NFCReaderError.Code##NFCReaderError.Code)
             if let error = error {
                 print(">>> Tag Send ERROR: \(error)")
                 if let nfcError = error as? NFCReaderError {
@@ -190,24 +190,60 @@ public final class BiometricSDK {
             mode: biometricMode // 0 - enroll, 1 and 2 - verify
         )
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    func finalizeEnroll() throws {
-        print("\n\n<<<<<<<<<<<\nJCWWallet DESELECT ENROLL - \(Thread.current)")
-
-        let response = LibSdkEnrollDeinit()
-        if response != 0 {
-            throw NSError(domain: "Deinit Biometric Applet Error.", code: Int(response))
+    func enrollFingerprint() throws -> UInt8 {
+        print("\n\n>>>>>>>>>>>>SentryBiometricSDK .EnrollFingerprint - \(Thread.current)")
+        
+     //   let enrolled = UnsafeMutablePointer<UInt8>.allocate(capacity: 1)
+        let remainingEnrollments = UnsafeMutablePointer<UInt8>.allocate(capacity: 1)
+     //   let mode = UnsafeMutablePointer<UInt8>.allocate(capacity: 1)
+        
+        defer {
+     //       enrolled.deallocate()
+            remainingEnrollments.deallocate()
+    //        mode.deallocate()
         }
-        Self.tag = nil
+        
+        let response = LibSdkEnrollProcess(remainingEnrollments)
+        
+        if response != 0x9000 {
+            throw NSError(domain: "Finger Scan Error.", code: Int(response))
+        }
+        
+        return remainingEnrollments.pointee
+    }
+    
+    func verifyEnroll(pin: [UInt8]) throws {
+        print("\n\n>>>>>>>>>>>>SentryBiometricSDK .verifyEnroll - \(Thread.current)")
+        
+        // create a C compatible byte buffer and copy the PIN into it
+        let pinLength = pin.count
+        let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: pinLength)
+        defer {
+            pointer.deallocate()
+        }
+        
+        for i in 0..<pinLength {
+            pointer.advanced(by: i).pointee = pin[i]
+        }
+
+        let response = LibSdkEnrollVerify(pointer, Int32(pinLength))
+        
+        if response != 0x9000 {
+            throw NSError(domain: "Verify Enrollment Error.", code: Int(response))
+        }
     }
 
+    
+    func finalizeEnroll() {
+        print("\n\n>>>>>>>>>>>>SentryBiometricSDK DESELECT ENROLL - \(Thread.current)")
+
+//        let response = LibSdkEnrollDeinit()
+//        if response != 0 {
+//            throw NSError(domain: "Deinit Biometric Applet Error.", code: Int(response))
+//        }
+        
+        LibSdkEnrollDeinit()
+        Self.tag = nil
+    }
 }

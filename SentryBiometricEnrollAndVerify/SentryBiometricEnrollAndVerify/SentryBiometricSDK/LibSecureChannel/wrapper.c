@@ -24,7 +24,7 @@ int ApduIsSecureChannel = 0;
 // This simply returns whatever is returned from the swift callback (see BiometricsSDK.swiftcallback)
 int apdu_secure_channel(uint8_t* DataIn, uint32_t DataInLen, uint8_t* DataOut, uint32_t* DataOutLen)
 {
-    int Ret = 0;
+    int returnValue = 0;
     uint32_t    wrap_out_len = 0;
     uint8_t     wrap_apdu_out[300];
     uint32_t    unwrap_out_len = 0;
@@ -49,14 +49,14 @@ int apdu_secure_channel(uint8_t* DataIn, uint32_t DataInLen, uint8_t* DataOut, u
     }
     else
     {
-        Ret = lib_auth_wrap(DataIn, DataInLen, wrap_apdu_out, &wrap_out_len);
-        if (Ret != 0) return Ret;
-        Ret = pSmartCardApduCallBack(wrap_apdu_out, wrap_out_len, unwrap_apdu_out, &unwrap_out_len);
-        if (Ret != 0) return Ret;
+        returnValue = lib_auth_wrap(DataIn, DataInLen, wrap_apdu_out, &wrap_out_len);
+        if (returnValue != 0) return returnValue;
+        returnValue = pSmartCardApduCallBack(wrap_apdu_out, wrap_out_len, unwrap_apdu_out, &unwrap_out_len);
+        if (returnValue != 0) return returnValue;
 
         if (unwrap_out_len != 2)
         {
-            Ret = lib_auth_unwrap(unwrap_apdu_out, unwrap_out_len, DataOut, DataOutLen);
+            returnValue = lib_auth_unwrap(unwrap_apdu_out, unwrap_out_len, DataOut, DataOutLen);
         }
         else
         {
@@ -65,7 +65,7 @@ int apdu_secure_channel(uint8_t* DataIn, uint32_t DataInLen, uint8_t* DataOut, u
         }
     }
 
-    return Ret;
+    return returnValue;
 }
 
 

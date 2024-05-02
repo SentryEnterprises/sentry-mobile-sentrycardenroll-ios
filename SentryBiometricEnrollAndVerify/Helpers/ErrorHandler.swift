@@ -89,8 +89,30 @@ class ErrorHandler {
         case NFCReaderError.ndefReaderSessionErrorZeroLengthMessage.rawValue:
             return "(\(nsError.code)) NDEF Reader session Error: Zero Length Message."
 
+        case APDUResponseCodes.noMatchFound.rawValue:
+            return "(6300) No match found during qualification touch."
             
+        case APDUResponseCodes.communicationFailure.rawValue:
+            return "(6741) Non-specific communication failure."
             
+        case APDUResponseCodes.fingerRemoved.rawValue:
+            return "(6745) Finger removed before scan completed."
+            
+        case APDUResponseCodes.poorImageQuality.rawValue:
+            return "(6747) Poor image quality."
+            
+        case APDUResponseCodes.userTimeoutExpired.rawValue:
+            return "(6748) User timeout expired."
+            
+        case APDUResponseCodes.hostInterfaceTimeoutExpired.rawValue:
+            return "(6749) Host interface timeout expired."
+            
+        case APDUResponseCodes.conditionOfUseNotSatisfied.rawValue:
+            return "(6985) Conditions of use not satisfied."
+            
+        case APDUResponseCodes.notEnoughMemory.rawValue:
+            return "(6A84) Not enough memory space in the file."
+
         default:
             return "Unknown Error Code: \(nsError.code)"
         }

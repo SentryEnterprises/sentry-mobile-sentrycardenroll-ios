@@ -93,17 +93,13 @@ _Export_ int LibSdkEnrollInit(uint8_t* pin, int len, SmartCardApduCallBack callb
 // this requires that LibSdkEnrollInit has been called, or that the app is selected, the pin has been verified, and a callback is in place
 _Export_ int LibSdkGetEnrollStatus(uint8_t* max_num_fingers, uint8_t* enrolled_touches, uint8_t* remaining_touches, uint8_t* biometric_mode)
 {
-    int Ret;
-    Ret = lib_enroll_status(max_num_fingers, enrolled_touches, remaining_touches, biometric_mode);
-    return Ret;
+    int returnValue;
+    returnValue = lib_enroll_status(max_num_fingers, enrolled_touches, remaining_touches, biometric_mode);
+    
+    // TODO: This ignores qualification touches, we made need that in the future
+    
+    return returnValue;
 }
-
-
-
-///
-
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 _Export_ int LibSdkEnrollDeinit(void)
@@ -112,6 +108,29 @@ _Export_ int LibSdkEnrollDeinit(void)
     pSmartCardApduCallBack = NULL;
     return 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+_Export_ int LibSdkEnrollProcess(uint8_t* remaining_touches)
+{
+    int returnValue;
+    returnValue = lib_enroll_process(remaining_touches);
+    return returnValue;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+_Export_ int LibSdkEnrollVerify(uint8_t* pin, int len)
+{
+    int returnValue;
+    returnValue = lib_enroll_verify();
+    //returnValue = lib_verify_enrollment(pin, len);
+    return returnValue;
+}
+
+///
+
+
+
+
 
 ////----------------------------------------------------------------------------------------------------------------------
 //_Export_ int LibSdkEnrollProcess(int num_finger, uint8_t* enrolled_touches, uint8_t* remaining_touches, uint8_t* biometric_mode)

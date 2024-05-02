@@ -134,7 +134,7 @@ int lib_auth_wrap(uint8_t* apdu_in, uint32_t in_len, uint8_t* apdu_out, uint32_t
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
 int lib_auth_unwrap(uint8_t* apdu_in, uint32_t in_len, uint8_t* apdu_out, uint32_t* out_len)
 {
-    return  unwrap(apdu_in, in_len, apdu_out, out_len, KeyENC, KeyRMAC);
+    return unwrap(apdu_in, in_len, apdu_out, out_len, KeyENC, KeyRMAC);
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
 int lib_public_decompress(uint8_t* Compress, uint8_t* Decompress)

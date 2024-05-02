@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */; };
 		14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */; };
-		14902F312BDFF2CD007A26B9 /* CardStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */; };
-		14902F342BDFF2CD007A26B9 /* CardStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F322BDFF2CD007A26B9 /* CardStatus.storyboard */; };
+		14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */; };
+		14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F322BDFF2CD007A26B9 /* GetCardStatus.storyboard */; };
 		14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14902F352BDFF2CF007A26B9 /* Assets.xcassets */; };
 		14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */; };
 		14902F462BDFF79C007A26B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 14902F452BDFF79C007A26B9 /* Lottie */; };
@@ -27,14 +27,17 @@
 		14902F662BE3DEA2007A26B9 /* FingerprintVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */; };
 		14902F682BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */; };
 		14902F6A2BE3DED2007A26B9 /* FingerprintVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F692BE3DED2007A26B9 /* FingerprintVerificationViewController.swift */; };
+		14902F722BE3E853007A26B9 /* attach_card.json in Resources */ = {isa = PBXBuildFile; fileRef = 14902F702BE3E853007A26B9 /* attach_card.json */; };
+		14902F732BE3E853007A26B9 /* fingerprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 14902F712BE3E853007A26B9 /* fingerprint.json */; };
+		14E774072BE44A220046D1E5 /* APDUResponseCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		14902F292BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentryBiometricEnrollAndVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusViewController.swift; sourceTree = "<group>"; };
-		14902F332BDFF2CD007A26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CardStatus.storyboard; sourceTree = "<group>"; };
+		14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardStatusViewController.swift; sourceTree = "<group>"; };
+		14902F332BDFF2CD007A26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GetCardStatus.storyboard; sourceTree = "<group>"; };
 		14902F352BDFF2CF007A26B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14902F382BDFF2CF007A26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14902F3A2BDFF2CF007A26B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +54,9 @@
 		14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FingerprintVerification.storyboard; sourceTree = "<group>"; };
 		14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintEnrollmentViewController.swift; sourceTree = "<group>"; };
 		14902F692BE3DED2007A26B9 /* FingerprintVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintVerificationViewController.swift; sourceTree = "<group>"; };
+		14902F702BE3E853007A26B9 /* attach_card.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attach_card.json; sourceTree = "<group>"; };
+		14902F712BE3E853007A26B9 /* fingerprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fingerprint.json; sourceTree = "<group>"; };
+		14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APDUResponseCodes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 		14902F422BDFF46D007A26B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				14902F6F2BE3E816007A26B9 /* Lottie Animations */,
 				14902F352BDFF2CF007A26B9 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -122,8 +129,8 @@
 		14902F432BDFF70E007A26B9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				14902F322BDFF2CD007A26B9 /* CardStatus.storyboard */,
-				14902F302BDFF2CD007A26B9 /* CardStatusViewController.swift */,
+				14902F322BDFF2CD007A26B9 /* GetCardStatus.storyboard */,
+				14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */,
 				14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */,
 				14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */,
 				14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */,
@@ -136,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				14902F612BE3D008007A26B9 /* ErrorHandler.swift */,
+				14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -163,6 +171,15 @@
 				14902F5F2BE2CF6A007A26B9 /* CommandReturnCodes.swift */,
 			);
 			path = BiometricSDK;
+			sourceTree = "<group>";
+		};
+		14902F6F2BE3E816007A26B9 /* Lottie Animations */ = {
+			isa = PBXGroup;
+			children = (
+				14902F702BE3E853007A26B9 /* attach_card.json */,
+				14902F712BE3E853007A26B9 /* fingerprint.json */,
+			);
+			path = "Lottie Animations";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +249,11 @@
 			files = (
 				14902F662BE3DEA2007A26B9 /* FingerprintVerification.storyboard in Resources */,
 				14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */,
+				14902F732BE3E853007A26B9 /* fingerprint.json in Resources */,
 				14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */,
-				14902F342BDFF2CD007A26B9 /* CardStatus.storyboard in Resources */,
+				14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */,
 				14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */,
+				14902F722BE3E853007A26B9 /* attach_card.json in Resources */,
 				14902F482BDFFEB0007A26B9 /* SentryBiometricSDK in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,7 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14902F312BDFF2CD007A26B9 /* CardStatusViewController.swift in Sources */,
+				14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */,
+				14E774072BE44A220046D1E5 /* APDUResponseCodes.swift in Sources */,
 				14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */,
 				14902F4C2BE001AF007A26B9 /* NFCSessionManager.swift in Sources */,
 				14902F502BE010D8007A26B9 /* Data+Extensions.swift in Sources */,
@@ -264,12 +284,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		14902F322BDFF2CD007A26B9 /* CardStatus.storyboard */ = {
+		14902F322BDFF2CD007A26B9 /* GetCardStatus.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				14902F332BDFF2CD007A26B9 /* Base */,
 			);
-			name = CardStatus.storyboard;
+			name = GetCardStatus.storyboard;
 			sourceTree = "<group>";
 		};
 		14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */ = {
@@ -417,7 +437,7 @@
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Please provide access to scan your card.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = CardStatus;
+				INFOPLIST_KEY_UIMainStoryboardFile = GetCardStatus;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16;
@@ -453,7 +473,7 @@
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Please provide access to scan your card.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = CardStatus;
+				INFOPLIST_KEY_UIMainStoryboardFile = GetCardStatus;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16;
