@@ -28,6 +28,8 @@
 		14902F722BE3E853007A26B9 /* attach_card.json in Resources */ = {isa = PBXBuildFile; fileRef = 14902F702BE3E853007A26B9 /* attach_card.json */; };
 		14902F732BE3E853007A26B9 /* fingerprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 14902F712BE3E853007A26B9 /* fingerprint.json */; };
 		14E774072BE44A220046D1E5 /* APDUResponseCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */; };
+		14E7740F2BE579040046D1E5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7740E2BE579040046D1E5 /* AppSettings.swift */; };
+		14E774112BE579C70046D1E5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14E774102BE579C70046D1E5 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		14902F712BE3E853007A26B9 /* fingerprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fingerprint.json; sourceTree = "<group>"; };
 		14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APDUResponseCodes.swift; sourceTree = "<group>"; };
 		14E7740C2BE54C6E0046D1E5 /* installEnroll.jcsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = installEnroll.jcsh; sourceTree = "<group>"; };
+		14E7740E2BE579040046D1E5 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		14E774102BE579C70046D1E5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */,
 				14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */,
 				14902F3A2BDFF2CF007A26B9 /* Info.plist */,
+				14E774102BE579C70046D1E5 /* Settings.bundle */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 			children = (
 				14902F612BE3D008007A26B9 /* ErrorHandler.swift */,
 				14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */,
+				14E7740E2BE579040046D1E5 /* AppSettings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 				14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */,
 				14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */,
 				14902F722BE3E853007A26B9 /* attach_card.json in Resources */,
+				14E774112BE579C70046D1E5 /* Settings.bundle in Resources */,
 				14902F482BDFFEB0007A26B9 /* SentryBiometricSDK in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +278,7 @@
 			files = (
 				14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */,
 				14E774072BE44A220046D1E5 /* APDUResponseCodes.swift in Sources */,
+				14E7740F2BE579040046D1E5 /* AppSettings.swift in Sources */,
 				14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */,
 				14902F4C2BE001AF007A26B9 /* NFCSessionManager.swift in Sources */,
 				14902F5E2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift in Sources */,
@@ -431,7 +439,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
@@ -467,7 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;

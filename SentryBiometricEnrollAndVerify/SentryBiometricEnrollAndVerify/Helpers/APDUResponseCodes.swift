@@ -12,6 +12,10 @@ import Foundation
  */
 enum APDUResponseCodes: Int {
     case noMatchFound = 0x6300
+    case pinIncorrectThreeTriesRemain = 0x63C3
+    case pinIncorrectTwoTriesRemain = 0x63C2
+    case pinIncorrectOneTriesRemain = 0x63C1
+    case pinIncorrectZeroTriesRemain = 0x63C0
     case communicationFailure = 0x6741
     case fingerRemoved = 0x6745
     case poorImageQuality = 0x6747

@@ -27,7 +27,7 @@ typealias ReturnCallback<T> = Callback<T, ()>
 typealias ReturnResultCallback<T> = ReturnCallback<Result<T, Error>>
 
 final class JavaCardManager: NSObject {
-    let enrollPinCode: [UInt8] = .init(repeating: 1, count: 6)
+    let enrollPinCode: [UInt8] = AppSettings.getPIN()
     
     enum Status {
         case requireBiometricEnrollment

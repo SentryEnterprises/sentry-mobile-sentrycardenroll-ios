@@ -104,6 +104,18 @@ class ErrorHandler {
         case APDUResponseCodes.noMatchFound.rawValue:
             return "(6300) No match found during qualification touch."
             
+        case APDUResponseCodes.pinIncorrectThreeTriesRemain.rawValue:
+            return "(0x63C3) PIN incorrect, three tries remaining."
+            
+        case APDUResponseCodes.pinIncorrectTwoTriesRemain.rawValue:
+            return "(0x63C2) PIN incorrect, two tries remaining."
+            
+        case APDUResponseCodes.pinIncorrectOneTriesRemain.rawValue:
+            return "(0x63C1) PIN incorrect, one try remaining."
+            
+        case APDUResponseCodes.pinIncorrectZeroTriesRemain.rawValue:
+            return "(0x63C0) PIN incorrect, zero tries remaining, please use the appropriate script file to reset your card."
+
         case APDUResponseCodes.communicationFailure.rawValue:
             return "(6741) Non-specific communication failure."
             
