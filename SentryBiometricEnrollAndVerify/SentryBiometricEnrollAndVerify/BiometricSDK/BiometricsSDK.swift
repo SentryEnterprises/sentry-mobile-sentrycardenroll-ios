@@ -15,7 +15,15 @@ enum SwiftCallbackError: Int32 {
     case sendCommandError = -3
 }
 
-public final class BiometricSDK {
+extension Data {
+    func toHex() -> String {
+        map {
+            return String(format:"%02X", $0)
+        }.joined(separator: "").uppercased()
+    }
+}
+
+final class BiometricSDK {
     private typealias SmartCardCallback = (UnsafePointer<UInt8>?, UInt32, UnsafeMutablePointer<UInt8>?, UnsafeMutablePointer<UInt32>) -> Void
 
     /// Reason for this property and method to be static - is compatability with C-closures.
@@ -26,7 +34,6 @@ public final class BiometricSDK {
 
     private static func swiftCallback(_ dataIn: UnsafeMutablePointer<UInt8>?, _ dataInLen: UInt32, _ dataOut: UnsafeMutablePointer<UInt8>?, _ dataOutLen: UnsafeMutablePointer<UInt32>?) -> Int32 {
 
-//       guard let dataInArray = dataIn?.toArray(lenght: dataInLen) else {
         guard let dataIn = dataIn else {
             return SwiftCallbackError.dataInIsNil.rawValue
         }
@@ -86,40 +93,7 @@ public final class BiometricSDK {
         self.isSecure = isSecure
     }
 
-//    func selectEnrollApplet(tag: NFCISO7816Tag) throws { //pin: [UInt8], tag: NFCISO7816Tag) throws {
-//        print("\n\n>>>>>>>>>>>>SentryBiometricSDK SELECT ENROLL")// - PIN: \(pin)")
-////
-////        if let oldTag = Self.tag, oldTag === tag {
-////            print("\n\n>>> SentryBiometricSDK select enroll - Returning early, old tag === current tag")
-////            return
-////        }
-//        Self.tag = tag
-////        let pinLenght = pin.count
-////        let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: pinLenght)
-////        defer {
-////            pointer.deallocate()
-////        }
-////
-////        for i in 0..<pinLenght {
-////            pointer.advanced(by: i).pointee = pin[i]
-////        }
-////
-////        let response = LibSdkEnrollInit(pointer, Int32(pinLenght)) { dataIn, dataInLen, dataOut, dataOutLen in
-////            return JCWWallet.swiftCallback(dataIn, dataInLen, dataOut, dataOutLen)
-////        }
-////
-////        if response != 0 {
-////            throw NSError(domain: "Init Biometric Applet Error.", code: Int(response))
-////        }
-//        
-//        print("--== Getting Response")
-//        let response = LibSdkEnrollSelect() { dataIn, dataInLen, dataOut, dataOutLen in
-//            print("--== Have response, calling callback")
-//            return BiometricSDK.swiftCallback(dataIn, dataInLen, dataOut, dataOutLen)
-//        }
-//        
-//        print("Response: \(response)")
-//    }
+
 
     func initEnroll(pin: [UInt8], tag: NFCISO7816Tag) throws {
         print("\n\n>>>>>>>>>>>>SentryBiometricSDK INIT ENROLL - PIN: \(pin)")
@@ -216,18 +190,7 @@ public final class BiometricSDK {
     func verifyEnroll(pin: [UInt8]) throws {
         print("\n\n>>>>>>>>>>>>SentryBiometricSDK .verifyEnroll - \(Thread.current)")
         
-        // create a C compatible byte buffer and copy the PIN into it
-//        let pinLength = pin.count
-//        let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: pinLength)
-//        defer {
-//            pointer.deallocate()
-//        }
-//        
-//        for i in 0..<pinLength {
-//            pointer.advanced(by: i).pointee = pin[i]
-//        }
-
-        let response = LibSdkEnrollVerify() //pointer, Int32(pinLength))
+        let response = LibSdkEnrollVerify()
         
         if response != 0x9000 {
             throw NSError(domain: "Verify Enrollment Error.", code: Int(response))
@@ -254,12 +217,6 @@ public final class BiometricSDK {
     
     func finalizeEnroll() {
         print("\n\n>>>>>>>>>>>>SentryBiometricSDK DESELECT ENROLL - \(Thread.current)")
-
-//        let response = LibSdkEnrollDeinit()
-//        if response != 0 {
-//            throw NSError(domain: "Deinit Biometric Applet Error.", code: Int(response))
-//        }
-        
         LibSdkEnrollDeinit()
         Self.tag = nil
     }

@@ -16,12 +16,10 @@
 		14902F462BDFF79C007A26B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 14902F452BDFF79C007A26B9 /* Lottie */; };
 		14902F482BDFFEB0007A26B9 /* SentryBiometricSDK in Resources */ = {isa = PBXBuildFile; fileRef = 14902F472BDFFEB0007A26B9 /* SentryBiometricSDK */; };
 		14902F4C2BE001AF007A26B9 /* NFCSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F4B2BE001AF007A26B9 /* NFCSessionManager.swift */; };
-		14902F502BE010D8007A26B9 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F4F2BE010D8007A26B9 /* Data+Extensions.swift */; };
 		14902F532BE01676007A26B9 /* SentryBiometricSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 14902F522BE01676007A26B9 /* SentryBiometricSDK */; };
 		14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F542BE037CC007A26B9 /* BiometricsSDK.swift */; };
 		14902F572BE12D16007A26B9 /* JavaCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F562BE12D16007A26B9 /* JavaCardManager.swift */; };
 		14902F5E2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F5D2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift */; };
-		14902F602BE2CF6A007A26B9 /* CommandReturnCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F5F2BE2CF6A007A26B9 /* CommandReturnCodes.swift */; };
 		14902F622BE3D008007A26B9 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F612BE3D008007A26B9 /* ErrorHandler.swift */; };
 		14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */; };
 		14902F662BE3DEA2007A26B9 /* FingerprintVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */; };
@@ -44,11 +42,9 @@
 		14902F402BDFF3FB007A26B9 /* SentryBiometricEnrollAndVerify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SentryBiometricEnrollAndVerify.entitlements; sourceTree = "<group>"; };
 		14902F472BDFFEB0007A26B9 /* SentryBiometricSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SentryBiometricSDK; path = SentryBiometricEnrollAndVerify/SentryBiometricSDK; sourceTree = "<group>"; };
 		14902F4B2BE001AF007A26B9 /* NFCSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCSessionManager.swift; sourceTree = "<group>"; };
-		14902F4F2BE010D8007A26B9 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		14902F542BE037CC007A26B9 /* BiometricsSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsSDK.swift; sourceTree = "<group>"; };
 		14902F562BE12D16007A26B9 /* JavaCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaCardManager.swift; sourceTree = "<group>"; };
 		14902F5D2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricEnrollmentStatus.swift; sourceTree = "<group>"; };
-		14902F5F2BE2CF6A007A26B9 /* CommandReturnCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandReturnCodes.swift; sourceTree = "<group>"; };
 		14902F612BE3D008007A26B9 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FingerprintEnrollment.storyboard; sourceTree = "<group>"; };
 		14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FingerprintVerification.storyboard; sourceTree = "<group>"; };
@@ -57,6 +53,7 @@
 		14902F702BE3E853007A26B9 /* attach_card.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attach_card.json; sourceTree = "<group>"; };
 		14902F712BE3E853007A26B9 /* fingerprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fingerprint.json; sourceTree = "<group>"; };
 		14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APDUResponseCodes.swift; sourceTree = "<group>"; };
+		14E7740C2BE54C6E0046D1E5 /* installEnroll.jcsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = installEnroll.jcsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +72,7 @@
 		14902F202BDFF2CD007A26B9 = {
 			isa = PBXGroup;
 			children = (
-				14902F4E2BE010C8007A26B9 /* Extensions */,
-				14902F4D2BE00291007A26B9 /* Helpers */,
-				14902F4B2BE001AF007A26B9 /* NFCSessionManager.swift */,
+				14E774092BE549760046D1E5 /* Scripts */,
 				14902F472BDFFEB0007A26B9 /* SentryBiometricSDK */,
 				14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */,
 				14902F2A2BDFF2CD007A26B9 /* Products */,
@@ -96,11 +91,12 @@
 		14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */ = {
 			isa = PBXGroup;
 			children = (
+				14902F4D2BE00291007A26B9 /* Helpers */,
+				14E774082BE5485D0046D1E5 /* Managers */,
 				14902F5C2BE2C137007A26B9 /* BiometricSDK */,
 				14902F432BDFF70E007A26B9 /* Screens */,
 				14902F422BDFF46D007A26B9 /* Resources */,
 				14902F412BDFF44A007A26B9 /* App */,
-				14902F562BE12D16007A26B9 /* JavaCardManager.swift */,
 			);
 			path = SentryBiometricEnrollAndVerify;
 			sourceTree = "<group>";
@@ -148,14 +144,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		14902F4E2BE010C8007A26B9 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				14902F4F2BE010D8007A26B9 /* Data+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		14902F512BE01676007A26B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +156,6 @@
 			children = (
 				14902F542BE037CC007A26B9 /* BiometricsSDK.swift */,
 				14902F5D2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift */,
-				14902F5F2BE2CF6A007A26B9 /* CommandReturnCodes.swift */,
 			);
 			path = BiometricSDK;
 			sourceTree = "<group>";
@@ -180,6 +167,23 @@
 				14902F712BE3E853007A26B9 /* fingerprint.json */,
 			);
 			path = "Lottie Animations";
+			sourceTree = "<group>";
+		};
+		14E774082BE5485D0046D1E5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				14902F4B2BE001AF007A26B9 /* NFCSessionManager.swift */,
+				14902F562BE12D16007A26B9 /* JavaCardManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		14E774092BE549760046D1E5 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				14E7740C2BE54C6E0046D1E5 /* installEnroll.jcsh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +273,6 @@
 				14E774072BE44A220046D1E5 /* APDUResponseCodes.swift in Sources */,
 				14902F552BE037CC007A26B9 /* BiometricsSDK.swift in Sources */,
 				14902F4C2BE001AF007A26B9 /* NFCSessionManager.swift in Sources */,
-				14902F502BE010D8007A26B9 /* Data+Extensions.swift in Sources */,
 				14902F5E2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift in Sources */,
 				14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */,
 				14902F682BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift in Sources */,
@@ -277,7 +280,6 @@
 				14902F6A2BE3DED2007A26B9 /* FingerprintVerificationViewController.swift in Sources */,
 				14902F622BE3D008007A26B9 /* ErrorHandler.swift in Sources */,
 				14902F572BE12D16007A26B9 /* JavaCardManager.swift in Sources */,
-				14902F602BE2CF6A007A26B9 /* CommandReturnCodes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

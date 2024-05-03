@@ -8,9 +8,21 @@
 import Foundation
 import CoreNFC
 
+/**
+ Converts many different errors from different sources into a more meaningful error message.
+ */
 class ErrorHandler {
+    /**
+     Retrieves a meaningful error message from the indicated error.
+     
+     - Note: Negative error codes are returned from the Swift callback method used during NFC tag communication. Positive error codes are returned from `NFCReaderError` errors, or are 2 byte status words returned from an `APDU` command.
+     
+     - Parameters:
+        - error: The `Error` from which a message is retrieved.
+     
+     - Returns: A meaningful error message based on the error code found within the given error.
+     */
     func getErrorMessage(error: Error) -> String? {
-        
         let nsError = error as NSError
             
         switch nsError.code {
@@ -60,10 +72,10 @@ class ErrorHandler {
             return "(\(nsError.code)) Reader Transceive Error: Packet Too Long."
 
         case NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue:
-            return nil // "(\(nsError.code)) Reader Session Error: User Cancelled."
+            return "(\(nsError.code)) Reader Session Error: User Cancelled."
 
         case NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue:
-            return nil // "(\(nsError.code)) Reader Session Error: Session Timeout."
+            return "(\(nsError.code)) Reader Session Error: Session Timeout."
 
         case NFCReaderError.readerSessionInvalidationErrorSessionTerminatedUnexpectedly.rawValue:
             return "(\(nsError.code)) Reader Session Error: Session Terminated Unexpectedly."
@@ -112,6 +124,12 @@ class ErrorHandler {
             
         case APDUResponseCodes.notEnoughMemory.rawValue:
             return "(6A84) Not enough memory space in the file."
+
+        case APDUResponseCodes.commandAborted.rawValue:
+            return "(6F00) Command aborted – more exact diagnosis not possible (e.g., operating system error)."
+            
+        case APDUResponseCodes.cardDead.rawValue:
+            return "(6FFF) Card dead (overuse)."
 
         default:
             return "Unknown Error Code: \(nsError.code)"

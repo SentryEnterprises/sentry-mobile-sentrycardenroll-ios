@@ -7,9 +7,13 @@
 
 import UIKit
 import Lottie
+import CoreNFC
 
+/**
+ Fingerprint verification screen. Scans the card, and performs a biometric validation of the finger on the fingerprint sensor against the fingerprints recorded on the card.
+ */
 class FingerprintVerificationViewController: UIViewController {
-    
+    // sets up the Lottie animation (does not affect actual functionality)
     @IBOutlet weak var lottieAnimationViewContainer: UIView! {
         didSet {
             let animationView = LottieAnimationView(name: "attach_card")
@@ -27,26 +31,27 @@ class FingerprintVerificationViewController: UIViewController {
         }
     }
     
+    // starts the scanning functionality
     @IBAction func verifyButtonTouched(_ sender: Any) {
         verifyFingerprint()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "Fingerprint Validation"
     }
     
+    // scans the card and performs a biometric validation
     private func verifyFingerprint() {
         Task { [weak self] in
             do {
                 var title = ""
                 var instructions = ""
                 
-                print("(Scan Card)")
+                // perform a biometric validation on the card. starts NFC scanning.
                 let isValid = try await JavaCardManager.shared.validateBiometrics()
-                print("(Scan Card - Have Validation: \(isValid)")
                 
+                // update UI elements based on the validation result
                 if isValid {
                     title = "Fingerprint Matched"
                     instructions = "The scanned fingerprint matches the fingerprint recorded during enrollment."
@@ -58,9 +63,11 @@ class FingerprintVerificationViewController: UIViewController {
                 let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
-                
             } catch (let error) {
-                if let errorMessage = ErrorHandler().getErrorMessage(error: error) {
+                // if the user cancelled or the session timed out, don't display this as an error
+                let errorCode = (error as NSError).code
+                if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
+                    let errorMessage = ErrorHandler().getErrorMessage(error: error)
                     let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)

@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Common `APDU` command responses.
+ */
 enum APDUResponseCodes: Int {
     case noMatchFound = 0x6300
     case communicationFailure = 0x6741
@@ -16,4 +19,6 @@ enum APDUResponseCodes: Int {
     case hostInterfaceTimeoutExpired = 0x6749
     case conditionOfUseNotSatisfied = 0x6985
     case notEnoughMemory = 0x6A84
+    case commandAborted = 0x6F00
+    case cardDead = 0x6FFF
 }

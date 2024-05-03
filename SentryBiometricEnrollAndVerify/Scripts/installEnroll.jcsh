@@ -1,0 +1,165 @@
+# Note: Meant for use with the JCShell available from IDEX. Expects the 'com.idex.enroll.cap' applet to be located at the path <current directory>/cap/com.idex.enroll.cap.
+
+
+/echo "***************************************************************************************
+/echo "* Install Enroll Applet and Reset Biometric Enrollment Data"
+/echo "***************************************************************************************
+/echo
+/set-var path ${script.dir}
+
+/set-var --global CardManager "com.nxp.id.jc.CardManager"
+/set-var --global Keys "255/1/DES-ECB/404142434445464748494a4b4c4d4e4f 255/2/DES-ECB/404142434445464748494a4b4c4d4e4f 255/3/DES-ECB/404142434445464748494a4b4c4d4e4f"
+
+# Closes connection to terminal (if there is one)
+/close
+
+# Connect to the terminal
+/echo "Connect to Terminal...."
+/term
+/reset
+
+# Returns ATR of last activated protocol (0 = byte, 1 = block)
+/atr
+
+# Implicitly register the card manager plugin referencing the card manager implementation. 
+# -a indicates a Mask ID  59 and above
+# -c indicates card manager class name, should be subclassed from com.nxp.id.jc.CardManager, but this variable is set to exactly that
+/echo "Register card manager"
+/card -a a000000151000000 -c ${CardManager}
+
+# List of keys to be set in off-card repository
+/echo "Setting keys"
+set-key ${Keys}
+
+# Global Platform initialize update command
+/echo "Update"
+init-update
+
+# External authenticate, sets desired security level for subsequent APDUs, in this case no secure messaging
+/echo "Setting plain security level"
+ext-auth plain
+
+# This is sending an APDU command to the card manager
+/echo "Sending APDU to card manager"
+/card -a a000000151000000 -c ${CardManager}
+/send B105200000
+/card -a a000000151000000 -c ${CardManager}
+
+# Close connection to terminal
+/echo "Closing terminal"
+/close
+
+# Reopen a terminal
+/echo "Reopening terminal"
+/term
+/reset
+/atr
+
+# Do not know why we need to do this again
+#------------------------------------------------------------------------
+/echo "Registering card manager, setting keys, updating, setting plain APDU security level"
+/card -a a000000151000000 -c ${CardManager}
+set-key ${Keys}
+init-update
+ext-auth plain
+
+
+#***************************************************************************************
+#INSTALL  *** S E C U R E   D O M A I N  ***
+#***************************************************************************************
+
+/echo "Install Secure Domain"
+/mode trace on
+# Global Platform (80) Install (E6) command. 
+# P1 = 0C meaning 'for install and for selectable'. 
+# P2 always = 00. 
+# LC = 38 bytes of data
+# 07 = length of load file AID (7 bytes)
+# A0000001515350 = load file AID (7 bytes in length)
+# 08 = length of security domain AID (8 bytes)
+# A000000151535041 = security domain AID (8 bytes in length)
+# 05 = length of load file data block hash (5 bytes)
+# 4430313233 = load file data block hash (5 bytes in length)
+# 03 = length of load parameters field (3 bytes)
+# 808000 = load parameters (3 bytes in length)
+# 1B = length of load token (27 bytes)
+# next 27 bytes is the load token
+# ends with a double null terminator
+/send  "80E60C00 38 07 A0000001515350 08 A000000151535041 05 4430313233 03 808000 1B C90D810211028201F88301F88701F8EF00B6085F20050102030405 0000"
+
+# Select the secure domain
+/echo "Selecting secure domain"
+/select 4430313233
+
+/echo "Updating, setting APDU security level to plain"
+init-update
+ext-auth plain
+
+#STORE
+/echo "Sending APDU"
+/send  80E288004000B91AB910950200808001B1810120820113830118B9068001F0850100813720FE084FE74216C8399AE54BE0F1C0034B84CE2031A0678828DCD52CE11936D883
+# DGI [00B9] 1A: [B9] CRT 10: [95]02:0080 [80]01:B1 [81]01:20 [82] KeyId 01:13 [83] KeyVer 01:18  [B9] CRT 06: [80]01:F0 [85]01:00 CURVE P-256
+# PRIVATE KEY [8137] 20: FE084FE74216C8399AE54BE0F1C0034B84CE2031A0678828DCD52CE11936D883
+
+/echo "Sending APDU"
+/send  80E2100096A60483021318BF2181C07F2181BC930411223344420630315F49494E5F20050102030405950200805F2504201801015F240420991231450630315F43494E7F4946B04104994D7416BDE485572770C84A6EA9AC0AFC4B517E7D2E013F39534EF972FB7D988C00EDD74D7A9BB0AE3669AD036C37D0429132BD0D6BED9ED8478D1B90D2F504F001005F3740130AF0CAB502AB4A34ADC71C
+
+/echo "Sending APDU"
+/send  80E2900134770EFFA303A83C9CC73E126FC274F12177772159D752C6AAC5A42DB236FFBF2A79A63C1824D8214616253708D59133C571FE6990
+
+# [A6]   04 : [83] 02: 13 18     KeyId=0x13 KeyVer=0x18
+# [BF21] 81C0 :
+# [7F21] 81BC : [93] 04: 11223344  [42] 06: 30315F49494E  [5F20] 05:0102030405  [95] 02:0080  [5F25] 04:20180101   [5F24]04:20991231 [45] 06:30315F43494E
+#               [7F49]  PubKey  [B0] 41: 04 99 4D 74 16 BD E4 85 57 27 70 C8 4A 6E A9 AC 0A FC 4B 51 7E 7D 2E 01 3F 39 53 4E F9 72 FB 7D 98 8C 00 ED D7 4D 7A 9B B0 AE 36 69 AD 03 6C 37 D0 42 91 32 BD 0D 6B ED 9E D8 47 8D 1B 90 D2 F5 04 
+#				[F0] 01: 00
+#		[5F37] 	Sign:   [40] 13 0A F0 CA B5 02 AB 4A 34 AD C7 1C 77 0E FF A3 03 A8 3C 9C C7 3E 12 6F C2 74 F1 21 77 77 21 59 D7 52 C6 AA C5 A4 2D B2 36 FF BF 2A 79 A6 3C 18 24 D8 21 46 16 25 37 08 D5 91 33 C5 71 FE 69 90
+
+# Global Platform (00) Select (A4) command, P1 is 04 meaning 'select by name', P2 is 00 meaning 'first or only occurence', LC is 00 so no AID, this is deselecting any selected applet
+/echo "Sending SELECT command"
+/send 00a4040000
+
+# Turn on APDU tracing
+/mode trace on
+
+#***************************************************************************************
+
+
+#***************************************************************************************
+#* Load Packages
+#***************************************************************************************
+
+# Authenticate using the default initial key
+/echo "Authenticating using default initial key"
+auth
+
+/echo
+/echo "Uploading Enroll"
+upload "${path}/cap/com.idex.enroll.cap"
+
+# Install Enroll applet
+# -i = Desired instance AID
+# -q = Install parameters (the C9#() indicates application specific parameters)
+/echo "Install Enroll:"
+install -i 494445585F4C5F0101 -q C9#() 494445585F4C5F01 494445585F4C5F0101
+/echo
+
+# Reset Biometrics Data
+/echo "  > Reset Biometrics Data"
+/send ED57C1000100
+/echo ""
+
+#***************************************************************************************
+
+# Deselect applet
+/send 00a4040000
+
+# Calling card-info requires a call to auth first
+auth
+card-info
+
+# Close the terminal and indicate that the script is done
+/close
+/echo
+/echo
+/echo "****FINISH****"
+/echo ""

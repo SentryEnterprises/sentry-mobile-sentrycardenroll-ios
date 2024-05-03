@@ -46,8 +46,8 @@
             filePath = "SentryBiometricEnrollAndVerify/BiometricSDK/BiometricsSDK.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "initEnroll(pin:tag:)"
             landmarkType = "7">
             <Locations>
@@ -110,8 +110,8 @@
             filePath = "SentryBiometricEnrollAndVerify/BiometricSDK/BiometricsSDK.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "initEnroll(pin:tag:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "SentryBiometricEnrollAndVerify/JavaCardManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "getEnrollmentStatus()"
             landmarkType = "7">
             <Locations>
@@ -174,8 +174,8 @@
             filePath = "SentryBiometricEnrollAndVerify/JavaCardManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "invalidateSession(_:)"
             landmarkType = "7">
             <Locations>
@@ -239,6 +239,36 @@
                   endingLineNumber = "365"
                   offsetFromSymbolStart = "396">
                </Location>
+               <Location
+                  uuid = "7C1C4DFD-9BD1-4E18-8AEE-9A7E77CF2647 - d1368ffaf6d35c5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SentryBiometricEnrollAndVerify.JavaCardManager.invalidateSession(Swift.String) -&gt; ()"
+                  moduleName = "SentryBiometricEnrollAndVerify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnayres/Development/Sentry%20Enterprises/iOS-BiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/JavaCardManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "378"
+                  endingLineNumber = "378"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "7C1C4DFD-9BD1-4E18-8AEE-9A7E77CF2647 - d1368ffaf6d34398"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SentryBiometricEnrollAndVerify.JavaCardManager.invalidateSession(Swift.String) -&gt; ()"
+                  moduleName = "SentryBiometricEnrollAndVerify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnayres/Development/Sentry%20Enterprises/iOS-BiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/JavaCardManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "396">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -300,8 +330,8 @@
             filePath = "SentryBiometricEnrollAndVerify/JavaCardManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "enrollBiometric(connected:stepFinished:)"
             landmarkType = "7">
             <Locations>
