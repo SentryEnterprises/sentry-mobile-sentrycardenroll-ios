@@ -217,23 +217,40 @@ public final class BiometricSDK {
         print("\n\n>>>>>>>>>>>>SentryBiometricSDK .verifyEnroll - \(Thread.current)")
         
         // create a C compatible byte buffer and copy the PIN into it
-        let pinLength = pin.count
-        let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: pinLength)
-        defer {
-            pointer.deallocate()
-        }
-        
-        for i in 0..<pinLength {
-            pointer.advanced(by: i).pointee = pin[i]
-        }
+//        let pinLength = pin.count
+//        let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: pinLength)
+//        defer {
+//            pointer.deallocate()
+//        }
+//        
+//        for i in 0..<pinLength {
+//            pointer.advanced(by: i).pointee = pin[i]
+//        }
 
-        let response = LibSdkEnrollVerify(pointer, Int32(pinLength))
+        let response = LibSdkEnrollVerify() //pointer, Int32(pinLength))
         
         if response != 0x9000 {
             throw NSError(domain: "Verify Enrollment Error.", code: Int(response))
         }
     }
 
+    func validateFingerprint() throws -> Bool {
+        print("\n\n>>>>>>>>>>>>SentryBiometricSDK .verifyEnroll - \(Thread.current)")
+        
+        let response = LibSdkValidateFingerprint()
+        
+        // the finger on the sensor matches the one recorded during enrollment
+        if response == 0x9000 {
+            return true
+        }
+        
+        // the finger on the sensor does not match the one recorded during enrollment
+        if response == 0x6300 {
+            return false
+        }
+        
+        throw NSError(domain: "Validate Fingerprint Error.", code: Int(response))
+    }
     
     func finalizeEnroll() {
         print("\n\n>>>>>>>>>>>>SentryBiometricSDK DESELECT ENROLL - \(Thread.current)")

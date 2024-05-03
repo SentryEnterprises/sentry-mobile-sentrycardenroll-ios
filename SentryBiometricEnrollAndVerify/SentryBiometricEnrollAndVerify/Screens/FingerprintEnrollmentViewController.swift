@@ -17,13 +17,13 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     private var currentStep = 0
     
+    private let animationView = LottieAnimationView(name: "fingerprint")
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var placeCardImage: UIImageView!
     @IBOutlet weak var lottieAnimationViewContainer: UIView! {
         didSet {
-            let animationView = LottieAnimationView(name: "fingerprint")
-
             animationView.translatesAutoresizingMaskIntoConstraints = false
             lottieAnimationViewContainer.addSubview(animationView)
             
@@ -62,13 +62,14 @@ class FingerprintEnrollmentViewController: UIViewController {
         
         func handleConnected(_ isConnected: Bool) {
             DispatchQueue.main.async { [weak self] in
+                print("!!!!!!! Handling Connected")
                 if isConnected {
-                    self?.reset()
-                } else {
                     self?.titleLabel.text = self?.step2Title
                     self?.messageLabel.text = self?.step2Message
                     self?.placeCardImage.isHidden = true
                     self?.lottieAnimationViewContainer.isHidden = false
+                } else {
+                    self?.reset()
                 }
                 
 //                if isConnected {
@@ -101,13 +102,17 @@ class FingerprintEnrollmentViewController: UIViewController {
         Task { [weak self] in
             do {
                 try await JavaCardManager.shared.enrollBiometric(connected: { connected in
+                    print("!!!!! Connected")
                     handleConnected(connected)
-                }, stepFinished: { [weak self] step in
+                }, stepFinished: { [weak self] currentStep, maximumSteps in
                     DispatchQueue.main.async {
-                        self?.finished(enrollmentStep: step == 100 ? -1 : Int(step))    // awful hack
+                        self?.finished(currentStep: currentStep, maximumSteps: maximumSteps)
+                        //self?.finished(enrollmentStep: step == 100 ? -1 : Int(step))    // awful hack
                     }
                 })
             } catch (let error) {
+                handleConnected(false)
+                
                 if let errorMessage = ErrorHandler().getErrorMessage(error: error) {
                     let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -123,7 +128,22 @@ class FingerprintEnrollmentViewController: UIViewController {
        }
     }
     
-    func finished(enrollmentStep: Int) {
+    func finished(currentStep: UInt8, maximumSteps: UInt8) {
+        if currentStep == maximumSteps {
+            let alert = UIAlertController(title: "Enrollment Finished",
+                                          message: "Your fingerprint is now enrolled. Click OK to return to the previous screen and check enrollment status.",
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+            
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        } else {
+            animationView.play(toProgress: Double(currentStep) / Double(maximumSteps))
+        }
+        
+        
 //        if enrollmentStep == -1 {
 //            showCompletion()
 //        } else {

@@ -21,8 +21,8 @@ enum WalletError: Error {
 }
 
 typealias Callback<T, U> = (T) -> (U)
-typealias VoidCallback = () -> ()
-typealias SendCallback<T> = Callback<(), T>
+//typealias VoidCallback = () -> ()
+//typealias SendCallback<T> = Callback<(), T>
 typealias ReturnCallback<T> = Callback<T, ()>
 typealias ReturnResultCallback<T> = ReturnCallback<Result<T, Error>>
 
@@ -54,6 +54,7 @@ final class JavaCardManager: NSObject {
         defer {
             print("=== GET ENROLLMENT STATUS - EXIT (invalidates session)")
             callback = nil
+            biometricSDK.finalizeEnroll()
             //            if let localError {
             //                invalidateSession((localError as NSError).domain)
             //            } else {
@@ -94,10 +95,11 @@ final class JavaCardManager: NSObject {
     
     
     
-    func enrollBiometric(connected: ReturnCallback<Bool>, stepFinished: ReturnCallback<UInt8>) async throws  {
+    //func enrollBiometric(connected: (Bool) -> Void, stepFinished: ReturnCallback<UInt8>) async throws  {
+    func enrollBiometric(connected: (Bool) -> Void, stepFinished: (UInt8, UInt8) -> Void) async throws  {
         print("=== ENROLL BIOMETRIC")
         
-        var localError: Error?
+//        var localError: Error?
         defer {
             print("=== ENROLL BIOMETRIC - EXIT (invalidates session)")
             callback = nil
@@ -126,7 +128,7 @@ final class JavaCardManager: NSObject {
         
   //      let isoTag = try await establishConnection()
 
-        do {
+  //      do {
 //            try jcwWallet.initEnroll(pin: Constants.enrollPinCode, tag: isoTag)
 //            let enrollStatus = try jcwWallet.getEnrollStatus()
   
@@ -209,19 +211,20 @@ final class JavaCardManager: NSObject {
                 print("=== ENROLL BIOMETRIC - \n     Remaining: \(enrollmentsLeft)")
                 
                 let currentStep = maximumSteps - enrollmentsLeft
-                stepFinished(currentStep)
-                
-                print("=== ENROLL BIOMETRIC - \n     CurrentStep: \(currentStep)")
                 
                 let currentStepDouble = Double(currentStep)
                 let maximumStepsDouble = Double(maximumSteps)
                 progress = updateProgress(oldProgress: progress, newProgress: UInt8(currentStepDouble / maximumStepsDouble * 100))
                 
                 print("=== ENROLL BIOMETRIC - \n     Progress: \(progress)")
+                
+                stepFinished(currentStep, maximumSteps)
+                
+                print("=== ENROLL BIOMETRIC - \n     CurrentStep: \(currentStep)")
             }
             
-            print("=== ENROLL BIOMETRIC - Enrollment Finished, finalizing")
-            biometricSDK.finalizeEnroll()
+//            print("=== ENROLL BIOMETRIC - Enrollment Finished, finalizing")
+//            biometricSDK.finalizeEnroll()
             
 //            print("     Getting capabilities")
 //            let capabilites = try jcwWallet.getCapabilities()
@@ -231,36 +234,48 @@ final class JavaCardManager: NSObject {
 //            }
             
             print("=== ENROLL BIOMETRIC - Enrollment Complete")
-            stepFinished(100)   // awful hack
+       //     stepFinished(100)   // awful hack
             
-        } catch {
-            localError = error
-            throw error
-        }
+   //     } catch {
+     //       localError = error
+     //       throw error
+    //    }
     }
     
-    func validateBiometrics(invalidating: Bool = true) async throws {
+    func validateBiometrics() async throws -> Bool {
+        print("=== VALIDATE BIOMETRICS")
+        
         //        var localError: Error?
-        //        defer {
-        //            callback = nil
-        //            if let localError {
-        //                try? jcwWallet.finalizeWallet()
-        //                invalidateSession((localError as NSError).domain)
-        //            } else if invalidating {
-        //                invalidateSession()
-        //            }
+        
+        defer {
+            print("=== VALIDATE BIOMETRICS - EXIT (invalidates session)")
+            callback = nil
+            biometricSDK.finalizeEnroll()
+            //            if let localError {
+            //                invalidateSession((localError as NSError).domain)
+            //            } else {
+            invalidateSession()
+            //            }
+        }
+        
+        //let isoTag: NFCISO7816Tag
+        //       do {
+        print("=== VALIDATE BIOMETRICS - ESTABLISHING CONNECTION")
+        let isoTag = try await establishConnection()
+        //        } catch {
+        //            localError = NSError(domain: "Connection Not Established Error", code: -1)
+        //            throw WalletError.connectionNotEstablished
         //        }
         //
         //        do {
-        //            let isoTag = try await establishConnection()
-        //
-        //            try jcwWallet.initWallet(tag: isoTag)
-        //            try jcwWallet.cvmVerifyFingerprint()
-        //            try jcwWallet.finalizeWallet()
-        //        } catch {
-        //            localError = error
-        //            throw error
-        //        }
+        //           try jcwWallet.initEnroll(pin: Constants.enrollPinCode, tag: isoTag)
+        
+        print("=== VALIDATE BIOMETRICS - INITIALIZING ENROLL APPLET")
+        try biometricSDK.initEnroll(pin: enrollPinCode, tag: isoTag)
+        
+        print("=== VALIDATE BIOMETRICS - VALIDATE FINGERPRINT")
+        let result = try biometricSDK.validateFingerprint()
+        return result
     }
     
     //    func firstTest() async throws {

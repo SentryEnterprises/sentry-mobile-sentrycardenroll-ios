@@ -57,13 +57,16 @@ class GetCardStatusViewController: UIViewController {
                     if status.mode == .enrollment {
                         if let vc = UIStoryboard(name: "FingerprintEnrollment", bundle: .main).instantiateViewController(withIdentifier: "FingerprintEnrollment") as? FingerprintEnrollmentViewController {
                             vc.loadViewIfNeeded()
-                    //        vc.enrollmentStatus = status
                             self?.navigationController?.pushViewController(vc, animated: true)
                         }
                     } else {
-                        
+                        if let vc = UIStoryboard(name: "FingerprintVerification", bundle: .main).instantiateViewController(withIdentifier: "FingerprintVerification") as? FingerprintVerificationViewController {
+                            vc.loadViewIfNeeded()
+                            self?.navigationController?.pushViewController(vc, animated: true)
+                        }
                     }
                 })
+                
                 alert.addAction(action)
                 self?.present(alert, animated: true, completion: nil)
            } catch (let error) {

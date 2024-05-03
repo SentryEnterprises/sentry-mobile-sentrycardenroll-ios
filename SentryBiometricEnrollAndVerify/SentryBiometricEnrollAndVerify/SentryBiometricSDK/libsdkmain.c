@@ -118,7 +118,7 @@ _Export_ int LibSdkEnrollProcess(uint8_t* remaining_touches)
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-_Export_ int LibSdkEnrollVerify(uint8_t* pin, int len)
+_Export_ int LibSdkEnrollVerify()
 {
     int returnValue;
     returnValue = lib_enroll_verify();
@@ -126,6 +126,12 @@ _Export_ int LibSdkEnrollVerify(uint8_t* pin, int len)
     return returnValue;
 }
 
+_Export_ int LibSdkValidateFingerprint(void)
+{
+    int returnValue;
+    returnValue = lib_enroll_validate();
+    return returnValue;
+}
 ///
 
 

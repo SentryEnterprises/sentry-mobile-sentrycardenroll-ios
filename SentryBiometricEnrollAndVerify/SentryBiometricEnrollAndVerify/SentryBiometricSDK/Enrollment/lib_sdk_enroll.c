@@ -305,22 +305,42 @@ int lib_enroll_verify(void)
     return returnValue;
 }
 
-int lib_verify_enrollment(uint8_t* pin, int len)
+int lib_enroll_validate(void)
 {
-    // verify enrollment
-    int returnValue = lib_enroll_verify();
-    if (returnValue == 0x6985)      // the applet returns 'conditions not satisfied' if there isn't a pin
+    int returnValue = 0;
+    do
     {
-        // verify the pin one more time
-        returnValue = lib_enroll_verify_pin(pin, len);
-
-        if (returnValue == 0x9000) {
-            returnValue = lib_enroll_verify();
-        }
-    }
+        uint8_t apdu_verify[] = { 0xED, 0x56, 0x00, 0x00, 0x01, 0x00 };
+        apdu_enroll_out_len = 0;
+        returnValue = apdu_secure_channel(apdu_verify, sizeof(apdu_verify), apdu_enroll_out, &apdu_enroll_out_len);
+        
+        //      if (Ret != 0) return Ret;
+        //       Ret = lib_enroll_check_sw(apdu_enroll_out, apdu_enroll_out_len);
+        if (returnValue == 0) break;
+        if (returnValue == 1) continue;
+        return returnValue;
+    } while (1);
     
+    returnValue = lib_get_status_word(apdu_enroll_out, apdu_enroll_out_len);
     return returnValue;
 }
+
+//int lib_verify_enrollment(uint8_t* pin, int len)
+//{
+//    // verify enrollment
+//    int returnValue = lib_enroll_verify();
+//    if (returnValue == 0x6985)      // the applet returns 'conditions not satisfied' if there isn't a pin
+//    {
+//        // verify the pin one more time
+//        returnValue = lib_enroll_verify_pin(pin, len);
+//
+//        if (returnValue == 0x9000) {
+//            returnValue = lib_enroll_verify();
+//        }
+//    }
+//    
+//    return returnValue;
+//}
 
 
 
