@@ -76,6 +76,7 @@
                         <outlet property="lottieAnimationViewContainer" destination="ual-0A-wOm" id="JZZ-jk-KR7"/>
                         <outlet property="messageLabel" destination="PhL-Kb-2no" id="vTg-fa-mzB"/>
                         <outlet property="placeCardImage" destination="geZ-6C-qWF" id="Wm3-t1-7SF"/>
+                        <outlet property="scanCardButton" destination="Vlk-lo-LAL" id="bsS-yd-uek"/>
                         <outlet property="titleLabel" destination="XBl-K1-Jaw" id="2zI-CU-OL6"/>
                     </connections>
                 </viewController>

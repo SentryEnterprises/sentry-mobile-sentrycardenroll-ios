@@ -13,6 +13,7 @@ import CoreNFC
  Fingerprint verification screen. Scans the card, and performs a biometric validation of the finger on the fingerprint sensor against the fingerprints recorded on the card.
  */
 class FingerprintVerificationViewController: UIViewController {
+    @IBOutlet weak var scanCardButton: UIButton!
     // sets up the Lottie animation (does not affect actual functionality)
     @IBOutlet weak var lottieAnimationViewContainer: UIView! {
         didSet {
@@ -33,6 +34,7 @@ class FingerprintVerificationViewController: UIViewController {
     
     // starts the scanning functionality
     @IBAction func verifyButtonTouched(_ sender: Any) {
+        scanCardButton.isUserInteractionEnabled = false
         verifyFingerprint()
     }
     
@@ -44,6 +46,10 @@ class FingerprintVerificationViewController: UIViewController {
     // scans the card and performs a biometric validation
     private func verifyFingerprint() {
         Task { [weak self] in
+            defer {
+                self?.scanCardButton.isUserInteractionEnabled = true
+            }
+
             do {
                 var title = ""
                 var instructions = ""

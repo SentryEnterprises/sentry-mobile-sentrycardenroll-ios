@@ -13,6 +13,8 @@ import CoreNFC
  The mobile application entry point. Allows the user to scan the card to determine its state.
  */
 class GetCardStatusViewController: UIViewController {
+    @IBOutlet weak var scanCardButton: UIButton!
+    
     // sets up the Lottie animation (does not affect actual functionality)
     @IBOutlet weak var lottieAnimationViewContainer: UIView! {
         didSet {
@@ -33,6 +35,7 @@ class GetCardStatusViewController: UIViewController {
     
     // starts the scanning functionality
     @IBAction func scanCardButtonTouched(_ sender: Any) {
+        scanCardButton.isUserInteractionEnabled = false
         scanCard()
     }
     
@@ -44,6 +47,10 @@ class GetCardStatusViewController: UIViewController {
     // scans the card and navigates to different screens based on the card's status
     private func scanCard() {
         Task { [weak self] in
+            defer {
+                self?.scanCardButton.isUserInteractionEnabled = true
+            }
+            
             do {
                 var title = ""
                 var instructions = ""
@@ -53,11 +60,11 @@ class GetCardStatusViewController: UIViewController {
 
                 // modifies various UI elements based on the card's status
                 if status.mode == .enrollment {
-                    title = "Card Is Not Enrolled"
-                    instructions = "This card is not enrolled. No fingerprints are recorded on this card. We will now go through the enrollment process to record your fingerprint. Click OK to continue."
+                    title = "Not Enrolled"
+                    instructions = "This card is not enrolled. No fingerprints are recorded on this card. Click OK to continue."
                 } else {
-                    title = "Card Is Enrolled"
-                    instructions = "This card is enrolled. A fingerprint is recorded on this card, and we can now go through the verification process to see if the recorded fingerprint matches the finger on the card's sensor. Click OK to continue."
+                    title = "Enrolled"
+                    instructions = "This card is enrolled. A fingerprint is recorded on this card. Click OK to continue."
                 }
                 
                 let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)

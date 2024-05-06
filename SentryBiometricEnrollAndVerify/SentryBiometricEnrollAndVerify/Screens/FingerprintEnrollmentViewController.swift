@@ -21,6 +21,7 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     private let animationView = LottieAnimationView(name: "fingerprint")
     
+    @IBOutlet weak var scanCardButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var placeCardImage: UIImageView!
@@ -40,6 +41,7 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     // starts the scanning functionality
     @IBAction func scanCardButtonTouched(_ sender: Any) {
+        scanCardButton.isUserInteractionEnabled = false
         startBiometricEnrollment()
     }
     
@@ -68,6 +70,10 @@ class FingerprintEnrollmentViewController: UIViewController {
         }
         
         Task { [weak self] in
+            defer {
+                self?.scanCardButton.isUserInteractionEnabled = true
+            }
+
             do {
                 // perform the biometric enrollment process
                 try await JavaCardManager.shared.enrollBiometric(connected: { connected in

@@ -59,6 +59,7 @@
                     <navigationItem key="navigationItem" id="wER-ey-amN"/>
                     <connections>
                         <outlet property="lottieAnimationViewContainer" destination="7ZQ-V8-wZ7" id="MhE-XT-nd7"/>
+                        <outlet property="scanCardButton" destination="Kr1-gt-pY1" id="HgW-JR-BlN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

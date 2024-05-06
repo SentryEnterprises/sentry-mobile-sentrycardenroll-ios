@@ -58,6 +58,7 @@
                     </view>
                     <connections>
                         <outlet property="lottieAnimationViewContainer" destination="wj6-Mn-fPI" id="aXo-gH-D1d"/>
+                        <outlet property="scanCardButton" destination="VhO-GA-gLx" id="v8J-ro-snC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
