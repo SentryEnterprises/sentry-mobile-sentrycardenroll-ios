@@ -2,7 +2,7 @@
 //  FingerprintEnrollmentViewController.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 5/2/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import UIKit
@@ -75,7 +75,7 @@ class FingerprintEnrollmentViewController: UIViewController {
             }
 
             do {
-                // perform the biometric enrollment process
+                // perform the fingerprint enrollment process
                 try await JavaCardManager.shared.enrollBiometric(connected: { connected in
                     handleConnected(connected)
                 }, stepFinished: { [weak self] currentStep, maximumSteps in

@@ -2,7 +2,7 @@
 //  AppSettings.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 5/3/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 /**

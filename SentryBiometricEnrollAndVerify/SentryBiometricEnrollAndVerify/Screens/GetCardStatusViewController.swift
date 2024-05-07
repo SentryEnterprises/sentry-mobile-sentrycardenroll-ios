@@ -2,7 +2,7 @@
 //  GetCardStatusViewController.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 4/29/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import UIKit

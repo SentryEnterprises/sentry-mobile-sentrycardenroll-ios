@@ -2,7 +2,7 @@
 //  JavaCardManager.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 4/30/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import Foundation

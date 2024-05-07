@@ -2,7 +2,7 @@
 //  APDUCommands.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 5/7/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import Foundation

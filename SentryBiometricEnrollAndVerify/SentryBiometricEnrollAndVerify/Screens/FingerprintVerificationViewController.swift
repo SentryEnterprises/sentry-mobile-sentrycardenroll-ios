@@ -2,7 +2,7 @@
 //  FingerprintVerificationViewController.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 5/2/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import UIKit
@@ -14,6 +14,7 @@ import CoreNFC
  */
 class FingerprintVerificationViewController: UIViewController {
     @IBOutlet weak var scanCardButton: UIButton!
+    
     // sets up the Lottie animation (does not affect actual functionality)
     @IBOutlet weak var lottieAnimationViewContainer: UIView! {
         didSet {
@@ -43,7 +44,7 @@ class FingerprintVerificationViewController: UIViewController {
         navigationItem.title = "Fingerprint Validation"
     }
     
-    // scans the card and performs a biometric validation
+    // scans the card and performs a fingerprint validation
     private func verifyFingerprint() {
         Task { [weak self] in
             defer {
