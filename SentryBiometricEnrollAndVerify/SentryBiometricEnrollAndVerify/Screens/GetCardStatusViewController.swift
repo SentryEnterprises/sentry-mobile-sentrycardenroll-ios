@@ -87,10 +87,9 @@ class GetCardStatusViewController: UIViewController {
                 alert.addAction(action)
                 self?.present(alert, animated: true, completion: nil)
             } catch (let error) {
-                // if the user cancelled or the session timed out, don't display this as an error
                 let errorCode = (error as NSError).code
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let errorMessage = ErrorHandler().getErrorMessage(error: error)
+                    let errorMessage = error.localizedDescription
                     let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)

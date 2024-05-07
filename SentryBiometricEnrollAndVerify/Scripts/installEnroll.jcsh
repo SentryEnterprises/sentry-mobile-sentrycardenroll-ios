@@ -1,9 +1,9 @@
 # Note: Meant for use with the JCShell available from IDEX. Expects the 'com.idex.enroll.cap' applet to be located at the path <current directory>/cap/com.idex.enroll.cap.
 
 
-/echo "***************************************************************************************
+/echo "***************************************************************************************"
 /echo "* Install Enroll Applet and Reset Biometric Enrollment Data"
-/echo "***************************************************************************************
+/echo "***************************************************************************************"
 /echo
 /set-var path ${script.dir}
 
