@@ -29,7 +29,7 @@ class ErrorHandler {
         case Int(SwiftCallbackError.dataInIsNil.rawValue):
             return "(\(nsError.code)) Tag communication callback function received an input buffer that is nil."
             
-        case Int(SwiftCallbackError.commandAPDUInvalidParameterLength.rawValue):
+        case Int(SwiftCallbackError.invalidAPDUData.rawValue):
             return "(\(nsError.code)) Unable to create ISO 7816 APDU command."
             
         case Int(SwiftCallbackError.sendCommandError.rawValue):
@@ -116,6 +116,15 @@ class ErrorHandler {
         case APDUResponseCodes.pinIncorrectZeroTriesRemain.rawValue:
             return "(0x63C0) PIN incorrect, zero tries remaining, please use the appropriate script file to reset your card."
 
+        case APDUResponseCodes.wrongLength.rawValue:
+            return "(0x6700) Length parameter incorrect."
+            
+        case APDUResponseCodes.formatNotCompliant.rawValue:
+            return "(0x6701) Command APDU format not compliant with this standard."
+            
+        case APDUResponseCodes.lengthValueNotTheOneExpected.rawValue:
+            return "(0x6702) The length parameter value is not the one expected."
+
         case APDUResponseCodes.communicationFailure.rawValue:
             return "(6741) Non-specific communication failure."
             
@@ -137,8 +146,20 @@ class ErrorHandler {
         case APDUResponseCodes.notEnoughMemory.rawValue:
             return "(6A84) Not enough memory space in the file."
 
+        case APDUResponseCodes.wrongParameters.rawValue:
+            return "(0x6B00) Parameter bytes are invalid."
+            
+        case APDUResponseCodes.instructionByteNotSupported.rawValue:
+            return "(0x6D00) Instruction byte not supported or invalid."
+            
+        case APDUResponseCodes.classByteNotSupported.rawValue:
+            return "(0x6E00) Class byte not supported or invalid."
+
         case APDUResponseCodes.commandAborted.rawValue:
             return "(6F00) Command aborted – more exact diagnosis not possible (e.g., operating system error)."
+            
+        case APDUResponseCodes.noPreciseDiagnosis.rawValue:
+            return "(0x6F87) No precise diagnosis."
             
         case APDUResponseCodes.cardDead.rawValue:
             return "(6FFF) Card dead (overuse)."

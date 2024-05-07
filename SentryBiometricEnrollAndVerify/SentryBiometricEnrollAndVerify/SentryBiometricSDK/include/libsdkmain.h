@@ -9,11 +9,6 @@
 
 #include "stdint.h"
 
-#ifdef _WINDOWS
-#define DllExport   __declspec( dllexport )
-#define  _Export_ DllExport
-#endif
-
 #ifdef __ANDROID__
 #define  _Export_ extern
 #endif
@@ -26,14 +21,11 @@
 
 
 //------------------------------------------------------------------------------------
-// TODO: May not expose this
-_Export_ int LibSdkEnrollSelect(SmartCardApduCallBack callback);
 
 _Export_ int LibSdkEnrollInit(uint8_t* pin, int len, SmartCardApduCallBack callback);
 _Export_ int LibSdkEnrollDeinit(void);
 _Export_ int LibSdkGetEnrollStatus(uint8_t* max_num_fingers, uint8_t* enrolled_touches, uint8_t* remaining_touches, uint8_t* biometric_mode);
 _Export_ int LibSdkEnrollProcess(uint8_t* remaining_touches);
-//_Export_ int LibSdkEnrollReprocess(int num_finger, uint8_t* enrolled_touches, uint8_t* remaining_touches, uint8_t* biometric_mode);
 _Export_ int LibSdkEnrollVerify();
 _Export_ int LibSdkValidateFingerprint(void);
 

@@ -20,7 +20,7 @@ enum BiometricMode: UInt8 {
  Encapsulates the information returned from querying the card for its enrollment status.
  */
 struct BiometricEnrollmentStatus {
-    public let maximumFingerprints: UInt8   // usually 1, due to only 1 finger can be saved on card for now
+    public let maximumFingerprints: UInt8   // usually 1, due to only 1 finger can be saved on the card for now
     public let enrolledTouches: UInt8       // from 0 to 6
     public let remainingTouches: UInt8      // from 0 to 6
     public let mode: BiometricMode          // Enrollment or Verification mode

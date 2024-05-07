@@ -39,54 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5680C1E9-C713-45AA-A77D-2CD14779866D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SentryBiometricEnrollAndVerify/BiometricSDK/BiometricsSDK.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "initEnroll(pin:tag:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5680C1E9-C713-45AA-A77D-2CD14779866D - 9ef341926a1c2fba"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SentryBiometricEnrollAndVerify.BiometricSDK.initEnroll(pin: Swift.Array&lt;Swift.UInt8&gt;, tag: __C.NFCISO7816Tag) throws -&gt; ()"
-                  moduleName = "SentryBiometricEnrollAndVerify"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johnayres/Development/Sentry%20Enterprises/iOS-BiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/BiometricSDK/BiometricsSDK.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "2304">
-               </Location>
-               <Location
-                  uuid = "5680C1E9-C713-45AA-A77D-2CD14779866D - 9ef341926a1c2ee7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SentryBiometricEnrollAndVerify.BiometricSDK.initEnroll(pin: Swift.Array&lt;Swift.UInt8&gt;, tag: __C.NFCISO7816Tag) throws -&gt; ()"
-                  moduleName = "SentryBiometricEnrollAndVerify"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johnayres/Development/Sentry%20Enterprises/iOS-BiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/BiometricSDK/BiometricsSDK.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "152"
-                  endingLineNumber = "152"
-                  offsetFromSymbolStart = "2304">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "C597D210-F749-4DFD-9329-6F40BE486E23"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -98,22 +50,38 @@
             endingLineNumber = "210"
             landmarkName = "unwrap(apdu_in, in_len, apdu_out, out_len, key_enc, key_rmac)"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B54E2399-805A-4DE9-960C-297B34148D87"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SentryBiometricEnrollAndVerify/BiometricSDK/BiometricsSDK.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "initEnroll(pin:tag:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C597D210-F749-4DFD-9329-6F40BE486E23 - 82b41f008fc86b91"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "unwrap"
+                  moduleName = "SentryBiometricEnrollAndVerify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnayres/Development/Sentry%20Enterprises/iOS-BiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricSDK/LibSecureChannel/wrapper.c"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "728">
+               </Location>
+               <Location
+                  uuid = "C597D210-F749-4DFD-9329-6F40BE486E23 - 82b41f008fc86b91"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "unwrap"
+                  moduleName = "SentryBiometricEnrollAndVerify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnayres/Development/Sentry%20Enterprises/iOS-BiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricEnrollAndVerify/SentryBiometricSDK/LibSecureChannel/wrapper.c"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "834">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -291,38 +259,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "719546EE-5F30-4C7D-ADDF-0F7EF9683F38"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SentryBiometricEnrollAndVerify/SentryBiometricSDK/Enrollment/lib_sdk_enroll.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "lib_enroll_verify_pin(pin, len)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "18082726-1028-42FA-B150-6AF6D913A349"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SentryBiometricEnrollAndVerify/SentryBiometricSDK/Enrollment/lib_sdk_enroll.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "lib_enroll_verify_pin(pin, len)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A5C7005A-9295-4B76-B6BE-39F0A21CD28F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -381,6 +317,22 @@
                   offsetFromSymbolStart = "2136">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2EC6C81C-2A1E-4FC6-8A06-935D033F5D31"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SentryBiometricEnrollAndVerify/BiometricSDK/BiometricsSDK.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "BiometricSDK"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -12,10 +12,6 @@
 uint8_t     apdu_enroll_out[300];
 uint32_t    apdu_enroll_out_len = 0;
 
-static uint8_t Max_num_fingers, Enrolled_touches, Remaining_touches, Biometric_mode;
-
-
-/// verified
 ///
 /// internal methods (not exposed in the header)
 /// Gets the last 2 bytes from the indicated buffer and returns that as a 16 bit integer.
@@ -30,18 +26,12 @@ uint16_t lib_get_status_word(uint8_t* pout, int len)
 
 /// public methods (exposed in the header)
 //----------------------------------------------------------------------------------------------------------------------
-// TODO: may not expose this
 int lib_enroll_select(void)
 {
     int returnValue;
     uint8_t apdu_select[] = { 0x00, 0xA4, 0x04, 0x00, 0x09, 0x49, 0x44, 0x45, 0x58, 0x5F, 0x4C, 0x5F, 0x01, 0x01, 0x00 };
     apdu_enroll_out_len = 0;
-    //int Ret = apdu_secure_channel(apdu_sel, sizeof(apdu_sel), apdu_enroll_out, &apdu_enroll_out_len);
-    //if (Ret != 0) return Ret;
     returnValue = apdu_secure_channel(apdu_select, sizeof(apdu_select), apdu_enroll_out, &apdu_enroll_out_len);
-//Ret = apdu_secure_channel(apdu_select, sizeof(apdu_select), apdu_enroll_out, &apdu_enroll_out_len);
-  //  if (Ret != 0) return _SDK_ERROR_EXCHANGE_;
-   // Ret = lib_check_sw_err(apdu_enroll_out, apdu_enroll_out_len);
    
     // if the swift callback returned an error, return that error code
     if (returnValue != 0) return returnValue;
@@ -74,11 +64,11 @@ int lib_enroll_init(uint8_t* pin, int len)
         returnValue = lib_enroll_verify_pin(pin, len);
     }
     
-    Max_num_fingers = 0;
-    Enrolled_touches = 0;
-    Remaining_touches = 0;
-    Biometric_mode = 0xff;
-
+//    Max_num_fingers = 0;
+//    Enrolled_touches = 0;
+//    Remaining_touches = 0;
+//    Biometric_mode = 0xff;
+//
     return returnValue;
 }
 
@@ -234,16 +224,16 @@ int lib_enroll_status(uint8_t* max_num_fingers, uint8_t* enrolled_touches, uint8
 
  //   if (apdu_enroll_out_len < (32 + 12)) return _SDK_ERROR_STATE_;
     max_num_fingers[0] = apdu_enroll_out[31];
-    Max_num_fingers = max_num_fingers[0];
+ //   Max_num_fingers = max_num_fingers[0];
 
     enrolled_touches[0] = apdu_enroll_out[32];
-    Enrolled_touches = enrolled_touches[0];
+//    Enrolled_touches = enrolled_touches[0];
 
     remaining_touches[0] = apdu_enroll_out[33];
-    Remaining_touches = remaining_touches[0];
+//    Remaining_touches = remaining_touches[0];
 
     biometric_mode[0] = apdu_enroll_out[39];
-    Biometric_mode = biometric_mode[0];
+ //   Biometric_mode = biometric_mode[0];
     
     returnValue = lib_get_status_word(apdu_enroll_out, apdu_enroll_out_len);
     return returnValue;
@@ -325,24 +315,6 @@ int lib_enroll_validate(void)
     return returnValue;
 }
 
-//int lib_verify_enrollment(uint8_t* pin, int len)
-//{
-//    // verify enrollment
-//    int returnValue = lib_enroll_verify();
-//    if (returnValue == 0x6985)      // the applet returns 'conditions not satisfied' if there isn't a pin
-//    {
-//        // verify the pin one more time
-//        returnValue = lib_enroll_verify_pin(pin, len);
-//
-//        if (returnValue == 0x9000) {
-//            returnValue = lib_enroll_verify();
-//        }
-//    }
-//    
-//    return returnValue;
-//}
-
-
 
 
 
@@ -400,50 +372,3 @@ int lib_enroll_check_status_word(uint8_t* apdu_enroll, uint32_t  apdu_enroll_len
     }
     return resp;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-int lib_enroll_reprocess(int num_finger, uint8_t* enrolled_touches, uint8_t* remaining_touches, uint8_t* biometric_mode)
-{
-    int Ret=0;
-    if (num_finger > Max_num_fingers) return -101;
-    if (Biometric_mode == 0 && Enrolled_touches==0) return -102;
-    
-    do
-    {
-        uint8_t apdu_process[] = { 0x00, 0x59, 0x03, 0x00, 0x02, 0x02, 0x01 };
-        apdu_enroll_out_len = 0;
-        Ret = apdu_secure_channel(apdu_process, sizeof(apdu_process), apdu_enroll_out, &apdu_enroll_out_len);
-        if (Ret != 0) return Ret;
-//        Ret = lib_enroll_check_sw(apdu_enroll_out, apdu_enroll_out_len);
-        if (Ret == 0) break;
-        if (Ret == 1) continue;
-        return -Ret;
-    } while (1);
-    
-    {
-        uint8_t max_num_fingers[1];
-        Ret = lib_enroll_status(max_num_fingers, enrolled_touches, remaining_touches, biometric_mode);
- //       if (Ret != 0) return _SDK_ERROR_EXCHANGE_;
- //       Ret = lib_check_sw_err(apdu_enroll_out, apdu_enroll_out_len);
-        if (Ret != 0) return Ret;
-    }
-
-    return Ret;
-}
-
-//----------------------------------------------------------------------------------------------------------------------

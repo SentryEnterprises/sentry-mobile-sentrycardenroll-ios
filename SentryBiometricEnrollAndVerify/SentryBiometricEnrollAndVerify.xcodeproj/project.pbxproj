@@ -144,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				14902F612BE3D008007A26B9 /* ErrorHandler.swift */,
-				14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */,
 				14E7740E2BE579040046D1E5 /* AppSettings.swift */,
 			);
 			path = Helpers;
@@ -160,6 +159,7 @@
 		14902F5C2BE2C137007A26B9 /* BiometricSDK */ = {
 			isa = PBXGroup;
 			children = (
+				14E774062BE44A220046D1E5 /* APDUResponseCodes.swift */,
 				14902F542BE037CC007A26B9 /* BiometricsSDK.swift */,
 				14902F5D2BE2C154007A26B9 /* BiometricEnrollmentStatus.swift */,
 			);
