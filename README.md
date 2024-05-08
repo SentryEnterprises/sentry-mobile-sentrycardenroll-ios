@@ -41,14 +41,6 @@ Users can set the PIN used by this application through the iPhone Settings appli
  
 The PIN MUST be 4-6 characters in length. Less than four (4) characters causes the app to throw an error. Any characters after the 6th are ignored.
 
-
-## Preparation
-TBD
-
-## Basic Usage
-TBD
-
-
 ## License
 MIT
 
