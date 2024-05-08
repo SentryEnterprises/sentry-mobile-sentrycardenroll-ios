@@ -36,19 +36,19 @@ extension SentrySDKError: LocalizedError {
         case .apduCommandError(let statusWord):
             switch statusWord {
             case APDUResponseCode.noMatchFound.rawValue:
-                return "(6300) No match found during qualification touch."
+                return "(6300) No match found.."
                 
             case APDUResponseCode.pinIncorrectThreeTriesRemain.rawValue:
-                return "(0x63C3) PIN incorrect, three tries remaining."
+                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card.\n\n(0x63C3) PIN incorrect, three tries remaining."
                 
             case APDUResponseCode.pinIncorrectTwoTriesRemain.rawValue:
-                return "(0x63C2) PIN incorrect, two tries remaining."
+                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card.\n\n(0x63C2) PIN incorrect, two tries remaining."
                 
             case APDUResponseCode.pinIncorrectOneTriesRemain.rawValue:
-                return "(0x63C1) PIN incorrect, one try remaining."
+                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card.\n\n(0x63C1) PIN incorrect, one try remaining."
                 
             case APDUResponseCode.pinIncorrectZeroTriesRemain.rawValue:
-                return "(0x63C0) PIN incorrect, zero tries remaining, please use the appropriate script file to reset your card."
+                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card. Afterward, use the appropriate script file to reset your card.\n\n(0x63C0) PIN incorrect, zero tries remaining."
 
             case APDUResponseCode.wrongLength.rawValue:
                 return "(0x6700) Length parameter incorrect."
