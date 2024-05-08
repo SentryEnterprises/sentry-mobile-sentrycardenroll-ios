@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wj6-Mn-fPI">
-                                <rect key="frame" x="41.666666666666657" y="153.66666666666663" width="310" height="245"/>
+                                <rect key="frame" x="41.666666666666657" y="53.666666666666657" width="310" height="244.99999999999997"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="245" id="hJF-9j-ZaD"/>
@@ -37,7 +37,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place your card on a flat, non-metalic surface then place the phone on top leaving sensor accessible for finger print scanning." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-tW-ffw">
-                                <rect key="frame" x="24" y="430.66666666666669" width="345" height="86.000000000000057"/>
+                                <rect key="frame" x="24" y="330.66666666666669" width="345" height="86"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VhO-GA-gLx" secondAttribute="bottom" constant="64" id="F9j-Qb-Evx"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VhO-GA-gLx" secondAttribute="trailing" constant="16" id="IvV-ro-HrB"/>
                             <constraint firstItem="VhO-GA-gLx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Mhv-4B-H9Z"/>
-                            <constraint firstItem="wj6-Mn-fPI" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-150" id="Vtb-8w-hlF"/>
+                            <constraint firstItem="wj6-Mn-fPI" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-250" id="Vtb-8w-hlF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sgy-tW-ffw" secondAttribute="trailing" constant="24" id="a2p-ki-U9t"/>
                             <constraint firstItem="wj6-Mn-fPI" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="bnb-Ql-wwd"/>
                             <constraint firstItem="sgy-tW-ffw" firstAttribute="top" secondItem="wj6-Mn-fPI" secondAttribute="bottom" constant="32" id="i9X-xw-Ay3"/>

@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ZQ-V8-wZ7">
-                                <rect key="frame" x="41.666666666666657" y="153.66666666666663" width="310" height="245"/>
+                                <rect key="frame" x="41.666666666666657" y="53.666666666666657" width="310" height="244.99999999999997"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="310" id="0Te-h7-bW6"/>
@@ -37,7 +37,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place your card on a flat, non-metalic surface then place the phone on top leaving sensor accessible for finger print scanning." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbc-cS-xUA">
-                                <rect key="frame" x="24" y="430.66666666666669" width="345" height="86.000000000000057"/>
+                                <rect key="frame" x="24" y="330.66666666666669" width="345" height="86"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7ZQ-V8-wZ7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7er-g1-Yh8"/>
-                            <constraint firstItem="7ZQ-V8-wZ7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-150" id="YP2-Ht-jRP"/>
+                            <constraint firstItem="7ZQ-V8-wZ7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-250" id="YP2-Ht-jRP"/>
                             <constraint firstItem="Kr1-gt-pY1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="f8Y-Mt-BZn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kr1-gt-pY1" secondAttribute="trailing" constant="16" id="nX6-ok-yif"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gbc-cS-xUA" secondAttribute="trailing" constant="24" id="ozc-3G-UCF"/>
