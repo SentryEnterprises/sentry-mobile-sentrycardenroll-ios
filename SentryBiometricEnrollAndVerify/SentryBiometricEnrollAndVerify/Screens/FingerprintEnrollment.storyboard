@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place the card on a flat non-metalic surface" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBl-K1-Jaw">
-                                <rect key="frame" x="32" y="266" width="329" height="52.666666666666686"/>
+                                <rect key="frame" x="32" y="391" width="329" height="52.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,10 +35,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_card" translatesAutoresizingMaskIntoConstraints="NO" id="geZ-6C-qWF">
-                                <rect key="frame" x="41.666666666666657" y="36" width="310" height="230"/>
+                                <rect key="frame" x="41.666666666666657" y="161" width="310" height="230"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ual-0A-wOm">
-                                <rect key="frame" x="41.666666666666657" y="36" width="310" height="230"/>
+                                <rect key="frame" x="41.666666666666657" y="161" width="310" height="230"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="gNt-Z8-OC2"/>
@@ -46,7 +46,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lay the phone over the top of the card so that just the fingerprint sensor is visible." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhL-Kb-2no">
-                                <rect key="frame" x="32" y="326.66666666666669" width="329" height="40.666666666666686"/>
+                                <rect key="frame" x="32" y="451.66666666666669" width="329" height="40.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                             <constraint firstItem="PhL-Kb-2no" firstAttribute="top" secondItem="XBl-K1-Jaw" secondAttribute="bottom" constant="8" id="c7u-p1-DZf"/>
                             <constraint firstItem="geZ-6C-qWF" firstAttribute="bottom" secondItem="ual-0A-wOm" secondAttribute="bottom" id="eLd-Fo-D75"/>
                             <constraint firstItem="XBl-K1-Jaw" firstAttribute="top" secondItem="ual-0A-wOm" secondAttribute="bottom" id="eP7-RL-FUf"/>
-                            <constraint firstItem="ual-0A-wOm" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-275" id="fyY-kN-XF1"/>
+                            <constraint firstItem="ual-0A-wOm" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-150" id="fyY-kN-XF1"/>
                             <constraint firstItem="geZ-6C-qWF" firstAttribute="leading" secondItem="ual-0A-wOm" secondAttribute="leading" id="n6i-Bc-AkZ"/>
                             <constraint firstItem="ual-0A-wOm" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="nKF-K6-j9G"/>
                             <constraint firstItem="geZ-6C-qWF" firstAttribute="trailing" secondItem="ual-0A-wOm" secondAttribute="trailing" id="p2V-CO-JDs"/>
