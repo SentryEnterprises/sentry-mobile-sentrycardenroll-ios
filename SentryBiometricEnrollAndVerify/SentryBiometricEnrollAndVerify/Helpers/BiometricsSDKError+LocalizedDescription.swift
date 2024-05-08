@@ -31,12 +31,12 @@ extension SentrySDKError: LocalizedError {
             return "NFC connection to card exists, but no tag."
             
         case .incorrectTagFormat:
-            return "NFC connection to card exists, but unable to detect ISO7816 format tag."
+            return "The card was scanned correctly, but it does not appear to be the correct format."
             
         case .apduCommandError(let statusWord):
             switch statusWord {
             case APDUResponseCode.noMatchFound.rawValue:
-                return "(6300) No match found.."
+                return "(6300) No match found."
                 
             case APDUResponseCode.pinIncorrectThreeTriesRemain.rawValue:
                 return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card.\n\n(0x63C3) PIN incorrect, three tries remaining."
@@ -60,19 +60,19 @@ extension SentrySDKError: LocalizedError {
                 return "(0x6702) The length parameter value is not the one expected."
 
             case APDUResponseCode.communicationFailure.rawValue:
-                return "(6741) Non-specific communication failure."
+                return "There was an error communicating with the card. Move the card away from the phone and try again.\n\n(6741) Non-specific communication failure."
                 
             case APDUResponseCode.fingerRemoved.rawValue:
-                return "(6745) Finger removed before scan completed."
+                return "The finger was removed from the sensor before the scan completed. Please try again.\n\n(6745) Finger removed before scan completed."
                 
             case APDUResponseCode.poorImageQuality.rawValue:
-                return "(6747) Poor image quality."
+                return "The image scanned by the sensor was poor quality, please try again.\n\n(6747) Poor image quality."
                 
             case APDUResponseCode.userTimeoutExpired.rawValue:
-                return "(6748) User timeout expired."
+                return "No finger was detected on the sensor. Please try again.\n\n(6748) User timeout expired."
                 
             case APDUResponseCode.hostInterfaceTimeoutExpired.rawValue:
-                return "(6749) Host interface timeout expired."
+                return "No finger was detected on the sensor. Please try again.\n\n(6749) Host interface timeout expired."
                 
             case APDUResponseCode.conditionOfUseNotSatisfied.rawValue:
                 return "(6985) Conditions of use not satisfied."
@@ -90,10 +90,10 @@ extension SentrySDKError: LocalizedError {
                 return "(0x6E00) Class byte not supported or invalid."
 
             case APDUResponseCode.commandAborted.rawValue:
-                return "(6F00) Command aborted – more exact diagnosis not possible (e.g., operating system error)."
+                return "(6F00) Command aborted – more exact diagnosis not possible (e.g. operating system error)."
                 
             case APDUResponseCode.noPreciseDiagnosis.rawValue:
-                return "(0x6F87) No precise diagnosis."
+                return "An error occurred while communicating with the card. Move the card away from the phone and try again.\n\n(0x6F87) No precise diagnosis."
                 
             case APDUResponseCode.cardDead.rawValue:
                 return "(6FFF) Card dead (overuse)."

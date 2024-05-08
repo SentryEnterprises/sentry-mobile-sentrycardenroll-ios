@@ -34,7 +34,7 @@ extension NFCReaderError: LocalizedError {
             return "(\(code)) Reader Error: Radio Disabled."
             
         case .readerTransceiveErrorTagConnectionLost:
-            return "(\(code)) Reader Transceive Error: Tag Connection Lost."
+            return "Connection to the card was lost. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Tag Connection Lost."
             
         case .readerTransceiveErrorRetryExceeded:
             return "(\(code)) Reader Transceive Error: Retry Exceeded."
