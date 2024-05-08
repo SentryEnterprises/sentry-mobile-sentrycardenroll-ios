@@ -8,11 +8,14 @@
 import UIKit
 import Lottie
 import CoreNFC
+import SentrySDK
 
 /**
  The mobile application entry point. Allows the user to scan the card to determine its state.
  */
 class GetCardStatusViewController: UIViewController {
+    private let sentrySDK = SentrySDK(pin: AppSettings.getPIN())
+    
     @IBOutlet weak var scanCardButton: UIButton!
     
     // sets up the Lottie animation (does not affect actual functionality)
@@ -55,38 +58,40 @@ class GetCardStatusViewController: UIViewController {
                 var title = ""
                 var instructions = ""
                 
-                // retrieve the enrollment status from the card. starts the NFC scanning.
-                let status = try await JavaCardManager.shared.getEnrollmentStatus()
-
-                // modifies various UI elements based on the card's status
-                if status.mode == .enrollment {
-                    title = "Not Enrolled"
-                    instructions = "This card is not enrolled. No fingerprints are recorded on this card. Click OK to continue."
-                } else {
-                    title = "Enrolled"
-                    instructions = "This card is enrolled. A fingerprint is recorded on this card. Click OK to continue."
-                }
-                
-                let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                // retrieve the enrollment status from the card. starts NFC scanning.
+                if let status = try await self?.sentrySDK.getEnrollmentStatus() {                  
+                    // modifies various UI elements based on the card's status
                     if status.mode == .enrollment {
-                        // if the card is in enrollment mode, navigate to the enrollment screen
-                        if let vc = UIStoryboard(name: "FingerprintEnrollment", bundle: .main).instantiateViewController(withIdentifier: "FingerprintEnrollment") as? FingerprintEnrollmentViewController {
-                            vc.loadViewIfNeeded()
-                            self?.navigationController?.pushViewController(vc, animated: true)
-                        }
+                        title = "Not Enrolled"
+                        instructions = "This card is not enrolled. No fingerprints are recorded on this card. Click OK to continue."
                     } else {
-                        // if the card is already enrolled, navigate to the verification screen
-                        if let vc = UIStoryboard(name: "FingerprintVerification", bundle: .main).instantiateViewController(withIdentifier: "FingerprintVerification") as? FingerprintVerificationViewController {
-                            vc.loadViewIfNeeded()
-                            self?.navigationController?.pushViewController(vc, animated: true)
-                        }
+                        title = "Enrolled"
+                        instructions = "This card is enrolled. A fingerprint is recorded on this card. Click OK to continue."
                     }
-                })
-                
-                alert.addAction(action)
-                self?.present(alert, animated: true, completion: nil)
+                    
+                    let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                        if status.mode == .enrollment {
+                            // if the card is in enrollment mode, navigate to the enrollment screen
+                            if let vc = UIStoryboard(name: "FingerprintEnrollment", bundle: .main).instantiateViewController(withIdentifier: "FingerprintEnrollment") as? FingerprintEnrollmentViewController {
+                                vc.loadViewIfNeeded()
+                                self?.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        } else {
+                            // if the card is already enrolled, navigate to the verification screen
+                            if let vc = UIStoryboard(name: "FingerprintVerification", bundle: .main).instantiateViewController(withIdentifier: "FingerprintVerification") as? FingerprintVerificationViewController {
+                                vc.loadViewIfNeeded()
+                                self?.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        }
+                    })
+                    
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
+                }
             } catch (let error) {
+                print("!!! Error getting enrollment status: \(error.localizedDescription)")
+                
                 let errorCode = (error as NSError).code
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
                     let errorMessage = error.localizedDescription

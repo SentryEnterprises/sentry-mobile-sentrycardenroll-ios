@@ -8,11 +8,14 @@
 import UIKit
 import Lottie
 import CoreNFC
+import SentrySDK
 
 /**
  Fingerprint verification screen. Scans the card, and performs a biometric validation of the finger on the fingerprint sensor against the fingerprints recorded on the card.
  */
 class FingerprintVerificationViewController: UIViewController {
+    private let sentrySDK = SentrySDK(pin: AppSettings.getPIN())
+
     @IBOutlet weak var scanCardButton: UIButton!
     
     // sets up the Lottie animation (does not affect actual functionality)
@@ -56,21 +59,23 @@ class FingerprintVerificationViewController: UIViewController {
                 var instructions = ""
                 
                 // perform a biometric validation on the card. starts NFC scanning.
-                let isValid = try await JavaCardManager.shared.validateBiometrics()
-                
-                // update UI elements based on the validation result
-                if isValid {
-                    title = "Fingerprint Matched"
-                    instructions = "The scanned fingerprint matches the fingerprint recorded during enrollment."
-                } else {
-                    title = "Fingerprint Does Not Match"
-                    instructions = "The scanned fingerprint does not match the fingerprint recorded during enrollment."
+                if let isValid = try await self?.sentrySDK.validateFingerprint() {
+                    // update UI elements based on the validation result
+                    if isValid {
+                        title = "Fingerprint Matched"
+                        instructions = "The scanned fingerprint matches the fingerprint recorded during enrollment."
+                    } else {
+                        title = "Fingerprint Does Not Match"
+                        instructions = "The scanned fingerprint does not match the fingerprint recorded during enrollment."
+                    }
+                    
+                    let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                 }
-                
-                let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(alert, animated: true, completion: nil)
             } catch (let error) {
+                print("!!! Error validating fingerprint: \(error.localizedDescription)")
+                
                 // if the user cancelled or the session timed out, don't display this as an error
                 let errorCode = (error as NSError).code
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {

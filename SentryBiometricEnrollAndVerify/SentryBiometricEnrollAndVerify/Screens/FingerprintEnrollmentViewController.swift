@@ -8,11 +8,14 @@
 import UIKit
 import Lottie
 import CoreNFC
+import SentrySDK
 
 /**
  Fingerprint enrollment screen. Scans the card, and allows the user to record several fingerprint scans.
  */
 class FingerprintEnrollmentViewController: UIViewController {
+    private let sentrySDK = SentrySDK(pin: AppSettings.getPIN())
+    
     private let step1Title = "Place the card on a flat\nnon-metallic surface"
     private let step2Title = "Enroll Finger"
     
@@ -75,8 +78,8 @@ class FingerprintEnrollmentViewController: UIViewController {
             }
 
             do {
-                // perform the fingerprint enrollment process
-                try await JavaCardManager.shared.enrollBiometric(connected: { connected in
+                // perform the fingerprint enrollment process. starts NFC scanning.
+                try await self?.sentrySDK.enrollFingerprint(connected: {connected in
                     handleConnected(connected)
                 }, stepFinished: { [weak self] currentStep, maximumSteps in
                     DispatchQueue.main.async {
@@ -84,6 +87,8 @@ class FingerprintEnrollmentViewController: UIViewController {
                     }
                 })
             } catch (let error) {
+                print("!!! Error during enrollment process: \(error.localizedDescription)")
+                
                 handleConnected(false)
                 
                 // if the user cancelled or the session timed out, don't display this as an error
