@@ -46,6 +46,8 @@
 		14902F712BE3E853007A26B9 /* fingerprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fingerprint.json; sourceTree = "<group>"; };
 		14B73D5F2BEAC35700AE9CA7 /* SentrySDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SentrySDK; path = ../../SentrySDK/SentrySDK; sourceTree = "<group>"; };
 		14B73D602BEAC3C800AE9CA7 /* BiometricsSDKError+LocalizedDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BiometricsSDKError+LocalizedDescription.swift"; sourceTree = "<group>"; };
+		14B73D652BEBDC3500AE9CA7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		14B73D662BEBDC3500AE9CA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		14E7740C2BE54C6E0046D1E5 /* installEnroll.jcsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = installEnroll.jcsh; sourceTree = "<group>"; };
 		14E7740E2BE579040046D1E5 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		14E774102BE579C70046D1E5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -67,6 +69,8 @@
 		14902F202BDFF2CD007A26B9 = {
 			isa = PBXGroup;
 			children = (
+				14B73D652BEBDC3500AE9CA7 /* LICENSE */,
+				14B73D662BEBDC3500AE9CA7 /* README.md */,
 				14B73D5F2BEAC35700AE9CA7 /* SentrySDK */,
 				14E774092BE549760046D1E5 /* Scripts */,
 				14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */,
@@ -405,12 +409,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Sentry Enroll";
-				INFOPLIST_KEY_NFCReaderUsageDescription = "Please provide access to scan your card.";
+				INFOPLIST_KEY_NFCReaderUsageDescription = "Use NFC to read and write data.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = GetCardStatus;
@@ -441,12 +445,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Sentry Enroll";
-				INFOPLIST_KEY_NFCReaderUsageDescription = "Please provide access to scan your card.";
+				INFOPLIST_KEY_NFCReaderUsageDescription = "Use NFC to read and write data.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = GetCardStatus;
