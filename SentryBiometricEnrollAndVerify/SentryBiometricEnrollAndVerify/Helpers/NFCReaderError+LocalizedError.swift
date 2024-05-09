@@ -16,52 +16,56 @@ extension NFCReaderError: LocalizedError {
     public var errorDescription: String? {
         switch code {
         case .readerErrorUnsupportedFeature:
-            return "(\(code)) Reader Error: Unsupported Feature."
+            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Unsupported Feature."
             
         case .readerErrorSecurityViolation:
-            return "(\(code)) Reader Error: Security Violation."
+            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Security Violation."
             
         case .readerErrorInvalidParameter:
-            return "(\(code)) Reader Error: Invalid Parameter."
+            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Invalid Parameter."
             
         case .readerErrorInvalidParameterLength:
-            return "(\(code)) Reader Error: Invalid Parameter Length."
+            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Invalid Parameter Length."
             
         case .readerErrorParameterOutOfBound:
-            return "(\(code)) Reader Error: Parameter Out of Bounds."
+            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Parameter Out of Bounds."
             
         case .readerErrorRadioDisabled:
-            return "(\(code)) Reader Error: Radio Disabled."
+            return "The NFC communication hardware appears to be disabled.\n\n(\(code)) Reader Error: Radio Disabled."
             
         case .readerTransceiveErrorTagConnectionLost:
             return "Connection to the card was lost. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Tag Connection Lost."
             
         case .readerTransceiveErrorRetryExceeded:
-            return "(\(code)) Reader Transceive Error: Retry Exceeded."
+            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Retry Exceeded."
             
         case .readerTransceiveErrorTagResponseError:
-            return "(\(code)) Reader Transceive Error: Tag Response Error."
+            return "Connection made with the card, but the card did not respond. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Tag Response Error."
             
         case .readerTransceiveErrorSessionInvalidated:
-            return "(\(code)) Reader Transceive Error: Session Invalidated."
+            return "This card does not appear to have the correct applet installed. Please try a different card.\n\n(\(code)) Reader Transceive Error: Session Invalidated."
             
         case .readerTransceiveErrorTagNotConnected:
-            return "(\(code)) Reader Transceive Error: Tag Not Connected."
+            return "Connection made with the card, but the card did not respond. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Tag Not Connected."
             
         case .readerTransceiveErrorPacketTooLong:
-            return "(\(code)) Reader Transceive Error: Packet Too Long."
+            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Packet Too Long."
             
         case .readerSessionInvalidationErrorUserCanceled:
-            return "(\(code)) Reader Session Error: User Cancelled."
+            return "The user cancelled the connection.\n\n(\(code)) Reader Session Error: User Cancelled."
             
         case .readerSessionInvalidationErrorSessionTimeout:
-            return "(\(code)) Reader Session Error: Session Timeout."
+            return "No compatible device was detected within the time limit.\n\n(\(code)) Reader Session Error: Session Timeout."
             
         case .readerSessionInvalidationErrorSessionTerminatedUnexpectedly:
-            return "(\(code)) Reader Session Error: Session Terminated Unexpectedly."
+            return "The communication session was terminated unexpectedly. Move the card away from the phone and try again.\n\n(\(code)) Reader Session Error: Session Terminated Unexpectedly."
             
         case .readerSessionInvalidationErrorSystemIsBusy:
-            return "(\(code)) Reader Session Error: System is Busy."
+            return "The NFC reader needs more time to reset. Move the card away from the phone and try again.\n\n(\(code)) Reader Session Error: System is Busy."
+            
+            
+        // Note: The following errors are associated with NDEF tag reading and writing, which is not supported
+        // by this SDK but are included for completeness.
             
         case .readerSessionInvalidationErrorFirstNDEFTagRead:
             return "(\(code)) Reader Session Error: First NDEF tag read."

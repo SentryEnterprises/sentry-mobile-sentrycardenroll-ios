@@ -87,14 +87,24 @@ class FingerprintEnrollmentViewController: UIViewController {
                     }
                 })
             } catch (let error) {
-                print("!!! Error during enrollment process: \(error.localizedDescription)")
+                print("!!! Error during enrollment process: \(error)")
                 
                 handleConnected(false)
                 
-                // if the user cancelled or the session timed out, don't display this as an error
+                var errorMessage = error.localizedDescription
+                
+                if let readerError = error as? NFCReaderError {
+                    errorMessage = readerError.errorDescription ?? error.localizedDescription
+                }
+                
+                if let sdkError = error as? SentrySDKError {
+                    errorMessage = sdkError.errorDescription ?? error.localizedDescription
+                }
+                
                 let errorCode = (error as NSError).code
+
+                // if the user cancelled or the session timed out, don't display this as an error
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let errorMessage = error.localizedDescription
                     let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
