@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1422168C2BED7699000AB5CD /* ResetBiometricData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */; };
+		1422168E2BED76A7000AB5CD /* ResetBiometricDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */; };
 		14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */; };
 		14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */; };
 		14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResetBiometricData.storyboard; sourceTree = "<group>"; };
+		1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetBiometricDataViewController.swift; sourceTree = "<group>"; };
 		14902F292BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentryBiometricEnrollAndVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 				14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */,
 				14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */,
 				14902F692BE3DED2007A26B9 /* FingerprintVerificationViewController.swift */,
+				1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */,
+				1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -235,6 +241,7 @@
 				14902F662BE3DEA2007A26B9 /* FingerprintVerification.storyboard in Resources */,
 				14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */,
 				14902F732BE3E853007A26B9 /* fingerprint.json in Resources */,
+				1422168C2BED7699000AB5CD /* ResetBiometricData.storyboard in Resources */,
 				14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */,
 				14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */,
 				14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */,
@@ -250,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1422168E2BED76A7000AB5CD /* ResetBiometricDataViewController.swift in Sources */,
 				14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */,
 				14E7740F2BE579040046D1E5 /* AppSettings.swift in Sources */,
 				14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */,
@@ -409,7 +417,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
@@ -445,7 +453,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
