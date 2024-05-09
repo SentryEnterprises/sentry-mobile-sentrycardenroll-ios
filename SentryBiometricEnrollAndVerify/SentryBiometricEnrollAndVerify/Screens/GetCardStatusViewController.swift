@@ -90,11 +90,21 @@ class GetCardStatusViewController: UIViewController {
                     self?.present(alert, animated: true, completion: nil)
                 }
             } catch (let error) {
-                print("!!! Error getting enrollment status: \(error.localizedDescription)")
+                print("!!! Error getting enrollment status: \(error)")
                 
                 let errorCode = (error as NSError).code
+                var localError = error
+                
+                if (error as NSError).domain.lowercased() == "nfcerror" {
+                    if let errorCode = NFCReaderError.Code(rawValue: errorCode) {
+                        let x = NFCReaderError(_nsError: error as NSError)
+                        print(x)
+                        localError = NFCReaderError(errorCode)
+                    }
+                }
+                
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let errorMessage = error.localizedDescription
+                    let errorMessage = localError.localizedDescription
                     let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
