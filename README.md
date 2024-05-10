@@ -22,12 +22,11 @@ Compatible ✅
 *Xcode Cloud requires Apple Developer Program membership.*
 
 ## Requirements
-This is meant for use with the SentryCard from Sentry Enterprises, with the Enroll applet from IDEX installed on the card. This repository includes the installEnroll.jcsh script file (in the Scripts directory) that will reset the SentryCard and install the Enroll applet. This script is meant for use with the JCShell available from IDEX. Expects the 'com.idex.enroll.cap' applet to be located at the path <current directory>/cap/com.idex.enroll.cap.
+This is meant for use with the SentryCard from Sentry Enterprises, with the Enroll applet from IDEX installed on the card. This applet is pre-installed on Sentry cards.
+
 
 
 ## Guide
-
-
 
 ###  IMPORTANT - ABOUT THE ENROLL CODE
 The installEnroll.jcsh script does not set an enroll code on the card. If no enroll code is set, the application sets the enroll code to "1234" by default. This mobile app is compatible with any card that has the IDEX Enroll applet, which may have been installed with a different script that sets the enroll code. If the install script used to initialize the card includes setting the enroll code, this value MUST match the default enroll code value. If the install script does not set the enroll code, this application will set the enroll code to the default value. If the application starts getting `0x63CX` errors when scanning the card, this indicates that the enroll codes do not match.
@@ -40,6 +39,14 @@ Users can set the enroll code used by this application through the iPhone Settin
     4. Enter the desired enroll code in the `Sentry Enroll Settings` box.
  
 The enroll code MUST be 4-6 characters in length. Less than four (4) characters causes the app to throw an error. Any characters after the 6th are ignored.
+
+### JCShell Scripts
+This repository includes an optional script for installing the IDEX Enroll applet onto a Sentry card.  For most developers, this is not necessary because the applet comes pre-installed.  
+
+This script is meant for use with the JCShell available from NXP. 
+
+The installEnroll.jcsh script file (in the Scripts directory) will reset the SentryCard and install the Enroll applet. The script expects the 'com.idex.enroll.cap' applet to be located at the path <current directory>/cap/com.idex.enroll.cap.  
+
 
 ## License
 MIT
