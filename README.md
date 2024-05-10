@@ -29,7 +29,7 @@ This is meant for use with the SentryCard from Sentry Enterprises, with the Enro
 
 
 
-###  IMPORTANT - ABOUT THE Enroll Code
+###  IMPORTANT - ABOUT THE ENROLL CODE
 The installEnroll.jcsh script does not set an enroll code on the card. If no enroll code is set, the application sets the enroll code to "1234" by default. This mobile app is compatible with any card that has the IDEX Enroll applet, which may have been installed with a different script that sets the enroll code. If the install script used to initialize the card includes setting the enroll code, this value MUST match the default enroll code value. If the install script does not set the enroll code, this application will set the enroll code to the default value. If the application starts getting `0x63CX` errors when scanning the card, this indicates that the enroll codes do not match.
  
 Users can set the enroll code used by this application through the iPhone Settings application:
