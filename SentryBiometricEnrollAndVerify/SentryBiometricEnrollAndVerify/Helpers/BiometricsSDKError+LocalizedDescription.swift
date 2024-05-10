@@ -15,11 +15,11 @@ extension SentrySDKError: LocalizedError {
     /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch self {
-        case .pinDigitOutOfBounds:
-            return "Individual PIN digits must be in the range 0 - 9."
+        case .enrollCodeDigitOutOfBounds:
+            return "Individual enroll code digits must be in the range 0 - 9."
             
-        case .pinLengthOutOfBounds:
-            return "The PIN must be between 4 - 6 characters in length."
+        case .enrollCodeLengthOutOfBounds:
+            return "The enroll code must be between 4 - 6 characters in length."
             
         case .enrollmentStatusBufferTooSmall:
             return "The buffer returned from querying the card for its biometric enrollment status was unexpectedly too small."
@@ -38,17 +38,17 @@ extension SentrySDKError: LocalizedError {
             case APDUResponseCode.noMatchFound.rawValue:
                 return "(6300) No match found."
                 
-            case APDUResponseCode.pinIncorrectThreeTriesRemain.rawValue:
-                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card.\n\n(0x63C3) PIN incorrect, three tries remaining."
+            case APDUResponseCode.enrollCodeIncorrectThreeTriesRemain.rawValue:
+                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card.\n\n(0x63C3) Enroll code incorrect, three tries remaining."
                 
-            case APDUResponseCode.pinIncorrectTwoTriesRemain.rawValue:
-                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card.\n\n(0x63C2) PIN incorrect, two tries remaining."
+            case APDUResponseCode.enrollCodeIncorrectTwoTriesRemain.rawValue:
+                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card.\n\n(0x63C2) Enroll code incorrect, two tries remaining."
                 
-            case APDUResponseCode.pinIncorrectOneTriesRemain.rawValue:
-                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card.\n\n(0x63C1) PIN incorrect, one try remaining."
+            case APDUResponseCode.enrollCodeIncorrectOneTriesRemain.rawValue:
+                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card.\n\n(0x63C1) Enroll code incorrect, one try remaining."
                 
-            case APDUResponseCode.pinIncorrectZeroTriesRemain.rawValue:
-                return "The PIN on the scanned card does not match the PIN set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the PIN to match the PIN on the card. Afterward, use the appropriate script file to reset your card.\n\n(0x63C0) PIN incorrect, zero tries remaining."
+            case APDUResponseCode.enrollCodeIncorrectZeroTriesRemain.rawValue:
+                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card. Afterward, use the appropriate script file to reset your card.\n\n(0x63C0) Enroll code incorrect, zero tries remaining."
 
             case APDUResponseCode.wrongLength.rawValue:
                 return "(0x6700) Length parameter incorrect."

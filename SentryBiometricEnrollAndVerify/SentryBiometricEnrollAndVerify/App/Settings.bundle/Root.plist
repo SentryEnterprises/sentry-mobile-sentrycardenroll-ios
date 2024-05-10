@@ -10,9 +10,9 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>PIN</string>
+			<string>Enroll Code</string>
 			<key>Key</key>
-			<string>pin_number</string>
+			<string>code_number</string>
 			<key>DefaultValue</key>
 			<string>1234</string>
 			<key>KeyboardType</key>

@@ -14,7 +14,7 @@ import SentrySDK
  The mobile application entry point. Allows the user to scan the card to determine its state.
  */
 class GetCardStatusViewController: UIViewController {
-    private let sentrySDK = SentrySDK(pin: AppSettings.getPIN())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
     
     @IBOutlet weak var scanCardButton: UIButton!
     

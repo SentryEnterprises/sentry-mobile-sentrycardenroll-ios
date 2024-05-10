@@ -10,7 +10,7 @@ import CoreNFC
 import SentrySDK
 
 class ResetBiometricDataViewController: UIViewController {
-    private let sentrySDK = SentrySDK(pin: AppSettings.getPIN())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
     
     @IBOutlet weak var resetButton: UIButton!
     
