@@ -1,4 +1,5 @@
 {
+  "originHash" : "ae2588e3707eedeedc5584f6ef9b39fbbaf498f427a0d30b41419d42b4e10694",
   "pins" : [
     {
       "identity" : "lottie-spm",
@@ -8,7 +9,16 @@
         "revision" : "1d29eccc24cc8b75bff9f6804155112c0ffc9605",
         "version" : "4.4.3"
       }
+    },
+    {
+      "identity" : "sentry-sdk-biometrics-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SentryEnterprises/sentry-sdk-biometrics-ios.git",
+      "state" : {
+        "branch" : "development",
+        "revision" : "1a27c1c78acd1292986c62cc1924e0c3aaefcc83"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
