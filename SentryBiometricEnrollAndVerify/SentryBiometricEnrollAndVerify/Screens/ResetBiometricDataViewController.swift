@@ -9,6 +9,9 @@ import UIKit
 import CoreNFC
 import SentrySDK
 
+/**
+ Reset biometric data screen. Provides functionality to reset biometric enrollment data. This will not be used in a production environment.
+ */
 class ResetBiometricDataViewController: UIViewController {
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
     
@@ -35,7 +38,7 @@ class ResetBiometricDataViewController: UIViewController {
                 // perform a biometric data reset on the card. starts NFC scanning.
                 try await self?.sentrySDK.resetCard()
                 
-                let alert = UIAlertController(title: "Data Reset", message: "Biometric data reset. This card is no longer enrolled. Click OK to navigate back to the first screen.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Data Reset", message: "Biometric data reset. This card is no longer enrolled.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
             } catch (let error) {

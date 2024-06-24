@@ -45,12 +45,12 @@ class GetCardStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Get Card Status"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(resetTapped))
     }
     
     // handler for the 'Reset' navigation bar button; navigates to the biometric data reset screen
     @objc private func resetTapped(_ sender: Any) {
-        if let vc = UIStoryboard(name: "ResetBiometricData", bundle: .main).instantiateViewController(withIdentifier: "ResetBiometricData") as? ResetBiometricDataViewController {
+        if let vc = UIStoryboard(name: "Options", bundle: .main).instantiateViewController(withIdentifier: "Options") as? OptionsViewController {
             vc.loadViewIfNeeded()
             navigationController?.pushViewController(vc, animated: true)
         }

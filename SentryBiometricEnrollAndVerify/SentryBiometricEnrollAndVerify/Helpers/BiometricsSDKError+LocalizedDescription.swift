@@ -33,6 +33,18 @@ extension SentrySDKError: LocalizedError {
         case .incorrectTagFormat:
             return "The card was scanned correctly, but it does not appear to be the correct format."
             
+        case .secureChannelInitializationError:
+            return "Unable to initialize secure communication channel."
+            
+        case .cardOSVersionError:
+            return "Unexpected return value from querying card for OS version."
+            
+        case .keyGenerationError:
+            return "Key generation error."
+            
+        case .sharedSecretExtractionError:
+            return "Shared secret extract error."
+
         case .apduCommandError(let statusWord):
             switch statusWord {
             case APDUResponseCode.noMatchFound.rawValue:
