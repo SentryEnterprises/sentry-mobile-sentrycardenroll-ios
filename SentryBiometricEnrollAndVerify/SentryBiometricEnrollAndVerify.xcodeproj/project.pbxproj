@@ -13,7 +13,8 @@
 		144A0C842C25CE3F00A4E7AA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A0C832C25CE3F00A4E7AA /* OptionsViewController.swift */; };
 		144A0C862C25D1A500A4E7AA /* VersionInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */; };
 		144A0C882C25F66F00A4E7AA /* VersionInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A0C872C25F66F00A4E7AA /* VersionInformationViewController.swift */; };
-		144A0C8B2C29E29A00A4E7AA /* SentrySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 144A0C8A2C29E29A00A4E7AA /* SentrySDK */; };
+		144A0C8E2C2CAFAA00A4E7AA /* CryptonetPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 144A0C8D2C2CAFAA00A4E7AA /* CryptonetPackage */; };
+		144A0C942C2E147900A4E7AA /* SentrySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 144A0C932C2E147900A4E7AA /* SentrySDK */; };
 		14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */; };
 		14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */; };
 		14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */; };
@@ -69,8 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				144A0C8B2C29E29A00A4E7AA /* SentrySDK in Frameworks */,
+				144A0C8E2C2CAFAA00A4E7AA /* CryptonetPackage in Frameworks */,
 				14902F462BDFF79C007A26B9 /* Lottie in Frameworks */,
+				144A0C942C2E147900A4E7AA /* SentrySDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +203,8 @@
 			name = SentryBiometricEnrollAndVerify;
 			packageProductDependencies = (
 				14902F452BDFF79C007A26B9 /* Lottie */,
-				144A0C8A2C29E29A00A4E7AA /* SentrySDK */,
+				144A0C8D2C2CAFAA00A4E7AA /* CryptonetPackage */,
+				144A0C932C2E147900A4E7AA /* SentrySDK */,
 			);
 			productName = SentryBiometricEnrollAndVerify;
 			productReference = 14902F292BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify.app */;
@@ -233,7 +236,8 @@
 			mainGroup = 14902F202BDFF2CD007A26B9;
 			packageReferences = (
 				14902F442BDFF79C007A26B9 /* XCRemoteSwiftPackageReference "lottie-spm" */,
-				144A0C892C29E29A00A4E7AA /* XCRemoteSwiftPackageReference "sentry-sdk-biometrics-ios" */,
+				144A0C8C2C2CAFAA00A4E7AA /* XCRemoteSwiftPackageReference "cryptonets-ios-sdk" */,
+				144A0C922C2E147900A4E7AA /* XCRemoteSwiftPackageReference "sentry-sdk-biometrics-ios" */,
 			);
 			productRefGroup = 14902F2A2BDFF2CD007A26B9 /* Products */;
 			projectDirPath = "";
@@ -521,11 +525,19 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		144A0C892C29E29A00A4E7AA /* XCRemoteSwiftPackageReference "sentry-sdk-biometrics-ios" */ = {
+		144A0C8C2C2CAFAA00A4E7AA /* XCRemoteSwiftPackageReference "cryptonets-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/prividentity/cryptonets-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		144A0C922C2E147900A4E7AA /* XCRemoteSwiftPackageReference "sentry-sdk-biometrics-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SentryEnterprises/sentry-sdk-biometrics-ios.git";
 			requirement = {
-				branch = development;
+				branch = "feature/secure-channel";
 				kind = branch;
 			};
 		};
@@ -540,9 +552,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		144A0C8A2C29E29A00A4E7AA /* SentrySDK */ = {
+		144A0C8D2C2CAFAA00A4E7AA /* CryptonetPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 144A0C892C29E29A00A4E7AA /* XCRemoteSwiftPackageReference "sentry-sdk-biometrics-ios" */;
+			package = 144A0C8C2C2CAFAA00A4E7AA /* XCRemoteSwiftPackageReference "cryptonets-ios-sdk" */;
+			productName = CryptonetPackage;
+		};
+		144A0C932C2E147900A4E7AA /* SentrySDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 144A0C922C2E147900A4E7AA /* XCRemoteSwiftPackageReference "sentry-sdk-biometrics-ios" */;
 			productName = SentrySDK;
 		};
 		14902F452BDFF79C007A26B9 /* Lottie */ = {

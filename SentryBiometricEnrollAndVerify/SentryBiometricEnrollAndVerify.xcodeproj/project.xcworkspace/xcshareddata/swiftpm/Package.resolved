@@ -1,6 +1,15 @@
 {
-  "originHash" : "ae2588e3707eedeedc5584f6ef9b39fbbaf498f427a0d30b41419d42b4e10694",
+  "originHash" : "c8a5733bde52979dc8ca09655744bd0a2a40f079dd1e3834f013e4b8e3cec7d6",
   "pins" : [
+    {
+      "identity" : "cryptonets-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/prividentity/cryptonets-ios-sdk",
+      "state" : {
+        "branch" : "main",
+        "revision" : "bcc3e4c87cc1595c3c3bd5bad63167a5cd081219"
+      }
+    },
     {
       "identity" : "lottie-spm",
       "kind" : "remoteSourceControl",
@@ -24,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SentryEnterprises/sentry-sdk-biometrics-ios.git",
       "state" : {
-        "branch" : "development",
-        "revision" : "7295e45c1235c3cb6bf447a4794fd84a2b1ea12f"
+        "branch" : "feature/secure-channel",
+        "revision" : "5df07be05ff757669775ce305acbd9f4c16c104a"
       }
     }
   ],

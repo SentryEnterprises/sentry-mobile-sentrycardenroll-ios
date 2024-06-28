@@ -67,6 +67,10 @@ class GetCardStatusViewController: UIViewController {
                 var title = ""
                 var instructions = ""
                 
+                let storedData = try await self?.sentrySDK.getStoredData()
+                print(storedData)
+                return;
+                
                 // retrieve the enrollment status from the card. starts NFC scanning.
                 if let status = try await self?.sentrySDK.getEnrollmentStatus() {                  
                     // modifies various UI elements based on the card's status
