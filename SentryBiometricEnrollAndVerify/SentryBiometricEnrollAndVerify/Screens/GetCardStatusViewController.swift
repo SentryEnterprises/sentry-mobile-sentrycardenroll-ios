@@ -16,6 +16,7 @@ import SentrySDK
 class GetCardStatusViewController: UIViewController {
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
     
+    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var scanCardButton: UIButton!
     
     // sets up the Lottie animation (does not affect actual functionality)
@@ -46,6 +47,7 @@ class GetCardStatusViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Get Card Status"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(resetTapped))
+        versionLabel.text = AppSettings.getVersionAndBuildNumber()
     }
     
     // handler for the 'Reset' navigation bar button; navigates to the biometric data reset screen

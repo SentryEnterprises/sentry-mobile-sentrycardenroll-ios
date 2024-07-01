@@ -65,4 +65,10 @@ class AppSettings {
         let build: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
         UserDefaults.standard.set(build, forKey: BUILD_NUMBER)
     }
+    
+    class func getVersionAndBuildNumber() -> String {
+        let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let build: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        return "\(version).\(build)"
+    }
 }
