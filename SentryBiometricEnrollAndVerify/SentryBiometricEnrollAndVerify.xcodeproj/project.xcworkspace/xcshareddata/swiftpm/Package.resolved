@@ -16,7 +16,7 @@
       "location" : "https://github.com/SentryEnterprises/sentry-api-security",
       "state" : {
         "branch" : "main",
-        "revision" : "2df333517f674fe82d8ed67fce7e108c16ba9b4f"
+        "revision" : "23cdf18e8fd9a45b9a142a4403d4c491aa0d1aa0"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/SentryEnterprises/sentry-sdk-biometrics-ios.git",
       "state" : {
         "branch" : "development",
-        "revision" : "7295e45c1235c3cb6bf447a4794fd84a2b1ea12f"
+        "revision" : "ce8cc9ba2035509203df9e23403f3ba1f61596d6"
       }
     }
   ],

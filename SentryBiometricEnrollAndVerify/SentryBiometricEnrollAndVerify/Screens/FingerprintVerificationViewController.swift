@@ -14,7 +14,7 @@ import SentrySDK
  Fingerprint verification screen. Scans the card, and performs a biometric validation of the finger on the fingerprint sensor against the fingerprints recorded on the card.
  */
 class FingerprintVerificationViewController: UIViewController {
-    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
 
     @IBOutlet weak var scanCardButton: UIButton!
     

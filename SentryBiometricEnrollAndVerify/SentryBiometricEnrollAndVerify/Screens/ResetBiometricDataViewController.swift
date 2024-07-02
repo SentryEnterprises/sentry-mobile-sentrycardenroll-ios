@@ -13,7 +13,7 @@ import SentrySDK
  Reset biometric data screen. Provides functionality to reset biometric enrollment data. This will not be used in a production environment.
  */
 class ResetBiometricDataViewController: UIViewController {
-    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
     
     @IBOutlet weak var resetButton: UIButton!
     

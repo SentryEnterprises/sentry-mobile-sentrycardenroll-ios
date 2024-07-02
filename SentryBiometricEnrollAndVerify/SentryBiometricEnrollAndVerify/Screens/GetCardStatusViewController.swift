@@ -14,7 +14,7 @@ import SentrySDK
  The mobile application entry point. Allows the user to scan the card to determine its state.
  */
 class GetCardStatusViewController: UIViewController {
-    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
     
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var scanCardButton: UIButton!
@@ -47,7 +47,7 @@ class GetCardStatusViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Get Card Status"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(resetTapped))
-        versionLabel.text = AppSettings.getVersionAndBuildNumber()
+        versionLabel.text = "\(AppSettings.getSecureCommunicationSetting() ? "🔒 " : "")\(AppSettings.getVersionAndBuildNumber())"
     }
     
     // handler for the 'Reset' navigation bar button; navigates to the biometric data reset screen

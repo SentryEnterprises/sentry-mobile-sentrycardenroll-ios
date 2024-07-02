@@ -44,6 +44,10 @@ extension SentrySDKError: LocalizedError {
             
         case .sharedSecretExtractionError:
             return "Shared secret extract error."
+            
+        case .secureCommunicationNotSupported:
+            return "Applets on the scanned card do not support encryption. Please open Settings and turn the Secure Communication option off, then try again."
+
 
         case .apduCommandError(let statusWord):
             switch statusWord {

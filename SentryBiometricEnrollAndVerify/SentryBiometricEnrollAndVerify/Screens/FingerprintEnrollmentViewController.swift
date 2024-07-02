@@ -14,7 +14,7 @@ import SentrySDK
  Fingerprint enrollment screen. Scans the card, and allows the user to record several fingerprint scans.
  */
 class FingerprintEnrollmentViewController: UIViewController {
-    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
     
     private let step1Title = "Place the card on a flat\nnon-metallic surface"
     private let step2Title = "Enroll Finger"
