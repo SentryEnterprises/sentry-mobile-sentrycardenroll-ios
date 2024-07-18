@@ -14,8 +14,9 @@ import SentrySDK
  Fingerprint enrollment screen. Scans the card, and allows the user to record several fingerprint scans.
  */
 class FingerprintEnrollmentViewController: UIViewController {
+    // MARK: - Private Properties
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
-    
+
     private let step1Title = "Place the card on a flat\nnon-metallic surface"
     private let step2Title = "Enroll Finger"
     
@@ -23,6 +24,9 @@ class FingerprintEnrollmentViewController: UIViewController {
     private let step2Message = "Place and lift your finger at different angles on your card’s sensor until you reach 100%. "
     
     private let animationView = LottieAnimationView(name: "fingerprint")
+    
+    
+    // MARK: - Outlets and Actions
     
     @IBOutlet weak var scanCardButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -44,14 +48,20 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     // starts the scanning functionality
     @IBAction func scanCardButtonTouched(_ sender: Any) {
-        scanCardButton.isUserInteractionEnabled = false
+        scanCardButton.isUserInteractionEnabled = false     // guards against double-tap
         startBiometricEnrollment()
     }
+    
+    
+    // MARK: - Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Fingerprint Enrollment"
     }
+    
+    
+    // MARK: - Private Methods
     
     // scans the card and performs fingerprint enrollment
     private func startBiometricEnrollment() {
@@ -79,11 +89,12 @@ class FingerprintEnrollmentViewController: UIViewController {
 
             do {
                 // perform the fingerprint enrollment process. starts NFC scanning.
-                try await self?.sentrySDK.enrollFingerprint(connected: {connected in
+                try await self?.sentrySDK.enrollFingerprint(connected: { nfcSession, connected in
+                    nfcSession.alertMessage = "Place and lift your thumb at different angles on your card’s sensor."
                     handleConnected(connected)
-                }, stepFinished: { [weak self] currentStep, maximumSteps in
+                }, stepFinished: { [weak self] nfcSession, currentStep, maximumSteps in
                     DispatchQueue.main.async {
-                        self?.finished(currentStep: currentStep, maximumSteps: maximumSteps)
+                        self?.stepFinished(nfcSession: nfcSession, currentStep: currentStep, maximumSteps: maximumSteps)
                     }
                 })
             } catch (let error) {
@@ -114,10 +125,18 @@ class FingerprintEnrollmentViewController: UIViewController {
     }
     
     // if enrollment is finished, navigates the app back to the first screen, otherwise animates a UI element to indicate progress
-    private func finished(currentStep: UInt8, maximumSteps: UInt8) {
+    private func stepFinished(nfcSession: NFCReaderSession, currentStep: UInt8, maximumSteps: UInt8) {
+        let fromProgress = Double(currentStep - 1) / Double(maximumSteps)
+        let toProgress = Double(currentStep) / Double(maximumSteps)
+        animationView.play(fromProgress: fromProgress, toProgress: toProgress)
+        
+        var stepsCompleted = Array(repeating: "✅", count: Int(currentStep))
+        stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(maximumSteps - currentStep)))
+        nfcSession.alertMessage = stepsCompleted.joined(separator: " ")
+        
         if currentStep == maximumSteps {
             let alert = UIAlertController(title: "Enrollment Finished",
-                                          message: "Your fingerprint is now enrolled. Click OK to return to the previous screen and check enrollment status.",
+                                          message: "Your fingerprint is now enrolled. Click OK to continue",
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
                 self.navigationController?.popToRootViewController(animated: true)
@@ -125,8 +144,6 @@ class FingerprintEnrollmentViewController: UIViewController {
             
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
-        } else {
-            animationView.play(toProgress: Double(currentStep) / Double(maximumSteps))
         }
     }
 }

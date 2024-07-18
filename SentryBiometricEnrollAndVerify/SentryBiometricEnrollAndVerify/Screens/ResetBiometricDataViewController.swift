@@ -2,7 +2,7 @@
 //  ResetBiometricDataViewController.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 5/9/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import UIKit
@@ -13,7 +13,12 @@ import SentrySDK
  Reset biometric data screen. Provides functionality to reset biometric enrollment data. This will not be used in a production environment.
  */
 class ResetBiometricDataViewController: UIViewController {
+    // MARK: - Private Properties
+    
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
+    
+    
+    // MARK: - Outlets and Actions
     
     @IBOutlet weak var resetButton: UIButton!
     
@@ -22,10 +27,16 @@ class ResetBiometricDataViewController: UIViewController {
         resetData()
     }
     
+    
+    // MARK: - Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Reset Biometric Data"
     }
+    
+    
+    // MARK: - Private Methods
     
     // resets biometric data on the card; the card is no longer enrolled after this method completes
     private func resetData() {

@@ -2,7 +2,7 @@
 //  VersionInformationViewController.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 6/21/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import UIKit
@@ -14,7 +14,11 @@ import SentrySDK
  Debugging screen that provides version information about the card and its installed applets.
  */
 class VersionInformationViewController: UIViewController {
+    // MARK: - Private Properties
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
+    
+    
+    // MARK: - Outlets and Actions
     
     // sets up the Lottie animation (does not affect actual functionality)
     @IBOutlet weak var lottieAnimationViewContainer: UIView! {
@@ -46,10 +50,15 @@ class VersionInformationViewController: UIViewController {
         scanCard()
     }
     
+    
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Version Information"
     }
+    
+    
+    // MARK: - Private Methods
     
     // scans the card and retrieves version information about the applets installed on the card
     private func scanCard() {
@@ -57,6 +66,13 @@ class VersionInformationViewController: UIViewController {
             defer {
                 self?.scanCardButton.isUserInteractionEnabled = true
             }
+            
+            /**
+             
+             Whilte this was included only for debugging purposes, it may be prudent in a production application to provide a way to check the versions of
+             applets that are installed on the java card.
+             
+             */
             
             do {
                 var sdk = "Unavailable"
