@@ -30,7 +30,7 @@ import Foundation
 class AppSettings {
     
     // The default enroll code value. If the enroll code is set on the card, this value must match.
-    static let DEFAULT_ENROLL_CODE: [UInt8] = [1, 2, 3, 4]
+    static let DEFAULT_ENROLL_CODE: [UInt8] = [1, 1, 1, 1, 1, 1]
     
     static let CODE_NUMBER = "code_number"
     static let BUILD_NUMBER = "build_number"
