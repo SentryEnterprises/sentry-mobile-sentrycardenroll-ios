@@ -65,7 +65,9 @@ extension SentrySDKError: LocalizedError {
             
         case .bioVerifyAppletWrongVersion:
             return "This java card has an unsupported version of the BioVerify applet installed."
-
+            
+        case .cvmAppletError(let code):
+            return "The biometric verification attempt failed to respond properly. Please try again.\n\nError Code: \(String(format:"%02X", code))"
 
         case .apduCommandError(let statusWord):
             switch statusWord {
@@ -106,7 +108,7 @@ extension SentrySDKError: LocalizedError {
                 return "No finger was detected on the sensor. Please try again.\n\n(6748) User timeout expired."
                 
             case APDUResponseCode.hostInterfaceTimeoutExpired.rawValue:
-                return "No finger was detected on the sensor. Please try again.\n\n(6749) Host interface timeout expired."
+                return "The card did not respond in the expected amount of time. Please try again.\n\n(6749) Host interface timeout expired."
                 
             case APDUResponseCode.conditionOfUseNotSatisfied.rawValue:
                 return "(6985) Conditions of use not satisfied."

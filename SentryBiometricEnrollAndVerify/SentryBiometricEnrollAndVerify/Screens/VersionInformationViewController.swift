@@ -77,8 +77,7 @@ class VersionInformationViewController: UIViewController {
             do {
                 var sdk = "Unavailable"
                 let sdkVersion = SentrySDK.version
-                let securityVersion = SentrySDK.securityVersion
-                sdk = "\(sdkVersion.majorVersion).\(sdkVersion.minorVersion).\(sdkVersion.hotfixVersion) (\(securityVersion.majorVersion).\(securityVersion.minorVersion).\(securityVersion.hotfixVersion))"
+                sdk = "\(sdkVersion.majorVersion).\(sdkVersion.minorVersion).\(sdkVersion.hotfixVersion)"
                 self?.sdkVersionLabel.text = "SDK Version: \(sdk)"
                 
                 // retrieve version information. starts NFC scanning.
