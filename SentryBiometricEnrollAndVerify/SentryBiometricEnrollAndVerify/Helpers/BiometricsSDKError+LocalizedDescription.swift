@@ -67,7 +67,7 @@ extension SentrySDKError: LocalizedError {
             return "This java card has an unsupported version of the BioVerify applet installed."
             
         case .cvmAppletError(let code):
-            return "The biometric verification attempt failed to respond properly. Please try again.\n\nError Code: \(String(format:"%02X", code))"
+            return "The biometric verification attempt failed to respond properly. Please try again.\n\nError Code: \(String(format:"%02X", code).uppercased())"
 
         case .apduCommandError(let statusWord):
             switch statusWord {
@@ -134,8 +134,11 @@ extension SentrySDKError: LocalizedError {
             case APDUResponseCode.cardDead.rawValue:
                 return "(6FFF) Card dead (overuse)."
 
+            case APDUResponseCode.calibrationError.rawValue:
+                return "(6744) The fingerprint sensor is returning a calibration error."
+                
             default:
-                return "Unknown Error Code: \(statusWord)"
+                return "Unknown Error Code: \(String(format:"%02X", statusWord).uppercased())"
             }
         }
     }

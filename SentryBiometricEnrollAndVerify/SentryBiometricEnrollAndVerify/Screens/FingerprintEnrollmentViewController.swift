@@ -23,7 +23,7 @@ class FingerprintEnrollmentViewController: UIViewController {
     private let step1Message = "Lay the phone over the top of the card so that just the fingerprint sensor is visible."
     private let step2Message = "Place and lift your finger at different angles on your card’s sensor until you reach 100%. "
     
-    private let animationView = LottieAnimationView(name: "fingerprint")
+    private let animationView = LottieAnimationView(name: "finger_print")
     
     
     // MARK: - Outlets and Actions
