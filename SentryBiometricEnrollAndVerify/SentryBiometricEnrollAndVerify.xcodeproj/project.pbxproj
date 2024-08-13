@@ -30,6 +30,7 @@
 		14902F732BE3E853007A26B9 /* fingerprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 14902F712BE3E853007A26B9 /* fingerprint.json */; };
 		14B73D612BEAC3C800AE9CA7 /* BiometricsSDKError+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B73D602BEAC3C800AE9CA7 /* BiometricsSDKError+LocalizedDescription.swift */; };
 		14E228A82C6A688600B9D842 /* finger_print.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E228A72C6A688500B9D842 /* finger_print.json */; };
+		14E228AA2C6BB1FC00B9D842 /* finger_position.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E228A92C6BB1FC00B9D842 /* finger_position.json */; };
 		14E7740F2BE579040046D1E5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7740E2BE579040046D1E5 /* AppSettings.swift */; };
 		14E774112BE579C70046D1E5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14E774102BE579C70046D1E5 /* Settings.bundle */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		14B73D652BEBDC3500AE9CA7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		14B73D662BEBDC3500AE9CA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		14E228A72C6A688500B9D842 /* finger_print.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = finger_print.json; sourceTree = "<group>"; };
+		14E228A92C6BB1FC00B9D842 /* finger_position.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = finger_position.json; sourceTree = "<group>"; };
 		14E7740C2BE54C6E0046D1E5 /* installEnroll.jcsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = installEnroll.jcsh; sourceTree = "<group>"; };
 		14E7740E2BE579040046D1E5 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		14E774102BE579C70046D1E5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		14902F6F2BE3E816007A26B9 /* Lottie Animations */ = {
 			isa = PBXGroup;
 			children = (
+				14E228A92C6BB1FC00B9D842 /* finger_position.json */,
 				14E228A72C6A688500B9D842 /* finger_print.json */,
 				14902F702BE3E853007A26B9 /* attach_card.json */,
 				14902F712BE3E853007A26B9 /* fingerprint.json */,
@@ -263,6 +266,7 @@
 				14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */,
 				14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */,
 				14902F722BE3E853007A26B9 /* attach_card.json in Resources */,
+				14E228AA2C6BB1FC00B9D842 /* finger_position.json in Resources */,
 				14E774112BE579C70046D1E5 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +440,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
@@ -472,7 +476,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;

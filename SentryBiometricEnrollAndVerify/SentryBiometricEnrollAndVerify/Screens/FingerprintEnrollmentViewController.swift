@@ -23,7 +23,7 @@ class FingerprintEnrollmentViewController: UIViewController {
     private let step1Message = "Lay the phone over the top of the card so that just the fingerprint sensor is visible."
     private let step2Message = "Place and lift your finger at different angles on your card’s sensor until you reach 100%. "
     
-    private let animationView = LottieAnimationView(name: "finger_print")
+    private let animationView = LottieAnimationView(name: "finger_position")
     
     
     // MARK: - Outlets and Actions
@@ -126,9 +126,11 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     // if enrollment is finished, navigates the app back to the first screen, otherwise animates a UI element to indicate progress
     private func stepFinished(nfcSession: NFCReaderSession, currentStep: UInt8, maximumSteps: UInt8) {
-        let fromProgress = Double(currentStep - 1) / Double(maximumSteps)
-        let toProgress = Double(currentStep) / Double(maximumSteps)
-        animationView.play(fromProgress: fromProgress, toProgress: toProgress)
+        if currentStep < maximumSteps {
+            let fromProgress = Double(currentStep - 1) / Double(maximumSteps - 1)
+            let toProgress = Double(currentStep) / Double(maximumSteps - 1)
+            animationView.play(fromProgress: fromProgress, toProgress: toProgress)
+        }
         
         var stepsCompleted = Array(repeating: "✅", count: Int(currentStep))
         stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(maximumSteps - currentStep)))
