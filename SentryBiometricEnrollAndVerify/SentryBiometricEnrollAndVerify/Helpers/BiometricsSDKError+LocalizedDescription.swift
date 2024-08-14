@@ -49,25 +49,29 @@ extension SentrySDKError: LocalizedError {
             return "Applets on the scanned card do not support encryption. Please open Settings and turn the Secure Communication option off, then try again."
             
         case .dataSizeNotSupported:
-            return "Unable to store data to java card: maximum size supported is 2048 bytes."
+            return "Unable to store data to SentryCard: maximum size supported is 2048 bytes."
             
         case .cvmAppletNotAvailable:
-            return "Unable to initialize the CVM applet on the java card."
+            return "Unable to initialize the CVM applet on the SentryCard."
             
         case .cvmAppletBlocked:
-            return "The CVM applet on the java card is blocked."
+            return "The CVM applet on the SentryCard is blocked."
             
         case .bioverifyAppletNotInstalled:
-            return "The java card does not contain the BioVerify applet. This applet is required. Please run the applet install script to install the required applets."
+            return "The SentryCard does not contain the BioVerify applet. This applet is required. Please run the applet install script to install the required applets."
             
         case .enrollModeNotAvailable:
-            return "The java card is already enrolled. To re-enroll, go into Options and reset biometric enrollment data."
+            return "The SentryCard is already enrolled. To re-enroll, go into Options and reset biometric enrollment data."
             
         case .bioVerifyAppletWrongVersion:
-            return "This java card has an unsupported version of the BioVerify applet installed."
+            return "This SentryCard has an unsupported version of the BioVerify applet installed."
             
         case .cvmAppletError(let code):
             return "The biometric verification attempt failed to respond properly. Please try again.\n\nError Code: \(String(format:"%02X", code).uppercased())"
+            
+        case .enrollVerificationError:
+            return "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.\n\n(6300) No match found."
+
 
         case .apduCommandError(let statusWord):
             switch statusWord {

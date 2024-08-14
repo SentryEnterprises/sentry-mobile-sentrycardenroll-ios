@@ -25,6 +25,7 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     private let animationView = LottieAnimationView(name: "finger_position")
     
+    private var resetIsNeeded = false
     
     // MARK: - Outlets and Actions
     
@@ -87,6 +88,13 @@ class FingerprintEnrollmentViewController: UIViewController {
                 self?.scanCardButton.isUserInteractionEnabled = true
             }
 
+            let isReset = self?.resetIsNeeded ?? false
+            self?.resetIsNeeded = false
+            
+            if isReset {
+                self?.animationView.currentFrame = 0
+            }
+
             do {
                 // perform the fingerprint enrollment process. starts NFC scanning.
                 try await self?.sentrySDK.enrollFingerprint(connected: { nfcSession, connected in
@@ -96,9 +104,23 @@ class FingerprintEnrollmentViewController: UIViewController {
                     DispatchQueue.main.async {
                         self?.stepFinished(nfcSession: nfcSession, currentStep: currentStep, maximumSteps: maximumSteps)
                     }
-                })
-            } catch (let error) {
-                print("!!! Error during enrollment process: \(error)")
+                }, enrollmentComplete: { [weak self] nfcSession in
+                    DispatchQueue.main.async {
+                        self?.enrollmentCompleted(nfcSession: nfcSession)
+                    }
+                }, withReset: isReset)
+            } catch SentrySDKError.enrollVerificationError {
+                handleConnected(false)
+                
+                self?.resetIsNeeded = true
+                
+                let alert = UIAlertController(title: "Fingerprint Mismatch Error",
+                                              message: "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
+            } catch {
+               print("!!! Error during enrollment process: \(error)")
                 
                 handleConnected(false)
                 
@@ -135,17 +157,20 @@ class FingerprintEnrollmentViewController: UIViewController {
         var stepsCompleted = Array(repeating: "✅", count: Int(currentStep))
         stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(maximumSteps - currentStep)))
         nfcSession.alertMessage = stepsCompleted.joined(separator: " ")
+    }
+    
+    // indicates enrollment is completed and navigates the user to the next screen
+    private func enrollmentCompleted(nfcSession: NFCReaderSession) {
+        nfcSession.alertMessage = "Enrollment Completed!"
         
-        if currentStep == maximumSteps {
-            let alert = UIAlertController(title: "Enrollment Finished",
-                                          message: "Your fingerprint is now enrolled. Click OK to continue",
-                                          preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.navigationController?.popToRootViewController(animated: true)
-            })
-            
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-        }
+        let alert = UIAlertController(title: "Enrollment Finished",
+                                      message: "Your fingerprint is now enrolled. Click OK to continue",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.navigationController?.popToRootViewController(animated: true)
+        })
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }

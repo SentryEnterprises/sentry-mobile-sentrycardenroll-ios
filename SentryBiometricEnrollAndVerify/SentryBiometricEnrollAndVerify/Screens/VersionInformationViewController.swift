@@ -70,7 +70,7 @@ class VersionInformationViewController: UIViewController {
             /**
              
              Whilte this was included only for debugging purposes, it may be prudent in a production application to provide a way to check the versions of
-             applets that are installed on the java card.
+             applets that are installed on the SentryCard.
              
              */
             
