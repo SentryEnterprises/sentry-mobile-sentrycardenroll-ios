@@ -152,11 +152,13 @@ class FingerprintEnrollmentViewController: UIViewController {
             let fromProgress = Double(currentStep - 1) / Double(maximumSteps - 1)
             let toProgress = Double(currentStep) / Double(maximumSteps - 1)
             animationView.play(fromProgress: fromProgress, toProgress: toProgress)
+            
+            var stepsCompleted = Array(repeating: "✅", count: Int(currentStep))
+            stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(maximumSteps - currentStep)))
+            nfcSession.alertMessage = stepsCompleted.joined(separator: " ")
+        } else {
+            nfcSession.alertMessage = "Leave finger on sensor for final verification."
         }
-        
-        var stepsCompleted = Array(repeating: "✅", count: Int(currentStep))
-        stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(maximumSteps - currentStep)))
-        nfcSession.alertMessage = stepsCompleted.joined(separator: " ")
     }
     
     // indicates enrollment is completed and navigates the user to the next screen

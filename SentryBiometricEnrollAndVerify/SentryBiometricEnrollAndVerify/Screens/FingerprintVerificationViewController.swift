@@ -70,14 +70,17 @@ class FingerprintVerificationViewController: UIViewController {
                 var instructions = ""
                 
                 // perform a biometric validation on the card. starts NFC scanning.
-                if let isValid = try await self?.sentrySDK.validateFingerprint() {
+                if let result = try await self?.sentrySDK.validateFingerprint() {
                     // update UI elements based on the validation result
-                    if isValid {
+                    if result == .matchValid {
                         title = "Fingerprint Matched"
                         instructions = "The scanned fingerprint matches the fingerprint recorded during enrollment."
-                    } else {
+                    } else if result == .matchFailed{
                         title = "Fingerprint Does Not Match"
                         instructions = "The scanned fingerprint does not match the fingerprint recorded during enrollment."
+                    } else {
+                        title = "Card Not Enrolled"
+                        instructions = "Please enroll fingerprints on the card first."
                     }
                     
                     let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
