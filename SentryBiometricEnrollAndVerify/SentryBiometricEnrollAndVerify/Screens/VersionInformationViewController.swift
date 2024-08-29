@@ -86,6 +86,10 @@ class VersionInformationViewController: UIViewController {
                     var os = "Unavailable"
                     if version.osVersion.majorVersion > 0 {
                         os = "\(version.osVersion.majorVersion).\(version.osVersion.minorVersion).\(version.osVersion.hotfixVersion)"
+                        
+                        if let info = version.osVersion.text {
+                            os += " (\(info))"
+                        }
                     }
                     
                     var enroll = "NOT INSTALLED"
