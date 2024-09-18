@@ -35,7 +35,6 @@ class AppSettings {
     static let CODE_NUMBER = "code_number"
     static let BUILD_NUMBER = "build_number"
     static let VERSION_NUMBER = "version_number"
-    static let SECURE_COMMUNICATION = "secure_communication"
     
     /**
      Retrieves the enroll code.
@@ -55,20 +54,6 @@ class AppSettings {
         } else {
             return DEFAULT_ENROLL_CODE
         }
-    }
-    
-    /**
-     Retrieves the secure communication setting.
-     
-     - Returns: `True` if secure communication is selected, otherwise `false`.
-     */
-    class func getSecureCommunicationSetting() -> Bool {
-        if !UserDefaults.standard.dictionaryRepresentation().keys.contains(SECURE_COMMUNICATION) {
-            UserDefaults.standard.set(true, forKey: SECURE_COMMUNICATION)
-        }
-        
-        let isSecure = UserDefaults.standard.bool(forKey: SECURE_COMMUNICATION)
-        return isSecure
     }
     
     /**

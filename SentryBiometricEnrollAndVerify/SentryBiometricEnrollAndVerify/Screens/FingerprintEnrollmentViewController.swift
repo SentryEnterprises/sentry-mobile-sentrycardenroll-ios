@@ -15,7 +15,7 @@ import SentrySDK
  */
 class FingerprintEnrollmentViewController: UIViewController {
     // MARK: - Private Properties
-    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: true)
 
     private let step1Title = "Place the card on a flat\nnon-metallic surface"
     private let step2Title = "Enroll Finger"

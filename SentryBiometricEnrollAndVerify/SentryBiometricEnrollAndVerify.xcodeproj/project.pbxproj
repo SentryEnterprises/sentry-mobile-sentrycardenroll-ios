@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1422168C2BED7699000AB5CD /* ResetBiometricData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */; };
-		1422168E2BED76A7000AB5CD /* ResetBiometricDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */; };
 		143E4B172C7CE654005A9EEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E4B162C7CE654005A9EEC /* AppDelegate.swift */; };
 		143E4B192C7CE654005A9EEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E4B182C7CE654005A9EEC /* SceneDelegate.swift */; };
 		143E4B1B2C7CE654005A9EEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E4B1A2C7CE654005A9EEC /* ViewController.swift */; };
@@ -76,8 +74,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResetBiometricData.storyboard; sourceTree = "<group>"; };
-		1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetBiometricDataViewController.swift; sourceTree = "<group>"; };
 		143E4B142C7CE654005A9EEC /* SentryEnrollAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentryEnrollAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		143E4B162C7CE654005A9EEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		143E4B182C7CE654005A9EEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,8 +235,6 @@
 				14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */,
 				14902F652BE3DEA2007A26B9 /* FingerprintVerification.storyboard */,
 				14902F692BE3DED2007A26B9 /* FingerprintVerificationViewController.swift */,
-				1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */,
-				1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */,
 				144A0C812C25CC7B00A4E7AA /* Options.storyboard */,
 				144A0C832C25CE3F00A4E7AA /* OptionsViewController.swift */,
 				144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */,
@@ -395,7 +389,6 @@
 				144A0C822C25CC7B00A4E7AA /* Options.storyboard in Resources */,
 				14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */,
 				14902F732BE3E853007A26B9 /* fingerprint.json in Resources */,
-				1422168C2BED7699000AB5CD /* ResetBiometricData.storyboard in Resources */,
 				14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */,
 				144A0C862C25D1A500A4E7AA /* VersionInformation.storyboard in Resources */,
 				14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */,
@@ -427,7 +420,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1422168E2BED76A7000AB5CD /* ResetBiometricDataViewController.swift in Sources */,
 				144A0C882C25F66F00A4E7AA /* VersionInformationViewController.swift in Sources */,
 				14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */,
 				14E7740F2BE579040046D1E5 /* AppSettings.swift in Sources */,
@@ -494,7 +486,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryEnrollAppClip/SentryEnrollAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryEnrollAppClip/Info.plist;
@@ -530,7 +522,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryEnrollAppClip/SentryEnrollAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryEnrollAppClip/Info.plist;
@@ -686,14 +678,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Sentry Enroll";
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Use NFC to read and write data.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = GetCardStatus;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -723,14 +714,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Sentry Enroll";
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Use NFC to read and write data.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = GetCardStatus;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

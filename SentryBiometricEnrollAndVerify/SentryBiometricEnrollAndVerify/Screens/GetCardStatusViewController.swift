@@ -16,7 +16,7 @@ import SentrySDK
 class GetCardStatusViewController: UIViewController {
     // MARK: - Private Properties
     
-    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: true)
     
     
     // MARK: - Outlets and Actions
@@ -55,7 +55,7 @@ class GetCardStatusViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Get Card Status"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(optionsTapped))
-        versionLabel.text = "Sentry Enroll \(AppSettings.getSecureCommunicationSetting() ? "🔒 " : "")\(AppSettings.getVersionAndBuildNumber())"
+        versionLabel.text = "Sentry Enroll - \(AppSettings.getVersionAndBuildNumber())"
     }
     
     

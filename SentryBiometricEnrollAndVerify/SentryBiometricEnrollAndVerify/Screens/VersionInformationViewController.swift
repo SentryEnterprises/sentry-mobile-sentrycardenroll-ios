@@ -15,7 +15,7 @@ import SentrySDK
  */
 class VersionInformationViewController: UIViewController {
     // MARK: - Private Properties
-    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
+    private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: true)
     
     
     // MARK: - Outlets and Actions
