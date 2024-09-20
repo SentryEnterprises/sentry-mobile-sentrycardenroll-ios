@@ -21,6 +21,12 @@ class GetCardStatusViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
+    @IBOutlet weak var placeCardHereLabel: UILabel!
+    @IBOutlet weak var arrowLeft: UIImageView!
+    @IBOutlet weak var arrowDown: UIImageView!
+    @IBOutlet weak var placeCardOutline: UIImageView!
+    @IBOutlet weak var placeCard: UIImageView!
+    @IBOutlet var instructionsContainer: UIView!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var scanCardButton: UIButton!
     
@@ -45,7 +51,40 @@ class GetCardStatusViewController: UIViewController {
     // starts the scanning functionality
     @IBAction func scanCardButtonTouched(_ sender: Any) {
         scanCardButton.isUserInteractionEnabled = false
-        scanCard()
+        
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.instructionsContainer.transform = CGAffineTransform(translationX: 0, y: 80)
+        }, completion: { _ in
+            self.placeCard.layer.opacity = 0.0
+            self.placeCard.isHidden = false
+            self.placeCardOutline.layer.opacity = 0.0
+            self.placeCardOutline.isHidden = false
+            self.arrowDown.layer.opacity = 0.0
+            self.arrowDown.isHidden = false
+            self.arrowLeft.layer.opacity = 0.0
+            self.arrowLeft.isHidden = false
+            self.placeCardHereLabel.layer.opacity = 0.0
+            self.placeCardHereLabel.isHidden = false
+            
+            self.placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
+            
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.placeCard.layer.opacity = self.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+                self.placeCardOutline.layer.opacity = 1.0
+                self.arrowDown.layer.opacity = 1.0
+                self.arrowLeft.layer.opacity = 1.0
+                self.placeCardHereLabel.layer.opacity = 1.0
+                
+                self.placeCard.transform = CGAffineTransform.identity
+
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                    self.placeCardOutline.layer.opacity = 0.1
+                }
+                
+                self.scanCard()
+            })
+        })
     }
     
     
@@ -56,6 +95,8 @@ class GetCardStatusViewController: UIViewController {
         navigationItem.title = "Get Card Status"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(optionsTapped))
         versionLabel.text = "Sentry Enroll \(AppSettings.getSecureCommunicationSetting() ? "🔒 " : "")\(AppSettings.getVersionAndBuildNumber())"
+        
+        placeCard.layer.opacity = traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
     }
     
     
@@ -73,6 +114,28 @@ class GetCardStatusViewController: UIViewController {
         Task { [weak self] in
             defer {
                 self?.scanCardButton.isUserInteractionEnabled = true
+                
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.placeCard.layer.removeAllAnimations()
+                self?.placeCard.layer.opacity = traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+                
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+                    self?.placeCard.layer.opacity = 0.0
+                    self?.placeCardOutline.layer.opacity = 0.0
+                    self?.arrowDown.layer.opacity = 0.0
+                    self?.arrowLeft.layer.opacity = 0.0
+                    self?.placeCardHereLabel.layer.opacity = 0.0
+                }, completion: { _ in
+                    self?.placeCard.isHidden = true
+                    self?.placeCardOutline.isHidden = true
+                    self?.arrowDown.isHidden = true
+                    self?.arrowLeft.isHidden = true
+                    self?.placeCardHereLabel.isHidden = true
+
+                    UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+                        self?.instructionsContainer.transform = CGAffineTransform(translationX: 0, y: 0)
+                    })
+                })
             }
             
             do {
