@@ -22,6 +22,7 @@ class FingerprintVerificationViewController: UIViewController {
     // MARK: - Outlets and Actions
     
     @IBOutlet weak var scanCardButton: UIButton!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     // sets up the Lottie animation (does not affect actual functionality)
     @IBOutlet weak var lottieAnimationViewContainer: UIView! {
@@ -52,7 +53,12 @@ class FingerprintVerificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Fingerprint Validation"
+        navigationItem.title = "fingerprintVerification.screen.navigationTitle".localized
+        
+        instructionsLabel.text = "fingerprintVerification.screen.instructions".localized
+        scanCardButton.setTitle("fingerprintVerification.screen.button".localized, for: .normal)
+        sentrySDK.cardCommunicationErrorText = "nfcScanning.communicationError".localized
+        sentrySDK.establishConnectionText = "nfcScanning.establishConnection".localized
     }
     
     
@@ -73,18 +79,19 @@ class FingerprintVerificationViewController: UIViewController {
                 if let result = try await self?.sentrySDK.validateFingerprint() {
                     // update UI elements based on the validation result
                     if result == .matchValid {
-                        title = "Fingerprint Matched"
-                        instructions = "The scanned fingerprint matches the fingerprint recorded during enrollment."
+                        title = "fingerprintVerification.status.matchedTitle".localized
+                        instructions = "fingerprintVerification.status.matchedInstructions".localized
                     } else if result == .matchFailed{
-                        title = "Fingerprint Does Not Match"
-                        instructions = "The scanned fingerprint does not match the fingerprint recorded during enrollment."
+                        title = "fingerprintVerification.status.matchFailTitle".localized
+                        instructions = "fingerprintVerification.status.matchFailInstructions".localized
                     } else {
-                        title = "Card Not Enrolled"
-                        instructions = "Please enroll fingerprints on the card first."
+                        title = "fingerprintVerification.status.notEnrolled".localized
+                        instructions = "fingerprintVerification.status.notEnrolledInstructions".localized
                     }
                     
+                    
                     let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             } catch (let error) {
@@ -104,8 +111,8 @@ class FingerprintVerificationViewController: UIViewController {
 
                 // if the user cancelled or the session timed out, don't display this as an error
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             }

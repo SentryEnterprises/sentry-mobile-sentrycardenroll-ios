@@ -16,15 +16,7 @@ import SentrySDK
 class FingerprintEnrollmentViewController: UIViewController {
     // MARK: - Private Properties
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
-
-    private let step1Title = "Place the card on a flat\nnon-metallic surface"
-    private let step2Title = "Enroll Finger"
-    
-    private let step1Message = "Lay the phone over the top of the card so that just the fingerprint sensor is visible."
-    private let step2Message = "Place and lift your finger at different angles on your card’s sensor until you reach 100%. "
-    
     private let animationView = LottieAnimationView(name: "finger_position")
-    
     private var resetIsNeeded = false
     
     // MARK: - Outlets and Actions
@@ -58,7 +50,13 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Fingerprint Enrollment"
+        navigationItem.title = "fingerprintEnrollment.screen.navigationTitle".localized
+        
+        titleLabel.text = "fingerprintEnrollment.step1.title".localized
+        messageLabel.text = "fingerprintEnrollment.step2.message".localized
+        scanCardButton.setTitle("fingerprintEnrollment.screen.button".localized, for: .normal)
+        sentrySDK.cardCommunicationErrorText = "nfcScanning.communicationError".localized
+        sentrySDK.establishConnectionText = "nfcScanning.establishConnection".localized
     }
     
     
@@ -70,13 +68,13 @@ class FingerprintEnrollmentViewController: UIViewController {
         func handleConnected(_ isConnected: Bool) {
             DispatchQueue.main.async { [weak self] in
                 if isConnected {
-                    self?.titleLabel.text = self?.step2Title
-                    self?.messageLabel.text = self?.step2Message
+                    self?.titleLabel.text = "fingerprintEnrollment.step2.title".localized
+                    self?.messageLabel.text = "fingerprintEnrollment.step2.message".localized
                     self?.placeCardImage.isHidden = true
                     self?.lottieAnimationViewContainer.isHidden = false
                 } else {
-                    self?.titleLabel.text = self?.step1Title
-                    self?.messageLabel.text = self?.step1Message
+                    self?.titleLabel.text = "fingerprintEnrollment.step1.title".localized
+                    self?.messageLabel.text = "fingerprintEnrollment.step2.message".localized
                     self?.placeCardImage.isHidden = false
                     self?.lottieAnimationViewContainer.isHidden = true
                 }
@@ -98,7 +96,7 @@ class FingerprintEnrollmentViewController: UIViewController {
             do {
                 // perform the fingerprint enrollment process. starts NFC scanning.
                 try await self?.sentrySDK.enrollFingerprint(connected: { nfcSession, connected in
-                    nfcSession.alertMessage = "Place and lift your thumb at different angles on your card’s sensor."
+                    nfcSession.alertMessage = "fingerprintEnrollment.connected.message".localized
                     handleConnected(connected)
                 }, stepFinished: { [weak self] nfcSession, currentStep, maximumSteps in
                     DispatchQueue.main.async {
@@ -114,10 +112,8 @@ class FingerprintEnrollmentViewController: UIViewController {
                 
                 self?.resetIsNeeded = true
                 
-                let alert = UIAlertController(title: "Fingerprint Mismatch Error",
-                                              message: "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.",
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                let alert = UIAlertController(title: "fingerprintEnrollment.mismatch.title".localized, message: "fingerprintEnrollment.mismatch.message".localized, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
             } catch {
                print("!!! Error during enrollment process: \(error)")
@@ -138,8 +134,8 @@ class FingerprintEnrollmentViewController: UIViewController {
 
                 // if the user cancelled or the session timed out, don't display this as an error
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             }
@@ -157,18 +153,18 @@ class FingerprintEnrollmentViewController: UIViewController {
             stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(maximumSteps - currentStep)))
             nfcSession.alertMessage = stepsCompleted.joined(separator: " ")
         } else {
-            nfcSession.alertMessage = "Leave finger on sensor for final verification."
+            nfcSession.alertMessage = "fingerprintEnrollment.finalVerify.message".localized
         }
     }
     
     // indicates enrollment is completed and navigates the user to the next screen
     private func enrollmentCompleted(nfcSession: NFCReaderSession) {
-        nfcSession.alertMessage = "Enrollment Completed!"
+        nfcSession.alertMessage = "fingerprintEnrollment.complete.message".localized
         
-        let alert = UIAlertController(title: "Enrollment Finished",
-                                      message: "Your fingerprint is now enrolled. Click OK to continue",
+        let alert = UIAlertController(title: "fingerprintEnrollment.finished.title".localized,
+                                      message: "fingerprintEnrollment.finished.message".localized,
                                       preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
+        let action = UIAlertAction(title: "global.ok".localized, style: .default, handler: { _ in
             self.navigationController?.popToRootViewController(animated: true)
         })
         

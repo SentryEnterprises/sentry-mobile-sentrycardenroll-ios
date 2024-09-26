@@ -15,78 +15,39 @@ extension NFCReaderError: LocalizedError {
     /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch code {
-        case .readerErrorUnsupportedFeature:
-            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Unsupported Feature."
+        case .readerErrorUnsupportedFeature: return "nfcReader.error.unsupportedFeature".localized
             
-        case .readerErrorSecurityViolation:
-            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Security Violation."
+        case .readerErrorSecurityViolation: return "nfcReader.error.securityViolation".localized
             
-        case .readerErrorInvalidParameter:
-            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Invalid Parameter."
+        case .readerErrorInvalidParameter: return "nfcReader.error.invalidParameter".localized
             
-        case .readerErrorInvalidParameterLength:
-            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Invalid Parameter Length."
+        case .readerErrorInvalidParameterLength: return "nfcReader.error.invalidParameterLength".localized
             
-        case .readerErrorParameterOutOfBound:
-            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Error: Parameter Out of Bounds."
+        case .readerErrorParameterOutOfBound: return "nfcReader.error.parameterOutOfBound".localized
             
-        case .readerErrorRadioDisabled:
-            return "The NFC communication hardware appears to be disabled.\n\n(\(code)) Reader Error: Radio Disabled."
+        case .readerErrorRadioDisabled: return "nfcReader.error.radioDisabled".localized
             
-        case .readerTransceiveErrorTagConnectionLost:
-            return "Connection to the card was lost. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Tag Connection Lost."
+        case .readerTransceiveErrorTagConnectionLost: return "nfcReader.transeiveError.tagConnectionLost".localized
             
-        case .readerTransceiveErrorRetryExceeded:
-            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Retry Exceeded."
+        case .readerTransceiveErrorRetryExceeded: return "nfcReader.transeiveError.retryExceeded".localized
             
-        case .readerTransceiveErrorTagResponseError:
-            return "Connection made with the card, but the card did not respond. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Tag Response Error."
+        case .readerTransceiveErrorTagResponseError: return "nfcReader.transeiveError.tagResponseError".localized
             
-        case .readerTransceiveErrorSessionInvalidated:
-            return "This card does not appear to have the correct applet installed. Please try a different card.\n\n(\(code)) Reader Transceive Error: Session Invalidated."
+        case .readerTransceiveErrorSessionInvalidated: return "nfcReader.transeiveError.sessionInvalidated".localized
             
-        case .readerTransceiveErrorTagNotConnected:
-            return "Connection made with the card, but the card did not respond. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Tag Not Connected."
+        case .readerTransceiveErrorTagNotConnected: return "nfcReader.transeiveError.tagNotConnected".localized
             
-        case .readerTransceiveErrorPacketTooLong:
-            return "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.\n\n(\(code)) Reader Transceive Error: Packet Too Long."
+        case .readerTransceiveErrorPacketTooLong: return "nfcReader.transeiveError.packetTooLong".localized
             
-        case .readerSessionInvalidationErrorUserCanceled:
-            return "The user cancelled the connection.\n\n(\(code)) Reader Session Error: User Cancelled."
+        case .readerSessionInvalidationErrorUserCanceled: return "nfcReader.sessionInvalidationError.userCanceled".localized
             
-        case .readerSessionInvalidationErrorSessionTimeout:
-            return "No compatible device was detected within the time limit.\n\n(\(code)) Reader Session Error: Session Timeout."
+        case .readerSessionInvalidationErrorSessionTimeout: return "nfcReader.sessionInvalidationError.sessionTimeout".localized
             
-        case .readerSessionInvalidationErrorSessionTerminatedUnexpectedly:
-            return "The communication session was terminated unexpectedly. Move the card away from the phone and try again.\n\n(\(code)) Reader Session Error: Session Terminated Unexpectedly."
+        case .readerSessionInvalidationErrorSessionTerminatedUnexpectedly: return "nfcReader.sessionInvalidationError.sessionTerminatedUnexpectedly".localized
             
-        case .readerSessionInvalidationErrorSystemIsBusy:
-            return "The NFC reader needs more time to reset. Move the card away from the phone and try again.\n\n(\(code)) Reader Session Error: System is Busy."
+        case .readerSessionInvalidationErrorSystemIsBusy: return "nfcReader.sessionInvalidationError.systemIsBusy".localized
             
-            
-        // Note: The following errors are associated with NDEF tag reading and writing, which is not supported
-        // by this SDK but are included for completeness.
-            
-        case .readerSessionInvalidationErrorFirstNDEFTagRead:
-            return "(\(code)) Reader Session Error: First NDEF tag read."
-            
-        case .tagCommandConfigurationErrorInvalidParameters:
-            return "(\(code)) Tag Command Configuration Error: Invalid Parameters."
-            
-        case .ndefReaderSessionErrorTagNotWritable:
-            return "(\(code)) NDEF Reader session Error: Tag Not Writable."
-            
-        case .ndefReaderSessionErrorTagUpdateFailure:
-            return "(\(code)) NDEF Reader session Error: Tag Update Failure."
-            
-        case .ndefReaderSessionErrorTagSizeTooSmall:
-            return "(\(code)) NDEF Reader session Error: Tag Size Too Small."
-            
-        case .ndefReaderSessionErrorZeroLengthMessage:
-            return "(\(code)) NDEF Reader session Error: Zero Length Message."
-            
-        default:
-            return "(\(code)) Reader Error: Unknown Error Code"
+        default: return "nfcReader.defaultError".localized
         }
     }
 }

@@ -2,7 +2,7 @@
 //  BiometricsSDKError+LocalizedDescription.swift
 //  SentryBiometricEnrollAndVerify
 //
-//  Created by John Ayres on 5/7/24.
+//  Copyright © 2024 Sentry Enterprises
 //
 
 import Foundation
@@ -15,134 +15,92 @@ extension SentrySDKError: LocalizedError {
     /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch self {
-        case .enrollCodeDigitOutOfBounds:
-            return "Individual enroll code digits must be in the range 0 - 9."
+        case .enrollCodeDigitOutOfBounds: return "sdkError.enrollCode.digitOutOfBounds".localized
             
-        case .enrollCodeLengthOutOfBounds:
-            return "The enroll code must be between 4 - 6 characters in length."
+        case .enrollCodeLengthOutOfBounds: return "sdkError.enrollCode.lengthOutOfBounds".localized
             
-        case .enrollmentStatusBufferTooSmall:
-            return "The buffer returned from querying the card for its biometric enrollment status was unexpectedly too small."
+        case .enrollmentStatusBufferTooSmall: return "sdkError.enrollmentStatus.bufferTooSmall".localized
             
-        case .invalidAPDUCommand:
-            return "The buffer used in the `NFCISO7816APDU` constructor was not a valid `APDU` command."
+        case .invalidAPDUCommand: return "sdkError.invalidAPDUCommand".localized
             
-        case .connectedWithoutTag:
-            return "NFC connection to card exists, but no tag."
+        case .connectedWithoutTag: return "sdkError.connectedWithoutTag".localized
             
-        case .incorrectTagFormat:
-            return "The card was scanned correctly, but it does not appear to be the correct format."
+        case .incorrectTagFormat: return "sdkError.incorrectTagFormat".localized
             
-        case .secureChannelInitializationError:
-            return "Unable to initialize secure communication channel."
+        case .secureChannelInitializationError: return "sdkError.secureChannelInitializationError".localized
             
-        case .cardOSVersionError:
-            return "Unexpected return value from querying card for OS version."
+        case .cardOSVersionError: return "sdkError.cardOSVersionError".localized
             
-        case .keyGenerationError:
-            return "Key generation error."
+        case .keyGenerationError: return "sdkError.keyGenerationError".localized
             
-        case .sharedSecretExtractionError:
-            return "Shared secret extract error."
+        case .sharedSecretExtractionError: return "sdkError.sharedSecretExtractionError".localized
             
-        case .secureCommunicationNotSupported:
-            return "Applets on the scanned card do not support encryption. Please open Settings and turn the Secure Communication option off, then try again."
+        case .secureCommunicationNotSupported: return "sdkError.secureCommunicationNotSupported".localized
             
-        case .dataSizeNotSupported:
-            return "Unable to store data to SentryCard: maximum size supported is 2048 bytes."
+        case .dataSizeNotSupported: return "sdkError.dataSizeNotSupported".localized
             
-        case .cvmAppletNotAvailable:
-            return "Unable to initialize the CVM applet on the SentryCard."
+        case .cvmAppletNotAvailable: return "sdkError.cvmApplet.notAvailable".localized
             
-        case .cvmAppletBlocked:
-            return "The CVM applet on the SentryCard is blocked."
+        case .cvmAppletBlocked: return "sdkError.cvmApplet.blocked".localized
             
-        case .bioverifyAppletNotInstalled:
-            return "The SentryCard does not contain the BioVerify applet. This applet is required. Please run the applet install script to install the required applets."
+        case .cvmAppletError(let code): return "sdkError.cvmApplet.error".localized
             
-        case .enrollModeNotAvailable:
-            return "The SentryCard is already enrolled. To re-enroll, go into Options and reset biometric enrollment data."
+        case .bioverifyAppletNotInstalled: return "sdkError.bioverifyApplet.notInstalled".localized
             
-        case .bioVerifyAppletWrongVersion:
-            return "This SentryCard has an unsupported version of the BioVerify applet installed."
+        case .bioVerifyAppletWrongVersion: return "sdkError.bioVerifyApplet.wrongVersion".localized
             
-        case .cvmAppletError(let code):
-            return "The biometric verification attempt failed to respond properly. Please try again.\n\nError Code: \(String(format:"%02X", code).uppercased())"
+        case .enrollModeNotAvailable: return "sdkError.enrollModeNotAvailable".localized
             
-        case .enrollVerificationError:
-            return "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.\n\n(6300) No match found."
+        case .enrollVerificationError: return "sdkError.enrollVerificationError".localized
 
 
         case .apduCommandError(let statusWord):
             switch statusWord {
-            case APDUResponseCode.noMatchFound.rawValue:
-                return "(6300) No match found."
+            case APDUResponseCode.noMatchFound.rawValue: return "sdkError.apduCommandError.noMatchFound".localized
                 
-            case APDUResponseCode.enrollCodeIncorrectThreeTriesRemain.rawValue:
-                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card.\n\n(0x63C3) Enroll code incorrect, three tries remaining."
+            case APDUResponseCode.enrollCodeIncorrectThreeTriesRemain.rawValue: return "sdkError.apduCommandError.enrollCodeIncorrectThreeTriesRemain".localized
                 
-            case APDUResponseCode.enrollCodeIncorrectTwoTriesRemain.rawValue:
-                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card.\n\n(0x63C2) Enroll code incorrect, two tries remaining."
+            case APDUResponseCode.enrollCodeIncorrectTwoTriesRemain.rawValue: return "sdkError.apduCommandErrorenrollCodeIncorrectTwoTriesRemain".localized
                 
-            case APDUResponseCode.enrollCodeIncorrectOneTriesRemain.rawValue:
-                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card.\n\n(0x63C1) Enroll code incorrect, one try remaining."
+            case APDUResponseCode.enrollCodeIncorrectOneTriesRemain.rawValue: return "sdkError.apduCommandError.enrollCodeIncorrectOneTriesRemain".localized
                 
-            case APDUResponseCode.enrollCodeIncorrectZeroTriesRemain.rawValue:
-                return "The enroll code on the scanned card does not match the enroll code set in the application. Open the iPhone Settings app, navigate to Sentry Enroll, and set the enroll code to match the enroll code on the card. Afterward, use the appropriate script file to reset your card.\n\n(0x63C0) Enroll code incorrect, zero tries remaining."
+            case APDUResponseCode.enrollCodeIncorrectZeroTriesRemain.rawValue: return "sdkError.apduCommandError.enrollCodeIncorrectZeroTriesRemain".localized
 
-            case APDUResponseCode.wrongLength.rawValue:
-                return "(0x6700) Length parameter incorrect."
+            case APDUResponseCode.wrongLength.rawValue: return "sdkError.apduCommandError.wrongLength".localized
                 
-            case APDUResponseCode.formatNotCompliant.rawValue:
-                return "(0x6701) Command APDU format not compliant with this standard."
+            case APDUResponseCode.formatNotCompliant.rawValue: return "sdkError.apduCommandError.formatNotCompliant".localized
                 
-            case APDUResponseCode.lengthValueNotTheOneExpected.rawValue:
-                return "(0x6702) The length parameter value is not the one expected."
+            case APDUResponseCode.lengthValueNotTheOneExpected.rawValue: return "sdkError.apduCommandError.lengthValueNotTheOneExpected".localized
 
-            case APDUResponseCode.communicationFailure.rawValue:
-                return "There was an error communicating with the card. Move the card away from the phone and try again.\n\n(6741) Non-specific communication failure."
+            case APDUResponseCode.communicationFailure.rawValue: return "sdkError.apduCommandError.communicationFailure".localized
                 
-            case APDUResponseCode.fingerRemoved.rawValue:
-                return "The finger was removed from the sensor before the scan completed. Please try again.\n\n(6745) Finger removed before scan completed."
+            case APDUResponseCode.fingerRemoved.rawValue: return "sdkError.apduCommandError.fingerRemoved".localized
                 
-            case APDUResponseCode.poorImageQuality.rawValue:
-                return "The image scanned by the sensor was poor quality, please try again.\n\n(6747) Poor image quality."
+            case APDUResponseCode.poorImageQuality.rawValue: return "sdkError.apduCommandError.poorImageQuality".localized
                 
-            case APDUResponseCode.userTimeoutExpired.rawValue:
-                return "No finger was detected on the sensor. Please try again.\n\n(6748) User timeout expired."
+            case APDUResponseCode.userTimeoutExpired.rawValue: return "sdkError.apduCommandError.userTimeoutExpired".localized
                 
-            case APDUResponseCode.hostInterfaceTimeoutExpired.rawValue:
-                return "The card did not respond in the expected amount of time. Please try again.\n\n(6749) Host interface timeout expired."
+            case APDUResponseCode.hostInterfaceTimeoutExpired.rawValue: return "sdkError.apduCommandError.hostInterfaceTimeoutExpired".localized
                 
-            case APDUResponseCode.conditionOfUseNotSatisfied.rawValue:
-                return "(6985) Conditions of use not satisfied."
+            case APDUResponseCode.conditionOfUseNotSatisfied.rawValue: return "sdkError.apduCommandError.conditionOfUseNotSatisfied".localized
                 
-            case APDUResponseCode.notEnoughMemory.rawValue:
-                return "(6A84) Not enough memory space in the file."
+            case APDUResponseCode.notEnoughMemory.rawValue: return "sdkError.apduCommandError.notEnoughMemory".localized
 
-            case APDUResponseCode.wrongParameters.rawValue:
-                return "(0x6B00) Parameter bytes are invalid."
+            case APDUResponseCode.wrongParameters.rawValue: return "sdkError.apduCommandError.wrongParameters".localized
                 
-            case APDUResponseCode.instructionByteNotSupported.rawValue:
-                return "(0x6D00) Instruction byte not supported or invalid."
+            case APDUResponseCode.instructionByteNotSupported.rawValue: return "sdkError.apduCommandError.instructionByteNotSupported".localized
                 
-            case APDUResponseCode.classByteNotSupported.rawValue:
-                return "(0x6E00) Class byte not supported or invalid."
+            case APDUResponseCode.classByteNotSupported.rawValue: return "sdkError.apduCommandError.classByteNotSupported".localized
 
-            case APDUResponseCode.commandAborted.rawValue:
-                return "(6F00) Command aborted – more exact diagnosis not possible (e.g. operating system error)."
+            case APDUResponseCode.commandAborted.rawValue: return "sdkError.apduCommandError.commandAborted".localized
                 
-            case APDUResponseCode.noPreciseDiagnosis.rawValue:
-                return "An error occurred while communicating with the card. Move the card away from the phone and try again.\n\n(0x6F87) No precise diagnosis."
+            case APDUResponseCode.noPreciseDiagnosis.rawValue: return "sdkError.apduCommandError.noPreciseDiagnosis".localized
                 
-            case APDUResponseCode.cardDead.rawValue:
-                return "(6FFF) Card dead (overuse)."
+            case APDUResponseCode.cardDead.rawValue: return "sdkError.apduCommandError.cardDead".localized
 
-            case APDUResponseCode.calibrationError.rawValue:
-                return "(6744) The fingerprint sensor is returning a calibration error."
+            case APDUResponseCode.calibrationError.rawValue: return "sdkError.apduCommandError.calibrationError".localized
                 
-            default:
-                return "Unknown Error Code: \(String(format:"%02X", statusWord).uppercased())"
+            default: return "sdkError.apduCommandError.default".localized
             }
         }
     }

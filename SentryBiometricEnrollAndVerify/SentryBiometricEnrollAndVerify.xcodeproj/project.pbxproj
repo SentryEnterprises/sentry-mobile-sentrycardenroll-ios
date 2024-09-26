@@ -12,9 +12,7 @@
 		143E4B172C7CE654005A9EEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E4B162C7CE654005A9EEC /* AppDelegate.swift */; };
 		143E4B192C7CE654005A9EEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E4B182C7CE654005A9EEC /* SceneDelegate.swift */; };
 		143E4B1B2C7CE654005A9EEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143E4B1A2C7CE654005A9EEC /* ViewController.swift */; };
-		143E4B1E2C7CE654005A9EEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 143E4B1D2C7CE654005A9EEC /* Base */; };
 		143E4B202C7CE659005A9EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 143E4B1F2C7CE659005A9EEC /* Assets.xcassets */; };
-		143E4B232C7CE659005A9EEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 143E4B222C7CE659005A9EEC /* Base */; };
 		143E4B282C7CE659005A9EEC /* SentryEnrollAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 143E4B142C7CE654005A9EEC /* SentryEnrollAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		143E4B322C7CE7D8005A9EEC /* attach_card.json in Resources */ = {isa = PBXBuildFile; fileRef = 143E4B2F2C7CE7D8005A9EEC /* attach_card.json */; };
 		143E4B332C7CE7D8005A9EEC /* finger_position.json in Resources */ = {isa = PBXBuildFile; fileRef = 143E4B302C7CE7D8005A9EEC /* finger_position.json */; };
@@ -31,12 +29,16 @@
 		144A0C862C25D1A500A4E7AA /* VersionInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */; };
 		144A0C882C25F66F00A4E7AA /* VersionInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A0C872C25F66F00A4E7AA /* VersionInformationViewController.swift */; };
 		144A0C8B2C29E29A00A4E7AA /* SentrySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 144A0C8A2C29E29A00A4E7AA /* SentrySDK */; };
+		1469CFDF2CA47766008B57AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1469CFDD2CA47766008B57AC /* Localizable.strings */; };
+		1469CFE02CA47766008B57AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1469CFDD2CA47766008B57AC /* Localizable.strings */; };
+		1469CFE72CA47AE1008B57AC /* GetCardStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1469CFE62CA47AE1008B57AC /* GetCardStatus.storyboard */; };
+		1469CFE92CA47AFC008B57AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1469CFE82CA47AFC008B57AC /* LaunchScreen.storyboard */; };
+		1469CFED2CA47BB7008B57AC /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469CFEC2CA47BB7008B57AC /* String+Additions.swift */; };
+		1469CFEE2CA47BB7008B57AC /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469CFEC2CA47BB7008B57AC /* String+Additions.swift */; };
 		14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */; };
 		14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */; };
 		14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */; };
-		14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F322BDFF2CD007A26B9 /* GetCardStatus.storyboard */; };
 		14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14902F352BDFF2CF007A26B9 /* Assets.xcassets */; };
-		14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */; };
 		14902F462BDFF79C007A26B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 14902F452BDFF79C007A26B9 /* Lottie */; };
 		14902F622BE3D008007A26B9 /* NFCReaderError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14902F612BE3D008007A26B9 /* NFCReaderError+LocalizedError.swift */; };
 		14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */; };
@@ -82,9 +84,7 @@
 		143E4B162C7CE654005A9EEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		143E4B182C7CE654005A9EEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		143E4B1A2C7CE654005A9EEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		143E4B1D2C7CE654005A9EEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		143E4B1F2C7CE659005A9EEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		143E4B222C7CE659005A9EEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		143E4B242C7CE659005A9EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		143E4B252C7CE659005A9EEC /* SentryEnrollAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SentryEnrollAppClip.entitlements; sourceTree = "<group>"; };
 		143E4B2F2C7CE7D8005A9EEC /* attach_card.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = attach_card.json; path = "SentryBiometricEnrollAndVerify/Resources/Lottie Animations/attach_card.json"; sourceTree = SOURCE_ROOT; };
@@ -94,13 +94,18 @@
 		144A0C832C25CE3F00A4E7AA /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionInformation.storyboard; sourceTree = "<group>"; };
 		144A0C872C25F66F00A4E7AA /* VersionInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInformationViewController.swift; sourceTree = "<group>"; };
+		1469CFDE2CA47766008B57AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1469CFE52CA477C7008B57AC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1469CFE62CA47AE1008B57AC /* GetCardStatus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetCardStatus.storyboard; sourceTree = "<group>"; };
+		1469CFE82CA47AFC008B57AC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1469CFEA2CA47B1D008B57AC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1469CFEB2CA47B28008B57AC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1469CFEC2CA47BB7008B57AC /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		14902F292BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SentryBiometricEnrollAndVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardStatusViewController.swift; sourceTree = "<group>"; };
-		14902F332BDFF2CD007A26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GetCardStatus.storyboard; sourceTree = "<group>"; };
 		14902F352BDFF2CF007A26B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		14902F382BDFF2CF007A26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14902F3A2BDFF2CF007A26B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14902F402BDFF3FB007A26B9 /* SentryBiometricEnrollAndVerify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SentryBiometricEnrollAndVerify.entitlements; sourceTree = "<group>"; };
 		14902F612BE3D008007A26B9 /* NFCReaderError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFCReaderError+LocalizedError.swift"; sourceTree = "<group>"; };
@@ -148,9 +153,9 @@
 				143E4B162C7CE654005A9EEC /* AppDelegate.swift */,
 				143E4B182C7CE654005A9EEC /* SceneDelegate.swift */,
 				143E4B1A2C7CE654005A9EEC /* ViewController.swift */,
-				143E4B1C2C7CE654005A9EEC /* Main.storyboard */,
+				1469CFEA2CA47B1D008B57AC /* Main.storyboard */,
 				143E4B1F2C7CE659005A9EEC /* Assets.xcassets */,
-				143E4B212C7CE659005A9EEC /* LaunchScreen.storyboard */,
+				1469CFEB2CA47B28008B57AC /* LaunchScreen.storyboard */,
 				143E4B242C7CE659005A9EEC /* Info.plist */,
 				143E4B252C7CE659005A9EEC /* SentryEnrollAppClip.entitlements */,
 			);
@@ -214,7 +219,7 @@
 				14902F402BDFF3FB007A26B9 /* SentryBiometricEnrollAndVerify.entitlements */,
 				14902F2C2BDFF2CD007A26B9 /* AppDelegate.swift */,
 				14902F2E2BDFF2CD007A26B9 /* SceneDelegate.swift */,
-				14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */,
+				1469CFE82CA47AFC008B57AC /* LaunchScreen.storyboard */,
 				14902F3A2BDFF2CF007A26B9 /* Info.plist */,
 				14E774102BE579C70046D1E5 /* Settings.bundle */,
 			);
@@ -226,6 +231,7 @@
 			children = (
 				14902F6F2BE3E816007A26B9 /* Lottie Animations */,
 				14902F352BDFF2CF007A26B9 /* Assets.xcassets */,
+				1469CFDD2CA47766008B57AC /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -233,7 +239,7 @@
 		14902F432BDFF70E007A26B9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				14902F322BDFF2CD007A26B9 /* GetCardStatus.storyboard */,
+				1469CFE62CA47AE1008B57AC /* GetCardStatus.storyboard */,
 				14902F302BDFF2CD007A26B9 /* GetCardStatusViewController.swift */,
 				14902F632BE3DE90007A26B9 /* FingerprintEnrollment.storyboard */,
 				14902F672BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift */,
@@ -255,6 +261,7 @@
 				14E7740E2BE579040046D1E5 /* AppSettings.swift */,
 				14902F612BE3D008007A26B9 /* NFCReaderError+LocalizedError.swift */,
 				14B73D602BEAC3C800AE9CA7 /* BiometricsSDKError+LocalizedDescription.swift */,
+				1469CFEC2CA47BB7008B57AC /* String+Additions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -356,6 +363,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 14902F202BDFF2CD007A26B9;
 			packageReferences = (
@@ -380,9 +388,8 @@
 				143E4B202C7CE659005A9EEC /* Assets.xcassets in Resources */,
 				143E4B332C7CE7D8005A9EEC /* finger_position.json in Resources */,
 				143E4B342C7CE7D8005A9EEC /* fingerprint.json in Resources */,
-				143E4B232C7CE659005A9EEC /* Base in Resources */,
 				143E4B322C7CE7D8005A9EEC /* attach_card.json in Resources */,
-				143E4B1E2C7CE654005A9EEC /* Base in Resources */,
+				1469CFE02CA47766008B57AC /* Localizable.strings in Resources */,
 				143E4B392C7CF275005A9EEC /* FingerprintEnrollment.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,13 +400,14 @@
 			files = (
 				14902F662BE3DEA2007A26B9 /* FingerprintVerification.storyboard in Resources */,
 				144A0C822C25CC7B00A4E7AA /* Options.storyboard in Resources */,
-				14902F392BDFF2CF007A26B9 /* LaunchScreen.storyboard in Resources */,
+				1469CFE92CA47AFC008B57AC /* LaunchScreen.storyboard in Resources */,
 				14902F732BE3E853007A26B9 /* fingerprint.json in Resources */,
 				1422168C2BED7699000AB5CD /* ResetBiometricData.storyboard in Resources */,
 				14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */,
 				144A0C862C25D1A500A4E7AA /* VersionInformation.storyboard in Resources */,
-				14902F342BDFF2CD007A26B9 /* GetCardStatus.storyboard in Resources */,
+				1469CFE72CA47AE1008B57AC /* GetCardStatus.storyboard in Resources */,
 				14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */,
+				1469CFDF2CA47766008B57AC /* Localizable.strings in Resources */,
 				14902F722BE3E853007A26B9 /* attach_card.json in Resources */,
 				14E228AA2C6BB1FC00B9D842 /* finger_position.json in Resources */,
 				14E774112BE579C70046D1E5 /* Settings.bundle in Resources */,
@@ -415,6 +423,7 @@
 			files = (
 				143E4B1B2C7CE654005A9EEC /* ViewController.swift in Sources */,
 				143E4B172C7CE654005A9EEC /* AppDelegate.swift in Sources */,
+				1469CFEE2CA47BB7008B57AC /* String+Additions.swift in Sources */,
 				143E4B192C7CE654005A9EEC /* SceneDelegate.swift in Sources */,
 				143E4B3B2C7CF2B1005A9EEC /* AppSettings.swift in Sources */,
 				143E4B3C2C7CF2D7005A9EEC /* NFCReaderError+LocalizedError.swift in Sources */,
@@ -429,6 +438,7 @@
 			files = (
 				1422168E2BED76A7000AB5CD /* ResetBiometricDataViewController.swift in Sources */,
 				144A0C882C25F66F00A4E7AA /* VersionInformationViewController.swift in Sources */,
+				1469CFED2CA47BB7008B57AC /* String+Additions.swift in Sources */,
 				14902F312BDFF2CD007A26B9 /* GetCardStatusViewController.swift in Sources */,
 				14E7740F2BE579040046D1E5 /* AppSettings.swift in Sources */,
 				14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */,
@@ -452,36 +462,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		143E4B1C2C7CE654005A9EEC /* Main.storyboard */ = {
+		1469CFDD2CA47766008B57AC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				143E4B1D2C7CE654005A9EEC /* Base */,
+				1469CFDE2CA47766008B57AC /* en */,
+				1469CFE52CA477C7008B57AC /* es */,
 			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		143E4B212C7CE659005A9EEC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				143E4B222C7CE659005A9EEC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		14902F322BDFF2CD007A26B9 /* GetCardStatus.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14902F332BDFF2CD007A26B9 /* Base */,
-			);
-			name = GetCardStatus.storyboard;
-			sourceTree = "<group>";
-		};
-		14902F372BDFF2CF007A26B9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14902F382BDFF2CF007A26B9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -494,7 +481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryEnrollAppClip/SentryEnrollAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryEnrollAppClip/Info.plist;
@@ -530,7 +517,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryEnrollAppClip/SentryEnrollAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryEnrollAppClip/Info.plist;
@@ -564,6 +551,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -627,6 +615,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -686,7 +675,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
@@ -723,7 +712,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;

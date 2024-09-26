@@ -21,6 +21,8 @@ class GetCardStatusViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
+    @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var gettingStartedLabel: UILabel!
     @IBOutlet weak var placeCardHereLabel: UILabel!
     @IBOutlet weak var arrowLeft: UIImageView!
     @IBOutlet weak var arrowDown: UIImageView!
@@ -92,11 +94,18 @@ class GetCardStatusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Get Card Status"
+        navigationItem.title = "getCardStatus.screen.navigationTitle".localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(optionsTapped))
         versionLabel.text = "Sentry Enroll \(AppSettings.getSecureCommunicationSetting() ? "🔒 " : "")\(AppSettings.getVersionAndBuildNumber())"
         
         placeCard.layer.opacity = traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+        
+        gettingStartedLabel.text = "getCardStatus.screen.gettingStarted".localized
+        instructionsLabel.text = "getCardStatus.screen.instructions".localized
+        scanCardButton.setTitle("getCardStatus.screen.button".localized, for: .normal)
+        placeCardHereLabel.text = "global.placeCardHere".localized
+        sentrySDK.cardCommunicationErrorText = "nfcScanning.communicationError".localized
+        sentrySDK.establishConnectionText = "nfcScanning.establishConnection".localized
     }
     
     
@@ -146,15 +155,15 @@ class GetCardStatusViewController: UIViewController {
                 if let status = try await self?.sentrySDK.getEnrollmentStatus() {                  
                     // modifies various UI elements based on the card's status
                     if status.mode == .enrollment {
-                        title = "Not Enrolled"
-                        instructions = "This card is not enrolled. No fingerprints are recorded on this card. Click OK to continue."
+                        title = "getCardStatus.status.notEnrolled".localized
+                        instructions = "getCardStatus.notEnrolled.instructions".localized
                     } else {
-                        title = "Enrolled"
-                        instructions = "This card is enrolled. A fingerprint is recorded on this card. Click OK to continue."
+                        title = "getCardStatus.status.enrolled".localized
+                        instructions = "getCardStatus.enrolled.instructions".localized
                     }
                     
                     let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    let action = UIAlertAction(title: "global.ok".localized, style: .default, handler: { _ in
                         if status.mode == .enrollment {
                             // if the card is in enrollment mode, navigate to the enrollment screen
                             if let vc = UIStoryboard(name: "FingerprintEnrollment", bundle: .main).instantiateViewController(withIdentifier: "FingerprintEnrollment") as? FingerprintEnrollmentViewController {
@@ -190,8 +199,8 @@ class GetCardStatusViewController: UIViewController {
 
                 // if the user cancelled or the session timed out, don't display this as an error
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             }
