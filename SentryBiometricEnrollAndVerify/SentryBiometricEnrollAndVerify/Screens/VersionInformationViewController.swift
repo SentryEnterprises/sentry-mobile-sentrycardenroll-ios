@@ -38,6 +38,7 @@ class VersionInformationViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var scanCardButton: UIButton!
     @IBOutlet weak var verifyVersionLabel: UILabel!
     @IBOutlet weak var cvmVersionLabel: UILabel!
@@ -54,7 +55,15 @@ class VersionInformationViewController: UIViewController {
     // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Version Information"
+        navigationItem.title = "versionInformation.screen.navigationTitle".localized
+        
+        instructionsLabel.text = "versionInformation.screen.instructions".localized
+        sdkVersionLabel.text = "versionInformation.screen.sdkVersion".localized
+        osVersionLabel.text = "versionInformation.screen.osVersion".localized
+        enrollVersionLabel.text = "versionInformation.screen.enrollVersion".localized
+        cvmVersionLabel.text = "versionInformation.screen.cvmVersion".localized
+        verifyVersionLabel.text = "versionInformation.screen.verifyVersion".localized
+        scanCardButton.setTitle("versionInformation.screen.button".localized, for: .normal)
     }
     
     
@@ -75,15 +84,15 @@ class VersionInformationViewController: UIViewController {
              */
             
             do {
-                var sdk = "Unavailable"
+                var sdk = "global.unavailable".localized
                 let sdkVersion = SentrySDK.version
                 sdk = "\(sdkVersion.majorVersion).\(sdkVersion.minorVersion).\(sdkVersion.hotfixVersion)"
-                self?.sdkVersionLabel.text = "SDK Version: \(sdk)"
+                self?.sdkVersionLabel.text = "versionInformation.screen.sdkVersion".localized + "\(sdk)"
                 
                 // retrieve version information. starts NFC scanning.
                 let version = try await self?.sentrySDK.getCardSoftwareVersions()
                 if let version = version {
-                    var os = "Unavailable"
+                    var os = "global.unavailable".localized
                     if version.osVersion.majorVersion > 0 {
                         os = "\(version.osVersion.majorVersion).\(version.osVersion.minorVersion).\(version.osVersion.hotfixVersion)"
                         
@@ -92,9 +101,9 @@ class VersionInformationViewController: UIViewController {
                         }
                     }
                     
-                    var enroll = "NOT INSTALLED"
+                    var enroll = "global.notInstalled".localized
                     if version.enrollAppletVersion.isInstalled {
-                        enroll = "Unavailable"
+                        enroll = "global.unavailable".localized
                         if version.enrollAppletVersion.majorVersion > 0 {
                             enroll = "\(version.enrollAppletVersion.majorVersion).\(version.enrollAppletVersion.minorVersion).\(version.enrollAppletVersion.hotfixVersion)"
                             
@@ -104,9 +113,9 @@ class VersionInformationViewController: UIViewController {
                         }
                     }
                     
-                    var cvm = "NOT INSTALLED"
+                    var cvm = "global.notInstalled".localized
                     if version.cvmAppletVersion.isInstalled {
-                        cvm = "Unavailable"
+                        cvm = "global.unavailable".localized
                         if version.cvmAppletVersion.majorVersion > 0 {
                             cvm = "\(version.cvmAppletVersion.majorVersion).\(version.cvmAppletVersion.minorVersion).\(version.cvmAppletVersion.hotfixVersion)"
                             
@@ -116,9 +125,9 @@ class VersionInformationViewController: UIViewController {
                         }
                     }
  
-                    var verify = "NOT INSTALLED"
+                    var verify = "global.notInstalled".localized
                     if version.verifyAppletVersion.isInstalled {
-                        verify = "Unavailable"
+                        verify = "global.unavailable".localized
                         if version.verifyAppletVersion.majorVersion > 0 {
                             verify = "\(version.verifyAppletVersion.majorVersion).\(version.verifyAppletVersion.minorVersion).\(version.verifyAppletVersion.hotfixVersion)"
                             
@@ -128,10 +137,11 @@ class VersionInformationViewController: UIViewController {
                         }
                     }
                     
-                    self?.osVersionLabel.text = "OS Version: \(os)"
-                    self?.enrollVersionLabel.text = "Enroll Version: \(enroll)"
-                    self?.cvmVersionLabel.text = "CVM Version: \(cvm)"
-                    self?.verifyVersionLabel.text = "Verify Version: \(verify)"
+                    self?.osVersionLabel.text = "versionInformation.screen.osVersion".localized + "\(os)"
+                    self?.enrollVersionLabel.text = "versionInformation.screen.enrollVersion".localized + "\(enroll)"
+                    self?.cvmVersionLabel.text = "versionInformation.screen.cvmVersion".localized + "\(cvm)"
+                    self?.verifyVersionLabel.text = "versionInformation.screen.verifyVersion".localized + "\(verify)"
+
                 }
             } catch (let error) {
                 print("!!! Error reading version information: \(error)")
@@ -150,8 +160,8 @@ class VersionInformationViewController: UIViewController {
                 
                 // if the user cancelled or the session timed out, don't display this as an error
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             }

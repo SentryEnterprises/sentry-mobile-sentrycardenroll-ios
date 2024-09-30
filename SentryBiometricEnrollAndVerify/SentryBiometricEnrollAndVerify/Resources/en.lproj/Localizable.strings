@@ -11,6 +11,8 @@
 "global.ok" = "OK";
 "global.error" = "Error";
 "global.placeCardHere" = "Place Card Under Phone Here";
+"global.unavailable" = "Unavailable";
+"global.notInstalled" = "NOT INSTALLED";
 
 
 // MARK: - GetCardStatus Screen
@@ -26,7 +28,7 @@
 
 // MARK: - FingerprintVerification Screen
 "fingerprintVerification.screen.navigationTitle" = "Fingerprint Validation";
-"fingerprintVerification.screen.instructions" = "Place your card on a flat, non-metalic surface then place the phone on top leaving sensor accessible for finger print scanning.";
+"fingerprintVerification.screen.instructions" = "Place your card on a flat, non-metallic surface then place the phone on top leaving sensor accessible for finger print scanning.";
 "fingerprintVerification.screen.button" = "Verify Fingerprint";
 "fingerprintVerification.status.matchedTitle" = "Fingerprint Matched";
 "fingerprintVerification.status.matchedInstructions" = "The scanned fingerprint matches the fingerprint recorded during enrollment.";
@@ -50,6 +52,21 @@
 "fingerprintEnrollment.complete.message" = "Enrollment Completed!";
 "fingerprintEnrollment.finished.title" = "Enrollment Finished";
 "fingerprintEnrollment.finished.message" = "Your fingerprint is now enrolled. Click OK to continue";
+
+
+// MARK: - Version Information Screen
+"versionInformation.screen.navigationTitle" = "Version Information";
+"versionInformation.screen.instructions" = "Place your card on a flat, non-metalic surface then place the phone on top.";
+"versionInformation.screen.button" = "Scan Card";
+"versionInformation.screen.sdkVersion" = "SDK Version: ";
+"versionInformation.screen.osVersion" = "OS Version: ";
+"versionInformation.screen.enrollVersion" = "Enroll Version: ";
+"versionInformation.screen.cvmVersion" = "CVM Version: ";
+"versionInformation.screen.verifyVersion" = "Verify Version: ";
+
+
+
+
 
 
 // MARK: - SDK Messages
