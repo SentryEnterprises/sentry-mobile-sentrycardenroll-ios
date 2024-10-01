@@ -95,7 +95,13 @@ class GetCardStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "getCardStatus.screen.navigationTitle".localized
+        
+        #if INTERNAL_FEATURES
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(optionsTapped))
+        #else
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(infoTapped))
+        #endif
+        
         versionLabel.text = "Sentry Enroll \(AppSettings.getSecureCommunicationSetting() ? "🔒 " : "")\(AppSettings.getVersionAndBuildNumber())"
         
         placeCard.layer.opacity = traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
@@ -111,8 +117,17 @@ class GetCardStatusViewController: UIViewController {
     
     // MARK: - Private Methods
     
+    // shows the Options screen
     @objc private func optionsTapped(_ sender: Any) {
         if let vc = UIStoryboard(name: "Options", bundle: .main).instantiateViewController(withIdentifier: "Options") as? OptionsViewController {
+            vc.loadViewIfNeeded()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    // shows the Version Info screen
+    @objc private func infoTapped(_ sender: Any) {
+        if let vc = UIStoryboard(name: "VersionInformation", bundle: .main).instantiateViewController(withIdentifier: "VersionInformation") as? VersionInformationViewController {
             vc.loadViewIfNeeded()
             navigationController?.pushViewController(vc, animated: true)
         }

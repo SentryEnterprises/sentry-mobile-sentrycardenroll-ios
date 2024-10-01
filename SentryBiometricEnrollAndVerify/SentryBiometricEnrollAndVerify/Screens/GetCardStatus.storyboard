@@ -172,7 +172,7 @@
     <resources>
         <image name="arrow.down" catalog="system" width="118" height="128"/>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
-        <image name="card" width="243" height="153"/>
+        <image name="card" width="750.5" height="468"/>
         <image name="card_outline" width="243.36000061035156" height="153.36000061035156"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

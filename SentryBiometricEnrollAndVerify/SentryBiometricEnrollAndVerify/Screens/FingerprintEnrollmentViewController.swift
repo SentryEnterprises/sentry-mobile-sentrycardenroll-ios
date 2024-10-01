@@ -21,6 +21,12 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
+    @IBOutlet weak var instructionContainer: UIStackView!
+    @IBOutlet weak var arrowLeft: UIImageView!
+    @IBOutlet weak var arrowDown: UIImageView!
+    @IBOutlet weak var placeCardHereLabel: UILabel!
+    @IBOutlet weak var placeCardOutline: UIImageView!
+    @IBOutlet weak var placeCard: UIImageView!
     @IBOutlet weak var scanCardButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
@@ -42,8 +48,41 @@ class FingerprintEnrollmentViewController: UIViewController {
     // starts the scanning functionality
     @IBAction func scanCardButtonTouched(_ sender: Any) {
         scanCardButton.isUserInteractionEnabled = false     // guards against double-tap
-        startBiometricEnrollment()
-    }
+        
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.instructionContainer.transform = CGAffineTransform(translationX: 0, y: 80)
+        }, completion: { _ in
+            self.placeCard.layer.opacity = 0.0
+            self.placeCard.isHidden = false
+            self.placeCardOutline.layer.opacity = 0.0
+            self.placeCardOutline.isHidden = false
+            self.arrowDown.layer.opacity = 0.0
+            self.arrowDown.isHidden = false
+            self.arrowLeft.layer.opacity = 0.0
+            self.arrowLeft.isHidden = false
+            self.placeCardHereLabel.layer.opacity = 0.0
+            self.placeCardHereLabel.isHidden = false
+            
+            self.placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
+            
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.placeCard.layer.opacity = self.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+                self.placeCardOutline.layer.opacity = 1.0
+                self.arrowDown.layer.opacity = 1.0
+                self.arrowLeft.layer.opacity = 1.0
+                self.placeCardHereLabel.layer.opacity = 1.0
+                
+                self.placeCard.transform = CGAffineTransform.identity
+
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                    self.placeCardOutline.layer.opacity = 0.1
+                }
+                
+                self.startBiometricEnrollment()
+            })
+        })
+   }
     
     
     // MARK: - Overrides
@@ -51,6 +90,8 @@ class FingerprintEnrollmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "fingerprintEnrollment.screen.navigationTitle".localized
+        
+        placeCard.layer.opacity = self.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
         
         titleLabel.text = "fingerprintEnrollment.step1.title".localized
         messageLabel.text = "fingerprintEnrollment.step2.message".localized
@@ -65,18 +106,52 @@ class FingerprintEnrollmentViewController: UIViewController {
     // scans the card and performs fingerprint enrollment
     private func startBiometricEnrollment() {
         // modifies UI elements based on the state of connection
+        func showStep1() {
+            self.titleLabel.text = "fingerprintEnrollment.step1.title".localized
+            self.messageLabel.text = "fingerprintEnrollment.step1.message".localized
+            self.placeCardImage.isHidden = false
+            self.lottieAnimationViewContainer.isHidden = true
+        }
+        
+        func showStep2() {
+            self.titleLabel.text = "fingerprintEnrollment.step2.title".localized
+            self.messageLabel.text = "fingerprintEnrollment.step2.message".localized
+            self.placeCardImage.isHidden = true
+            self.lottieAnimationViewContainer.isHidden = false
+        }
+
+        // modifies UI elements based on the state of connection
         func handleConnected(_ isConnected: Bool) {
             DispatchQueue.main.async { [weak self] in
                 if isConnected {
-                    self?.titleLabel.text = "fingerprintEnrollment.step2.title".localized
-                    self?.messageLabel.text = "fingerprintEnrollment.step2.message".localized
-                    self?.placeCardImage.isHidden = true
-                    self?.lottieAnimationViewContainer.isHidden = false
+                    print("*** Showing card connected ***")
+                    showStep2()
+                    
+                    self?.placeCardOutline.isHidden = true
+                    self?.placeCardOutline.layer.removeAllAnimations()
+                    self?.arrowDown.isHidden = true
+                    self?.arrowLeft.isHidden = true
+                    self?.placeCardHereLabel.isHidden = true
+                    self?.placeCard.layer.opacity = 0.8
+
+                    UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                        self?.placeCard.layer.opacity = 0.5
+                    }
                 } else {
-                    self?.titleLabel.text = "fingerprintEnrollment.step1.title".localized
-                    self?.messageLabel.text = "fingerprintEnrollment.step2.message".localized
-                    self?.placeCardImage.isHidden = false
-                    self?.lottieAnimationViewContainer.isHidden = true
+                    print("*** Showing card not connected ***")
+                    showStep1()
+                    
+                    self?.placeCard.layer.removeAllAnimations()
+                    self?.placeCard.layer.opacity = self?.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+                    self?.placeCardOutline.isHidden = false
+                    self?.arrowDown.isHidden = false
+                    self?.arrowLeft.isHidden = false
+                    self?.placeCardHereLabel.isHidden = false
+                    self?.placeCardOutline.layer.opacity = 1.0
+
+                    UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                        self?.placeCardOutline.layer.opacity = 0.1
+                    }
                 }
             }
         }
@@ -84,8 +159,20 @@ class FingerprintEnrollmentViewController: UIViewController {
         Task { [weak self] in
             defer {
                 self?.scanCardButton.isUserInteractionEnabled = true
-            }
+                
+                self?.placeCard.isHidden = true
+                self?.placeCardOutline.isHidden = true
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardHereLabel.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.placeCard.layer.removeAllAnimations()
 
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+                    self?.instructionContainer.transform = CGAffineTransform(translationX: 0, y: 0)
+                })
+            }
+            
             let isReset = self?.resetIsNeeded ?? false
             self?.resetIsNeeded = false
             
@@ -96,7 +183,11 @@ class FingerprintEnrollmentViewController: UIViewController {
             do {
                 // perform the fingerprint enrollment process. starts NFC scanning.
                 try await self?.sentrySDK.enrollFingerprint(connected: { nfcSession, connected in
-                    nfcSession.alertMessage = "fingerprintEnrollment.connected.message".localized
+                    if connected {
+                        nfcSession.alertMessage = "fingerprintEnrollment.connected.message".localized
+                    } else {
+                        nfcSession.alertMessage = "fingerprintEnrollment.notConnected.message".localized
+                    }
                     handleConnected(connected)
                 }, stepFinished: { [weak self] nfcSession, currentStep, maximumSteps in
                     DispatchQueue.main.async {
@@ -108,7 +199,7 @@ class FingerprintEnrollmentViewController: UIViewController {
                     }
                 }, withReset: isReset)
             } catch SentrySDKError.enrollVerificationError {
-                handleConnected(false)
+                showStep1()
                 
                 self?.resetIsNeeded = true
                 
@@ -116,10 +207,10 @@ class FingerprintEnrollmentViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
             } catch {
-               print("!!! Error during enrollment process: \(error)")
+                print("!!! Error during enrollment process: \(error)")
                 
-                handleConnected(false)
-                
+                showStep1()
+
                 var errorMessage = error.localizedDescription
                 
                 if let readerError = error as? NFCReaderError {
@@ -131,7 +222,7 @@ class FingerprintEnrollmentViewController: UIViewController {
                 }
                 
                 let errorCode = (error as NSError).code
-
+                
                 // if the user cancelled or the session timed out, don't display this as an error
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
                     let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)

@@ -44,8 +44,9 @@
 "fingerprintEnrollment.step1.title" = "Place the card on a flat\nnon-metallic surface";
 "fingerprintEnrollment.step1.message" = "Lay the phone over the top of the card so that just the fingerprint sensor is visible.";
 "fingerprintEnrollment.step2.title" = "Enroll Finger";
-"fingerprintEnrollment.step2.message" = "Place and lift your finger at different angles on your card’s sensor until you reach 100%.";
+"fingerprintEnrollment.step2.message" = "Place and lift your finger at different angles on your card’s sensor.";
 "fingerprintEnrollment.connected.message" = "Place and lift your thumb at different angles on your card’s sensor.";
+"fingerprintEnrollment.notConnected.message" = "Position the card under phone as shown above.";
 "fingerprintEnrollment.mismatch.title" = "Fingerprint Mismatch Error";
 "fingerprintEnrollment.mismatch.message" = "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.";
 "fingerprintEnrollment.finalVerify.message" = "Leave finger on sensor for final verification.";
@@ -110,6 +111,7 @@
 "sdkError.cvmApplet.notAvailable" = "Unable to initialize the CVM applet on the SentryCard.";
 "sdkError.cvmApplet.blocked" = "The CVM applet on the SentryCard is blocked.";
 "sdkError.cvmApplet.error" = "The biometric verification attempt failed to respond properly. Please try again.";
+"sdkError.enrollApplet.wrongVersion" = "The scanned card does not contain the required version of the Enroll applet.";
 "sdkError.bioverifyApplet.notInstalled" = "The SentryCard does not contain the BioVerify applet. This applet is required. Please run the applet install script to install the required applets.";
 "sdkError.bioVerifyApplet.wrongVersion" = "This SentryCard has an unsupported version of the BioVerify applet installed.";
 "sdkError.enrollModeNotAvailable" = "The SentryCard is already enrolled. To re-enroll, go into Options and reset biometric enrollment data.";

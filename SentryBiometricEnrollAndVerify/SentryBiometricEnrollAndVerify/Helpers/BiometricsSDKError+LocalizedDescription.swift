@@ -43,7 +43,7 @@ extension SentrySDKError: LocalizedError {
             
         case .cvmAppletBlocked: return "sdkError.cvmApplet.blocked".localized
             
-        case .cvmAppletError(let code): return "sdkError.cvmApplet.error".localized
+        case .cvmAppletError: return "sdkError.cvmApplet.error".localized
             
         case .bioverifyAppletNotInstalled: return "sdkError.bioverifyApplet.notInstalled".localized
             
@@ -51,6 +51,8 @@ extension SentrySDKError: LocalizedError {
             
         case .enrollModeNotAvailable: return "sdkError.enrollModeNotAvailable".localized
             
+        case .unsupportedEnrollAppletVersion: return "sdkError.enrollApplet.wrongVersion".localized
+
         case .enrollVerificationError: return "sdkError.enrollVerificationError".localized
 
 

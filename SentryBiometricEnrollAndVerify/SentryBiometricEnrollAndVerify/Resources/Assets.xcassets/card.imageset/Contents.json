@@ -15,7 +15,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "SentryCard_Sensor_Blk_flat.svg",
+      "filename" : "card_black.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -26,7 +26,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "SentryCard_Sensor_wht_flat.svg",
+      "filename" : "card_white.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
