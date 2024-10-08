@@ -21,6 +21,12 @@ class FingerprintVerificationViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
+    @IBOutlet weak var instructionsTitleLabel: UILabel!
+    @IBOutlet weak var placeCardHereLabel: UILabel!
+    @IBOutlet weak var arrowLeft: UIImageView!
+    @IBOutlet weak var arrowDown: UIImageView!
+    @IBOutlet weak var placeCardOutline: UIImageView!
+    @IBOutlet weak var placeCard: UIImageView!
     @IBOutlet weak var scanCardButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
     
@@ -45,7 +51,36 @@ class FingerprintVerificationViewController: UIViewController {
     // starts the scanning functionality
     @IBAction func verifyButtonTouched(_ sender: Any) {
         scanCardButton.isUserInteractionEnabled = false
-        verifyFingerprint()
+        
+        self.placeCard.layer.opacity = 0.0
+        self.placeCard.isHidden = false
+        self.placeCardOutline.layer.opacity = 0.0
+        self.placeCardOutline.isHidden = false
+        self.arrowDown.layer.opacity = 0.0
+        self.arrowDown.isHidden = false
+        self.arrowLeft.layer.opacity = 0.0
+        self.arrowLeft.isHidden = false
+        self.placeCardHereLabel.layer.opacity = 0.0
+        self.placeCardHereLabel.isHidden = false
+        
+        self.placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
+        
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.placeCard.layer.opacity = self.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+            self.placeCardOutline.layer.opacity = 1.0
+            self.arrowDown.layer.opacity = 1.0
+            self.arrowLeft.layer.opacity = 1.0
+            self.placeCardHereLabel.layer.opacity = 1.0
+            
+            self.placeCard.transform = CGAffineTransform.identity
+            
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                self.placeCardOutline.layer.opacity = 0.1
+            }
+            
+            self.verifyFingerprint()
+        })
     }
     
     
@@ -55,8 +90,12 @@ class FingerprintVerificationViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "fingerprintVerification.screen.navigationTitle".localized
         
+        sentrySDK.connectionDelegate = self
+        
+        instructionsTitleLabel.text = "fingerprintVerification.screen.instructionsTitle".localized
         instructionsLabel.text = "fingerprintVerification.screen.instructions".localized
         scanCardButton.setTitle("fingerprintVerification.screen.button".localized, for: .normal)
+        placeCardHereLabel.text = "global.placeCardHere".localized
         sentrySDK.cardCommunicationErrorText = "nfcScanning.communicationError".localized
         sentrySDK.establishConnectionText = "nfcScanning.establishConnection".localized
     }
@@ -69,6 +108,14 @@ class FingerprintVerificationViewController: UIViewController {
         Task { [weak self] in
             defer {
                 self?.scanCardButton.isUserInteractionEnabled = true
+                
+                self?.placeCard.isHidden = true
+                self?.placeCardOutline.isHidden = true
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardHereLabel.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.placeCard.layer.removeAllAnimations()
             }
 
             do {
@@ -114,6 +161,44 @@ class FingerprintVerificationViewController: UIViewController {
                     let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+}
+
+
+extension FingerprintVerificationViewController: SentrySDKConnectionDelegate {
+    func connected(session: NFCReaderSession, isConnected: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            if isConnected {
+                print("*** Showing card connected ***")
+                session.alertMessage = "fingerprintVerification.status.placeFinger".localized
+                
+                self?.placeCardOutline.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardHereLabel.isHidden = true
+                self?.placeCard.layer.opacity = 0.8
+                
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                    self?.placeCard.layer.opacity = 0.5
+                }
+            } else {
+                print("*** Showing card not connected ***")
+                session.alertMessage = "global.positionCard".localized
+                
+                self?.placeCard.layer.removeAllAnimations()
+                self?.placeCard.layer.opacity = self?.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+                self?.placeCardOutline.isHidden = false
+                self?.arrowDown.isHidden = false
+                self?.arrowLeft.isHidden = false
+                self?.placeCardHereLabel.isHidden = false
+                self?.placeCardOutline.layer.opacity = 1.0
+                
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                    self?.placeCardOutline.layer.opacity = 0.1
                 }
             }
         }

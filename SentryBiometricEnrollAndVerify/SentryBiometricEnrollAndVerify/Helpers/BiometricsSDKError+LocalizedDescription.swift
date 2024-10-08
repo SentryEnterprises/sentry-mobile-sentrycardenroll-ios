@@ -54,7 +54,8 @@ extension SentrySDKError: LocalizedError {
         case .unsupportedEnrollAppletVersion: return "sdkError.enrollApplet.wrongVersion".localized
 
         case .enrollVerificationError: return "sdkError.enrollVerificationError".localized
-
+      
+        case .invalidFingerIndex: return "sdkError.invalidFingerIndex".localized
 
         case .apduCommandError(let statusWord):
             switch statusWord {

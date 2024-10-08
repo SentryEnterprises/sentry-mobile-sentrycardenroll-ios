@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JN4-NO-ec2">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,7 +12,7 @@
         <!--Get Card Status View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GetCardStatusViewController" customModule="SentryBiometricEnrollAndVerify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GetCardStatusViewController" customModule="SentryCardEnroll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +40,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="instructionsLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbc-cS-xUA">
-                                        <rect key="frame" x="20" y="390.33333333333337" width="345" height="21.666666666666686"/>
+                                        <rect key="frame" x="20" y="390.33333333333337" width="353" height="21.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -58,7 +59,7 @@
                                     <constraint firstAttribute="bottom" secondItem="gbc-cS-xUA" secondAttribute="bottom" constant="8" id="CYU-Xh-5CZ"/>
                                     <constraint firstItem="7ZQ-V8-wZ7" firstAttribute="centerX" secondItem="6Y4-DB-FJH" secondAttribute="centerX" id="IjQ-tU-ZoE"/>
                                     <constraint firstItem="7ZQ-V8-wZ7" firstAttribute="centerY" secondItem="6Y4-DB-FJH" secondAttribute="centerY" constant="-65" id="NSw-hp-ShE"/>
-                                    <constraint firstAttribute="trailing" secondItem="gbc-cS-xUA" secondAttribute="trailing" constant="28" id="g89-W8-gdz"/>
+                                    <constraint firstAttribute="trailing" secondItem="gbc-cS-xUA" secondAttribute="trailing" constant="20" id="g89-W8-gdz"/>
                                     <constraint firstItem="gbc-cS-xUA" firstAttribute="leading" secondItem="6Y4-DB-FJH" secondAttribute="leading" constant="20" id="rsi-0I-mtr"/>
                                     <constraint firstItem="gbc-cS-xUA" firstAttribute="top" secondItem="KXP-RF-kft" secondAttribute="bottom" constant="12" id="way-2D-qhU"/>
                                     <constraint firstAttribute="height" constant="420" id="yNv-na-mxT"/>
@@ -178,7 +179,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

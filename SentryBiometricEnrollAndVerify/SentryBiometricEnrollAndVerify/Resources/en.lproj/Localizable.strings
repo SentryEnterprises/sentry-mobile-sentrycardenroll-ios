@@ -13,12 +13,13 @@
 "global.placeCardHere" = "Place Card Under Phone Here";
 "global.unavailable" = "Unavailable";
 "global.notInstalled" = "NOT INSTALLED";
+"global.positionCard" = "Position the card under phone as shown above.";
 
 
 // MARK: - GetCardStatus Screen
 "getCardStatus.screen.navigationTitle" = "Get Card Status";
 "getCardStatus.screen.gettingStarted" = "Getting Started:";
-"getCardStatus.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card\n• Click \"Scan Card\"";
+"getCardStatus.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Scan Card\"";
 "getCardStatus.screen.button" = "Scan Card";
 "getCardStatus.status.enrolled" = "Enrolled";
 "getCardStatus.status.notEnrolled" = "Not Enrolled";
@@ -28,7 +29,8 @@
 
 // MARK: - FingerprintVerification Screen
 "fingerprintVerification.screen.navigationTitle" = "Fingerprint Validation";
-"fingerprintVerification.screen.instructions" = "Place your card on a flat, non-metallic surface then place the phone on top leaving sensor accessible for finger print scanning.";
+"fingerprintVerification.screen.instructionsTitle" = "To Verify Fingerprint:";
+"fingerprintVerification.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Verify Fingerprint\"";
 "fingerprintVerification.screen.button" = "Verify Fingerprint";
 "fingerprintVerification.status.matchedTitle" = "Fingerprint Matched";
 "fingerprintVerification.status.matchedInstructions" = "The scanned fingerprint matches the fingerprint recorded during enrollment.";
@@ -36,23 +38,25 @@
 "fingerprintVerification.status.matchFailInstructions" = "The scanned fingerprint does not match the fingerprint recorded during enrollment.";
 "fingerprintVerification.status.notEnrolled" = "Card Not Enrolled";
 "fingerprintVerification.status.notEnrolledInstructions" = "Please enroll fingerprints on the card first.";
+"fingerprintVerification.status.placeFinger" = "Place your finger on the sensor.";
 
 
 // MARK: - Fingerprint Enrollment Screen
 "fingerprintEnrollment.screen.navigationTitle" = "Fingerprint Enrollment";
 "fingerprintEnrollment.screen.button" = "Scan Fingerprint";
-"fingerprintEnrollment.step1.title" = "Place the card on a flat\nnon-metallic surface";
-"fingerprintEnrollment.step1.message" = "Lay the phone over the top of the card so that just the fingerprint sensor is visible.";
-"fingerprintEnrollment.step2.title" = "Enroll Finger";
-"fingerprintEnrollment.step2.message" = "Place and lift your finger at different angles on your card’s sensor.";
+"fingerprintEnrollment.screen.instructionsTitle" = "To Enroll Fingerprint:";
+"fingerprintEnrollment.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Scan Fingerprint\"";
+"fingerprintEnrollment.hint.message" = "Place and lift your finger at different angles on your card’s sensor.";
 "fingerprintEnrollment.connected.message" = "Place and lift your thumb at different angles on your card’s sensor.";
-"fingerprintEnrollment.notConnected.message" = "Position the card under phone as shown above.";
 "fingerprintEnrollment.mismatch.title" = "Fingerprint Mismatch Error";
 "fingerprintEnrollment.mismatch.message" = "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.";
 "fingerprintEnrollment.finalVerify.message" = "Leave finger on sensor for final verification.";
 "fingerprintEnrollment.complete.message" = "Enrollment Completed!";
 "fingerprintEnrollment.finished.title" = "Enrollment Finished";
 "fingerprintEnrollment.finished.message" = "Your fingerprint is now enrolled. Click OK to continue";
+"fingerprintEnrollment.switch.finger" = "Now switch fingers. Place and lift finger #%i on your card’s sensor.";
+"fingerprintEnrollment.ready.finger" = "Ready for finger #%i!";
+"fingerprintEnrollment.fingerNumber" = "Finger #";
 
 
 // MARK: - Version Information Screen
@@ -116,6 +120,7 @@
 "sdkError.bioVerifyApplet.wrongVersion" = "This SentryCard has an unsupported version of the BioVerify applet installed.";
 "sdkError.enrollModeNotAvailable" = "The SentryCard is already enrolled. To re-enroll, go into Options and reset biometric enrollment data.";
 "sdkError.enrollVerificationError" = "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.";
+"sdkError.invalidFingerIndex" = "Invalid finger index";
 "sdkError.apduCommandError.noMatchFound" = "No match found.";
 "sdkError.apduCommandError.enrollCodeIncorrectThreeTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (three tries remaining).";
 "sdkError.apduCommandErrorenrollCodeIncorrectTwoTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (two tries remaining).";
