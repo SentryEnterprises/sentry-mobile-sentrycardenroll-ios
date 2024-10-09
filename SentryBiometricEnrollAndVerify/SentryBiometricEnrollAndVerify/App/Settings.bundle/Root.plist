@@ -24,7 +24,7 @@
 			<key>Key</key>
 			<string>code_number</string>
 			<key>DefaultValue</key>
-			<string>1234</string>
+			<string>111111</string>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
 		</dict>
