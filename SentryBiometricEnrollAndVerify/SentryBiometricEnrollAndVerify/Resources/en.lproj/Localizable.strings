@@ -19,7 +19,7 @@
 // MARK: - GetCardStatus Screen
 "getCardStatus.screen.navigationTitle" = "Get Card Status";
 "getCardStatus.screen.gettingStarted" = "Getting Started:";
-"getCardStatus.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Scan Card\"";
+"getCardStatus.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Scan Card\" button below";
 "getCardStatus.screen.button" = "Scan Card";
 "getCardStatus.status.enrolled" = "Enrolled";
 "getCardStatus.status.notEnrolled" = "Not Enrolled";
@@ -30,7 +30,7 @@
 // MARK: - FingerprintVerification Screen
 "fingerprintVerification.screen.navigationTitle" = "Fingerprint Validation";
 "fingerprintVerification.screen.instructionsTitle" = "To Verify Fingerprint:";
-"fingerprintVerification.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Verify Fingerprint\"";
+"fingerprintVerification.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Verify Fingerprint\" button below";
 "fingerprintVerification.screen.button" = "Verify Fingerprint";
 "fingerprintVerification.status.matchedTitle" = "Fingerprint Matched";
 "fingerprintVerification.status.matchedInstructions" = "The scanned fingerprint matches the fingerprint recorded during enrollment.";
@@ -45,7 +45,7 @@
 "fingerprintEnrollment.screen.navigationTitle" = "Fingerprint Enrollment";
 "fingerprintEnrollment.screen.button" = "Scan Fingerprint";
 "fingerprintEnrollment.screen.instructionsTitle" = "To Enroll Fingerprint:";
-"fingerprintEnrollment.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Scan Fingerprint\"";
+"fingerprintEnrollment.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Scan Fingerprint\" button below";
 "fingerprintEnrollment.hint.message" = "Place and lift your finger at different angles on your card’s sensor.";
 "fingerprintEnrollment.connected.message" = "Place and lift your thumb at different angles on your card’s sensor.";
 "fingerprintEnrollment.mismatch.title" = "Fingerprint Mismatch Error";
@@ -61,7 +61,7 @@
 
 // MARK: - Version Information Screen
 "versionInformation.screen.navigationTitle" = "Version Information";
-"versionInformation.screen.instructions" = "Place your card on a flat, non-metalic surface then place the phone on top.";
+"versionInformation.screen.instructions" = "Place your card on a flat, non-metallic surface then place the phone on top.";
 "versionInformation.screen.button" = "Scan Card";
 "versionInformation.screen.sdkVersion" = "SDK Version: ";
 "versionInformation.screen.osVersion" = "OS Version: ";
@@ -70,16 +70,14 @@
 "versionInformation.screen.verifyVersion" = "Verify Version: ";
 
 
-
-
-
-
 // MARK: - SDK Messages
 "nfcScanning.communicationError" = "An error occurred while communicating with the card.";
 "nfcScanning.establishConnection" = "Place your card under the top of the phone to establish connection.";
 
 
 // MARK: - NFC Reader Error Messages
+
+// these messages will be seen by the user
 "nfcReader.error.unsupportedFeature" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
 "nfcReader.error.securityViolation" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
 "nfcReader.error.invalidParameter" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
@@ -92,55 +90,65 @@
 "nfcReader.transeiveError.sessionInvalidated" = "Communication with the card was lost. Move the card away from the phone and try again.";
 "nfcReader.transeiveError.tagNotConnected" = "Connection made with the card, but the card did not respond. Move the card away from the phone and try again";
 "nfcReader.transeiveError.packetTooLong" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
-"nfcReader.sessionInvalidationError.userCanceled" = "The user cancelled the connection.";
 "nfcReader.sessionInvalidationError.sessionTimeout" = "No compatible device was detected within the time limit.";
 "nfcReader.sessionInvalidationError.sessionTerminatedUnexpectedly" = "The communication session was terminated unexpectedly. Move the card away from the phone and try again.";
 "nfcReader.sessionInvalidationError.systemIsBusy" = "The NFC reader needs more time to reset. Move the card away from the phone and try again.";
+
+// these messages are only seen during development, the user should never see these messages
+"nfcReader.sessionInvalidationError.userCanceled" = "The user cancelled the connection.";
 "nfcReader.defaultError" = "Reader Error: Unknown Error Code";
 
 
 // MARK: - SDK Error Messages
-"sdkError.enrollCode.digitOutOfBounds" = "Individual enroll code digits must be in the range 0 - 9.";
-"sdkError.enrollCode.lengthOutOfBounds" = "The enroll code must be between 4 - 6 characters in length.";
-"sdkError.enrollmentStatus.bufferTooSmall" = "The buffer returned from querying the card for its biometric enrollment status was unexpectedly too small.";
-"sdkError.invalidAPDUCommand" = "The buffer used in the `NFCISO7816APDU` constructor was not a valid `APDU` command.";
-"sdkError.connectedWithoutTag" = "NFC connection to card exists, but no tag.";
-"sdkError.incorrectTagFormat" = "The card was scanned correctly, but it does not appear to be the correct format.";
-"sdkError.secureChannelInitializationError" = "Unable to initialize secure communication channel.";
-"sdkError.cardOSVersionError" = "Unexpected return value from querying card for OS version.";
-"sdkError.keyGenerationError" = "Key generation error.";
-"sdkError.sharedSecretExtractionError" = "Shared secret extract error.";
-"sdkError.secureCommunicationNotSupported" = "Applets on the scanned card do not support encryption. Please open Settings and turn the Secure Communication option off, then try again.";
-"sdkError.dataSizeNotSupported" = "Unable to store data to SentryCard: maximum size supported is 2048 bytes.";
-"sdkError.cvmApplet.notAvailable" = "Unable to initialize the CVM applet on the SentryCard.";
-"sdkError.cvmApplet.blocked" = "The CVM applet on the SentryCard is blocked.";
+
+// these messages will be seen by the user
 "sdkError.cvmApplet.error" = "The biometric verification attempt failed to respond properly. Please try again.";
-"sdkError.enrollApplet.wrongVersion" = "The scanned card does not contain the required version of the Enroll applet.";
-"sdkError.bioverifyApplet.notInstalled" = "The SentryCard does not contain the BioVerify applet. This applet is required. Please run the applet install script to install the required applets.";
-"sdkError.bioVerifyApplet.wrongVersion" = "This SentryCard has an unsupported version of the BioVerify applet installed.";
 "sdkError.enrollModeNotAvailable" = "The SentryCard is already enrolled. To re-enroll, go into Options and reset biometric enrollment data.";
 "sdkError.enrollVerificationError" = "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.";
-"sdkError.invalidFingerIndex" = "Invalid finger index";
-"sdkError.apduCommandError.noMatchFound" = "No match found.";
-"sdkError.apduCommandError.enrollCodeIncorrectThreeTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (three tries remaining).";
-"sdkError.apduCommandErrorenrollCodeIncorrectTwoTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (two tries remaining).";
-"sdkError.apduCommandError.enrollCodeIncorrectOneTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (one try remaining).";
-"sdkError.apduCommandError.enrollCodeIncorrectZeroTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (zero tries remaining).";
-"sdkError.apduCommandError.wrongLength" = "Length parameter incorrect.";
-"sdkError.apduCommandError.formatNotCompliant" = "Command APDU format not compliant with this standard.";
-"sdkError.apduCommandError.lengthValueNotTheOneExpected" = "The length parameter value is not the one expected.";
 "sdkError.apduCommandError.communicationFailure" = "There was an error communicating with the card. Move the card away from the phone and try again.";
 "sdkError.apduCommandError.fingerRemoved" = "The finger was removed from the sensor before the scan completed. Please try again.";
 "sdkError.apduCommandError.poorImageQuality" = "The image scanned by the sensor was poor quality, please try again.";
 "sdkError.apduCommandError.userTimeoutExpired" = "No finger was detected on the sensor. Please try again.";
 "sdkError.apduCommandError.hostInterfaceTimeoutExpired" = "The card did not respond in the expected amount of time. Please try again.";
-"sdkError.apduCommandError.conditionOfUseNotSatisfied" = "Conditions of use not satisfied.";
-"sdkError.apduCommandError.notEnoughMemory" = "Not enough memory space in the file.";
+
+
+// these messages should only be seen by the user in rare circumstances (i.e. if they edited settings data, or they have the wrong card, or other serious issues)
+"sdkError.enrollCode.digitOutOfBounds" = "Individual enroll code digits must be in the range 0 - 9.";
+"sdkError.enrollCode.lengthOutOfBounds" = "The enroll code must be between 4 - 6 characters in length.";
+"sdkError.secureCommunicationNotSupported" = "Applets on the scanned card do not support encryption. Please open Settings and turn the Secure Communication option off, then try again.";
+"sdkError.enrollApplet.wrongVersion" = "The scanned card does not contain the required version of the Enroll applet.";
+"sdkError.bioverifyApplet.notInstalled" = "The SentryCard does not contain the BioVerify applet. This applet is required. Please run the applet install script to install the required applets.";
+"sdkError.bioVerifyApplet.wrongVersion" = "This SentryCard has an unsupported version of the BioVerify applet installed.";
+"sdkError.apduCommandError.enrollCodeIncorrectThreeTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (three tries remaining).";
+"sdkError.apduCommandErrorenrollCodeIncorrectTwoTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (two tries remaining).";
+"sdkError.apduCommandError.enrollCodeIncorrectOneTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (one try remaining).";
+"sdkError.apduCommandError.enrollCodeIncorrectZeroTriesRemain" = "The enroll code on the scanned card does not match the enroll code set in the application (zero tries remaining).";
+"sdkError.incorrectTagFormat" = "The card was scanned correctly, but it does not appear to be the correct format.";
+"sdkError.cvmApplet.notAvailable" = "Unable to initialize the CVM applet on the SentryCard.";
+"sdkError.cvmApplet.blocked" = "The CVM applet on the SentryCard is blocked.";
+"sdkError.apduCommandError.noPreciseDiagnosis" = "An error occurred while communicating with the card. Move the card away from the phone and try again.";
+"sdkError.apduCommandError.cardDead" = "Card dead (overuse).";
+
+
+// these messages are only seen during development, the user should never see these messages
+"sdkError.connectedWithoutTag" = "NFC connection to card exists, but no tag.";
+"sdkError.secureChannelInitializationError" = "Unable to initialize secure communication channel.";
+"sdkError.cardOSVersionError" = "Unexpected return value from querying card for OS version.";
+"sdkError.enrollmentStatus.bufferTooSmall" = "The buffer returned from querying the card for its biometric enrollment status was unexpectedly too small.";
+"sdkError.invalidAPDUCommand" = "The buffer used in the `NFCISO7816APDU` constructor was not a valid `APDU` command.";
+"sdkError.keyGenerationError" = "Key generation error.";
+"sdkError.sharedSecretExtractionError" = "Shared secret extract error.";
+"sdkError.apduCommandError.wrongLength" = "Length parameter incorrect.";
+"sdkError.apduCommandError.formatNotCompliant" = "Command APDU format not compliant with this standard.";
+"sdkError.apduCommandError.lengthValueNotTheOneExpected" = "The length parameter value is not the one expected.";
 "sdkError.apduCommandError.wrongParameters" = "Parameter bytes are invalid.";
 "sdkError.apduCommandError.instructionByteNotSupported" = "Instruction byte not supported or invalid.";
 "sdkError.apduCommandError.classByteNotSupported" = "Class byte not supported or invalid.";
 "sdkError.apduCommandError.commandAborted" = "Command aborted – more exact diagnosis not possible (e.g. operating system error).";
-"sdkError.apduCommandError.noPreciseDiagnosis" = "An error occurred while communicating with the card. Move the card away from the phone and try again.";
-"sdkError.apduCommandError.cardDead" = "Card dead (overuse).";
+"sdkError.apduCommandError.noMatchFound" = "No match found.";
+"sdkError.apduCommandError.conditionOfUseNotSatisfied" = "Conditions of use not satisfied.";
+"sdkError.apduCommandError.notEnoughMemory" = "Not enough memory space in the file.";
 "sdkError.apduCommandError.calibrationError" = "The fingerprint sensor is returning a calibration error.";
+"sdkError.dataSizeNotSupported" = "Unable to store data to SentryCard: maximum size supported is 2048 bytes.";
+"sdkError.invalidFingerIndex" = "Invalid finger index";
 "sdkError.apduCommandError.default" = "Unknown Error Code";

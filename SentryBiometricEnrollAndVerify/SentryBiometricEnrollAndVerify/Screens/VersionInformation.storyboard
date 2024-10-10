@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,7 +12,7 @@
         <!--Version Information View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="VersionInformation" id="Y6W-OH-hqX" customClass="VersionInformationViewController" customModule="SentryBiometricEnrollAndVerify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VersionInformation" id="Y6W-OH-hqX" customClass="VersionInformationViewController" customModule="SentryCardEnroll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,25 +52,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="osVersionLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYL-Kb-ZW7">
-                                <rect key="frame" x="16.000000000000007" y="521.33333333333337" width="115.66666666666669" height="21"/>
+                                <rect key="frame" x="16.000000000000007" y="537.33333333333337" width="115.66666666666669" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enrollVersionLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2E-5m-ySz">
-                                <rect key="frame" x="16" y="550.33333333333337" width="140" height="21"/>
+                                <rect key="frame" x="16" y="566.33333333333337" width="140" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cvmVersionLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqe-wc-AVf">
-                                <rect key="frame" x="16" y="579.33333333333337" width="129.66666666666666" height="21"/>
+                                <rect key="frame" x="16" y="595.33333333333337" width="129.66666666666666" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="verifyVersionLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfK-Mf-cyq">
-                                <rect key="frame" x="16" y="608.33333333333337" width="140" height="21"/>
+                                <rect key="frame" x="16" y="624.33333333333337" width="140" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -82,7 +83,7 @@
                             <constraint firstItem="zYL-Kb-ZW7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="0Sm-S2-XNJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yRO-0K-0kU" secondAttribute="trailing" constant="16" id="4sZ-Dm-Ofu"/>
                             <constraint firstItem="N2E-5m-ySz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="DcI-ng-osx"/>
-                            <constraint firstItem="zYL-Kb-ZW7" firstAttribute="top" secondItem="jOE-55-qyI" secondAttribute="bottom" constant="8" id="G6Z-DD-zOb"/>
+                            <constraint firstItem="zYL-Kb-ZW7" firstAttribute="top" secondItem="jOE-55-qyI" secondAttribute="bottom" constant="24" id="G6Z-DD-zOb"/>
                             <constraint firstItem="Sqe-wc-AVf" firstAttribute="top" secondItem="N2E-5m-ySz" secondAttribute="bottom" constant="8" id="GbJ-vv-DXQ"/>
                             <constraint firstItem="N2E-5m-ySz" firstAttribute="top" secondItem="zYL-Kb-ZW7" secondAttribute="bottom" constant="8" id="KwL-j0-OAu"/>
                             <constraint firstItem="Sqe-wc-AVf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Mw8-E3-8KH"/>

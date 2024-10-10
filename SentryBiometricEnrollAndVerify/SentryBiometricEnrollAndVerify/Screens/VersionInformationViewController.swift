@@ -64,6 +64,10 @@ class VersionInformationViewController: UIViewController {
         cvmVersionLabel.text = "versionInformation.screen.cvmVersion".localized
         verifyVersionLabel.text = "versionInformation.screen.verifyVersion".localized
         scanCardButton.setTitle("versionInformation.screen.button".localized, for: .normal)
+        
+        let sdkVersion = SentrySDK.version
+        let sdk = "\(sdkVersion.majorVersion).\(sdkVersion.minorVersion).\(sdkVersion.hotfixVersion)"
+        sdkVersionLabel.text = "versionInformation.screen.sdkVersion".localized + "\(sdk)"
     }
     
     
@@ -84,11 +88,6 @@ class VersionInformationViewController: UIViewController {
              */
             
             do {
-                var sdk = "global.unavailable".localized
-                let sdkVersion = SentrySDK.version
-                sdk = "\(sdkVersion.majorVersion).\(sdkVersion.minorVersion).\(sdkVersion.hotfixVersion)"
-                self?.sdkVersionLabel.text = "versionInformation.screen.sdkVersion".localized + "\(sdk)"
-                
                 // retrieve version information. starts NFC scanning.
                 let version = try await self?.sentrySDK.getCardSoftwareVersions()
                 if let version = version {
