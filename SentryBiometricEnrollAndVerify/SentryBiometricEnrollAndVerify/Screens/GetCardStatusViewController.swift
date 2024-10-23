@@ -173,7 +173,7 @@ class GetCardStatusViewController: UIViewController {
                     let action = UIAlertAction(title: "global.ok".localized, style: .default, handler: { _ in
                         if status.mode == .enrollment {
                             // if the card is in enrollment mode, navigate to the enrollment screen
-                            if let vc = UIStoryboard(name: "FingerprintEnrollment", bundle: .main).instantiateViewController(withIdentifier: "FingerprintEnrollment") as? FingerprintEnrollmentViewController {
+                            if let vc = UIStoryboard(name: "FingerprintEnrollmentTutorial", bundle: .main).instantiateViewController(withIdentifier: "FingerprintEnrollmentTutorial") as? FingerprintEnrollmentTutorialViewController {
                                 vc.loadViewIfNeeded()
                                 self?.navigationController?.pushViewController(vc, animated: true)
                             }
