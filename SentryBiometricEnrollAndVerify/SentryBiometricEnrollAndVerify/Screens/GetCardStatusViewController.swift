@@ -137,7 +137,7 @@ class GetCardStatusViewController: UIViewController {
                 
                 self?.placeCardOutline.layer.removeAllAnimations()
                 self?.placeCard.layer.removeAllAnimations()
-                self?.placeCard.layer.opacity = traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
+                self?.placeCard.layer.opacity = self?.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
                 
                 UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                     self?.placeCard.layer.opacity = 0.0

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1422168C2BED7699000AB5CD /* ResetBiometricData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */; };
 		1422168E2BED76A7000AB5CD /* ResetBiometricDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */; };
+		1436CCBE2CC7EA50006C3D2C /* UIFancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436CCBD2CC7EA50006C3D2C /* UIFancyButton.swift */; };
 		144A0C822C25CC7B00A4E7AA /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144A0C812C25CC7B00A4E7AA /* Options.storyboard */; };
 		144A0C842C25CE3F00A4E7AA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A0C832C25CE3F00A4E7AA /* OptionsViewController.swift */; };
 		144A0C862C25D1A500A4E7AA /* VersionInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		1422168B2BED7699000AB5CD /* ResetBiometricData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResetBiometricData.storyboard; sourceTree = "<group>"; };
 		1422168D2BED76A7000AB5CD /* ResetBiometricDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetBiometricDataViewController.swift; sourceTree = "<group>"; };
+		1436CCBD2CC7EA50006C3D2C /* UIFancyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFancyButton.swift; sourceTree = "<group>"; };
 		144A0C812C25CC7B00A4E7AA /* Options.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		144A0C832C25CE3F00A4E7AA /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionInformation.storyboard; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1436CCBA2CC7E9DB006C3D2C /* CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+				1436CCBD2CC7EA50006C3D2C /* UIFancyButton.swift */,
+			);
+			path = CustomControls;
+			sourceTree = "<group>";
+		};
 		14902F202BDFF2CD007A26B9 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 		14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */ = {
 			isa = PBXGroup;
 			children = (
+				1436CCBA2CC7E9DB006C3D2C /* CustomControls */,
 				14902F4D2BE00291007A26B9 /* Helpers */,
 				14902F432BDFF70E007A26B9 /* Screens */,
 				14902F422BDFF46D007A26B9 /* Resources */,
@@ -239,7 +250,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					14902F282BDFF2CD007A26B9 = {
 						CreatedOnToolsVersion = 15.2;
@@ -305,6 +316,7 @@
 				14902F2D2BDFF2CD007A26B9 /* AppDelegate.swift in Sources */,
 				14902F682BE3DEC3007A26B9 /* FingerprintEnrollmentViewController.swift in Sources */,
 				14902F2F2BDFF2CD007A26B9 /* SceneDelegate.swift in Sources */,
+				1436CCBE2CC7EA50006C3D2C /* UIFancyButton.swift in Sources */,
 				14902F6A2BE3DED2007A26B9 /* FingerprintVerificationViewController.swift in Sources */,
 				14902F622BE3D008007A26B9 /* NFCReaderError+LocalizedError.swift in Sources */,
 				14B73D612BEAC3C800AE9CA7 /* BiometricsSDKError+LocalizedDescription.swift in Sources */,
@@ -451,12 +463,11 @@
 		14902F3E2BDFF2CF007A26B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
@@ -490,12 +501,11 @@
 		14902F3F2BDFF2CF007A26B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;

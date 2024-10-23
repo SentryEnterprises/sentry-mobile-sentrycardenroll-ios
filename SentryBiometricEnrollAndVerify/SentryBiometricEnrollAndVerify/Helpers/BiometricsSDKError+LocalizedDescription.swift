@@ -11,7 +11,7 @@ import SentrySDK
 /**
  Provides a meaningful error message.
  */
-extension SentrySDKError: LocalizedError {
+extension SentrySDKError: @retroactive LocalizedError {
     /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch self {

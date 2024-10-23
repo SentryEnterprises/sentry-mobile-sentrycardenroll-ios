@@ -54,7 +54,7 @@
 "fingerprintEnrollment.complete.message" = "Enrollment Completed!";
 "fingerprintEnrollment.finished.title" = "Enrollment Finished";
 "fingerprintEnrollment.finished.message" = "Your fingerprint is now enrolled. Click OK to continue";
-"fingerprintEnrollment.switch.finger" = "Now switch fingers. Place and lift finger #%i on your card’s sensor.";
+"fingerprintEnrollment.switch.finger" = "Next, switch fingers. Place and lift finger #%i on your card’s sensor.";
 "fingerprintEnrollment.ready.finger" = "Ready for finger #%i!";
 "fingerprintEnrollment.fingerNumber" = "Finger #";
 

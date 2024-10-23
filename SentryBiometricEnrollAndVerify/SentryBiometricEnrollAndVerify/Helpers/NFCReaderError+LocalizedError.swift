@@ -11,7 +11,7 @@ import CoreNFC
 /**
  Helper extension provided mainly as an aid in debugging.
  */
-extension NFCReaderError: LocalizedError {
+extension NFCReaderError: @retroactive LocalizedError {
     /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch code {
