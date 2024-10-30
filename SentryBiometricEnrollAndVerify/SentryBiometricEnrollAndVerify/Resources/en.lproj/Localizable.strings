@@ -50,7 +50,7 @@
 "fingerprintEnrollment.connected.message" = "Place and lift your finger at different angles on your card’s sensor.";
 "fingerprintEnrollment.mismatch.title" = "Fingerprint Mismatch Error";
 "fingerprintEnrollment.mismatch.message" = "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.";
-"fingerprintEnrollment.finalVerify.message" = "Leave finger on sensor for final verification.";
+"fingerprintEnrollment.finalVerify.message" = "Place finger on sensor for final verification.";
 "fingerprintEnrollment.complete.message" = "Enrollment Completed!";
 "fingerprintEnrollment.finished.title" = "Enrollment Finished";
 "fingerprintEnrollment.finished.message" = "Your fingerprint is now enrolled. Click OK to continue";
@@ -61,13 +61,24 @@
 
 // MARK: - Version Information Screen
 "versionInformation.screen.navigationTitle" = "Version Information";
-"versionInformation.screen.instructions" = "Place your card on a flat, non-metallic surface then place the phone on top.";
+"versionInformation.screen.title" = "To Scan Card:";
+"versionInformation.screen.steps" = "• Place card on a flat, non-metallic surface\n• Place phone on top\n• Select \"Scan Card\"";
 "versionInformation.screen.button" = "Scan Card";
 "versionInformation.screen.sdkVersion" = "SDK Version: ";
 "versionInformation.screen.osVersion" = "OS Version: ";
 "versionInformation.screen.enrollVersion" = "Enroll Version: ";
 "versionInformation.screen.cvmVersion" = "CVM Version: ";
 "versionInformation.screen.verifyVersion" = "Verify Version: ";
+
+
+// MARK: - Reset Data Screen
+"resetData.screen.navigationTitle" = "Reset Biometric Data";
+"resetData.screen.button" = "Reset Biometric Data";
+"resetData.screen.title" = "To Reset Data:";
+"resetData.screen.steps" = "• Place card on a flat, non-metallic surface\n• Place phone on top\n• Select \"Scan Card\"";
+"resetData.screen.instructions" = "This resets the biometric fingerprint data on the card. The card will not be enrolled after this action.\n\nNOTE: This action works on non-production cards only!";
+"resetData.finished.title" = "Data Reset";
+"resetData.finished.message" = "Biometric data reset. This card is no longer enrolled.";
 
 
 // MARK: - SDK Messages
@@ -147,7 +158,18 @@
 "sdkError.apduCommandError.commandAborted" = "Command aborted – more exact diagnosis not possible (e.g. operating system error).";
 "sdkError.apduCommandError.noMatchFound" = "No match found.";
 "sdkError.apduCommandError.conditionOfUseNotSatisfied" = "Conditions of use not satisfied.";
+"sdkError.apduCommandError.noInformationGiven" = "(6A00) No information given.";
+"sdkError.apduCommandError.incorrectCommandParameters" = "(6A80) Incorrect parameters in the command data field.";
+"sdkError.apduCommandError.functionNotSupported" = "(6A81) Function not supported.";
+"sdkError.apduCommandError.appletNotFound" = "(6A82) Applet not found.";
+"sdkError.apduCommandError.recordNotFound" = "(6A83) Record not found.";
 "sdkError.apduCommandError.notEnoughMemory" = "Not enough memory space in the file.";
+"sdkError.apduCommandError.inconsistentWithTLV" = "(6A85) Inconsistent with TLV structure.";
+"sdkError.apduCommandError.incorrectParameters" = "(6A86) Incorrect parameters P1-P2.";
+"sdkError.apduCommandError.inconsistentWithParameters" = "(6A87) Inconsistent with parameters P1-P2.";
+"sdkError.apduCommandError.dataNotFound" = "(6A88) Referenced data or DO not found.";
+"sdkError.apduCommandError.fileAlreadyExists" = "(6A89) File already exists or sensor is already calibrated.";
+"sdkError.apduCommandError.nameAlreadyExists" = "(6A8A) DF name already exists.";
 "sdkError.apduCommandError.calibrationError" = "The fingerprint sensor is returning a calibration error.";
 "sdkError.dataSizeNotSupported" = "Unable to store data to SentryCard: maximum size supported is 2048 bytes.";
 "sdkError.invalidFingerIndex" = "Invalid finger index";

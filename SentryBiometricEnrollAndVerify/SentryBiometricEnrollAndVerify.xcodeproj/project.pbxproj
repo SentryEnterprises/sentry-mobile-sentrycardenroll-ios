@@ -13,6 +13,8 @@
 		1436CCC92CC98FD8006C3D2C /* FingerprintEnrollmentTutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1436CCC82CC98FD8006C3D2C /* FingerprintEnrollmentTutorial.storyboard */; };
 		1436CCCB2CC98FE8006C3D2C /* FingerprintEnrollmentTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436CCCA2CC98FE8006C3D2C /* FingerprintEnrollmentTutorialViewController.swift */; };
 		1436CCCD2CC9918A006C3D2C /* Final_SentryCard.json in Resources */ = {isa = PBXBuildFile; fileRef = 1436CCCC2CC9918A006C3D2C /* Final_SentryCard.json */; };
+		1436CCE62CD29E0C006C3D2C /* CheckmarkAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1436CCE52CD29E0C006C3D2C /* CheckmarkAnimation.json */; };
+		1436CCE82CD2ADA6006C3D2C /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1436CCE72CD2ADA6006C3D2C /* ding.wav */; };
 		144A0C822C25CC7B00A4E7AA /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144A0C812C25CC7B00A4E7AA /* Options.storyboard */; };
 		144A0C842C25CE3F00A4E7AA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A0C832C25CE3F00A4E7AA /* OptionsViewController.swift */; };
 		144A0C862C25D1A500A4E7AA /* VersionInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */; };
@@ -60,6 +62,8 @@
 		1436CCC82CC98FD8006C3D2C /* FingerprintEnrollmentTutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FingerprintEnrollmentTutorial.storyboard; sourceTree = "<group>"; };
 		1436CCCA2CC98FE8006C3D2C /* FingerprintEnrollmentTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintEnrollmentTutorialViewController.swift; sourceTree = "<group>"; };
 		1436CCCC2CC9918A006C3D2C /* Final_SentryCard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Final_SentryCard.json; sourceTree = "<group>"; };
+		1436CCE52CD29E0C006C3D2C /* CheckmarkAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CheckmarkAnimation.json; sourceTree = "<group>"; };
+		1436CCE72CD2ADA6006C3D2C /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
 		144A0C812C25CC7B00A4E7AA /* Options.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		144A0C832C25CE3F00A4E7AA /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		144A0C852C25D1A500A4E7AA /* VersionInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionInformation.storyboard; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				14902F6F2BE3E816007A26B9 /* Lottie Animations */,
 				14902F352BDFF2CF007A26B9 /* Assets.xcassets */,
 				1469CFDD2CA47766008B57AC /* Localizable.strings */,
+				1436CCE72CD2ADA6006C3D2C /* ding.wav */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				14902F702BE3E853007A26B9 /* attach_card.json */,
 				14902F712BE3E853007A26B9 /* fingerprint.json */,
 				1436CCCC2CC9918A006C3D2C /* Final_SentryCard.json */,
+				1436CCE52CD29E0C006C3D2C /* CheckmarkAnimation.json */,
 			);
 			path = "Lottie Animations";
 			sourceTree = "<group>";
@@ -302,7 +308,9 @@
 				14902F362BDFF2CF007A26B9 /* Assets.xcassets in Resources */,
 				144A0C862C25D1A500A4E7AA /* VersionInformation.storyboard in Resources */,
 				1436CCC92CC98FD8006C3D2C /* FingerprintEnrollmentTutorial.storyboard in Resources */,
+				1436CCE62CD29E0C006C3D2C /* CheckmarkAnimation.json in Resources */,
 				1469CFE72CA47AE1008B57AC /* GetCardStatus.storyboard in Resources */,
+				1436CCE82CD2ADA6006C3D2C /* ding.wav in Resources */,
 				14902F642BE3DE90007A26B9 /* FingerprintEnrollment.storyboard in Resources */,
 				1469CFDF2CA47766008B57AC /* Localizable.strings in Resources */,
 				1436CCCD2CC9918A006C3D2C /* Final_SentryCard.json in Resources */,
@@ -479,7 +487,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;
@@ -517,7 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SentryBiometricEnrollAndVerify/App/SentryBiometricEnrollAndVerify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = G7473D58AM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SentryBiometricEnrollAndVerify/App/Info.plist;

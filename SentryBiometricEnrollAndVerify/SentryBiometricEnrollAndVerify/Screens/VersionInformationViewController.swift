@@ -20,25 +20,14 @@ class VersionInformationViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
-    // sets up the Lottie animation (does not affect actual functionality)
-    @IBOutlet weak var lottieAnimationViewContainer: UIView! {
-        didSet {
-            let animationView = LottieAnimationView(name: "attach_card")
-            animationView.loopMode = .loop
-            
-            animationView.translatesAutoresizingMaskIntoConstraints = false
-            lottieAnimationViewContainer.addSubview(animationView)
-            
-            animationView.leadingAnchor.constraint(equalTo: lottieAnimationViewContainer.leadingAnchor).isActive = true
-            animationView.trailingAnchor.constraint(equalTo: lottieAnimationViewContainer.trailingAnchor).isActive = true
-            animationView.topAnchor.constraint(equalTo: lottieAnimationViewContainer.topAnchor).isActive = true
-            animationView.bottomAnchor.constraint(equalTo: lottieAnimationViewContainer.bottomAnchor).isActive = true
-            
-            animationView.play()
-        }
-    }
+    @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var placeCard: UIImageView!
+    @IBOutlet weak var placeCardLabel: UILabel!
+    @IBOutlet weak var arrowLeft: UIImageView!
+    @IBOutlet weak var arrowDown: UIImageView!
+    @IBOutlet weak var placeCardOutline: UIImageView!
 
-    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var scanCardButton: UIButton!
     @IBOutlet weak var verifyVersionLabel: UILabel!
     @IBOutlet weak var cvmVersionLabel: UILabel!
@@ -48,6 +37,19 @@ class VersionInformationViewController: UIViewController {
     
     @IBAction func scanCardButtonTouched(_ sender: Any) {
         scanCardButton.isUserInteractionEnabled = false
+        
+        placeCard.isHidden = false
+        placeCardOutline.isHidden = false
+        arrowDown.isHidden = false
+        arrowLeft.isHidden = false
+        placeCardLabel.isHidden = false
+        
+        placeCard.image = UIImage(named: "card")
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+            self.placeCardOutline.layer.opacity = 0.1
+        }
+
         scanCard()
     }
     
@@ -57,7 +59,8 @@ class VersionInformationViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "versionInformation.screen.navigationTitle".localized
         
-        instructionsLabel.text = "versionInformation.screen.instructions".localized
+        titleLabel.text = "versionInformation.screen.title".localized
+        stepsLabel.text = "versionInformation.screen.steps".localized
         sdkVersionLabel.text = "versionInformation.screen.sdkVersion".localized
         osVersionLabel.text = "versionInformation.screen.osVersion".localized
         enrollVersionLabel.text = "versionInformation.screen.enrollVersion".localized
@@ -68,6 +71,8 @@ class VersionInformationViewController: UIViewController {
         let sdkVersion = SentrySDK.version
         let sdk = "\(sdkVersion.majorVersion).\(sdkVersion.minorVersion).\(sdkVersion.hotfixVersion)"
         sdkVersionLabel.text = "versionInformation.screen.sdkVersion".localized + "\(sdk)"
+        
+        sentrySDK.connectionDelegate = self
     }
     
     
@@ -78,6 +83,13 @@ class VersionInformationViewController: UIViewController {
         Task { [weak self] in
             defer {
                 self?.scanCardButton.isUserInteractionEnabled = true
+                self?.placeCard.isHidden = true
+                self?.placeCardOutline.isHidden = true
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardLabel.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.placeCard.layer.removeAllAnimations()
             }
             
             /**
@@ -162,6 +174,27 @@ class VersionInformationViewController: UIViewController {
                     let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+}
+
+
+extension VersionInformationViewController: SentrySDKConnectionDelegate {
+    func connected(session: NFCReaderSession, isConnected: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            if isConnected {
+                self?.placeCardOutline.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardLabel.isHidden = true
+                self?.placeCard.layer.opacity = 0.8
+                self?.placeCard.image = UIImage(named: "card_highlight")
+                
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                    self?.placeCard.layer.opacity = 0.5
                 }
             }
         }

@@ -11,6 +11,18 @@ import CoreNFC
 import SentrySDK
 
 /**
+ * Add the enrollment tutorial animation to the SentryCard Enroll app
+ Add the green card graphics to the SentryCard Enroll app
+ Change enrollment in the SentryCard Enroll app to use the new static fingerprint graphics
+ Two finger enrollment looks good and is ready to be ported to the SentryCard Enroll app
+ * Add the card reset back to the SentryCard Enroll app, with verbiage that specifically says this is only for non-production cards, and include the card placement graphics
+ * Change "leave finger..." to "place finger..." text for the final verification touch
+ */
+
+
+
+
+/**
  Fingerprint enrollment screen. Scans the card, and allows the user to record several fingerprint scans.
  */
 class FingerprintEnrollmentViewController: UIViewController {

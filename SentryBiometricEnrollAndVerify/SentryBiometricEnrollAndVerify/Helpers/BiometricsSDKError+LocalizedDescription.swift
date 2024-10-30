@@ -87,7 +87,29 @@ extension SentrySDKError: @retroactive LocalizedError {
                 
             case APDUResponseCode.conditionOfUseNotSatisfied.rawValue: return "sdkError.apduCommandError.conditionOfUseNotSatisfied".localized
                 
+            case APDUResponseCode.noInformationGiven.rawValue: return "sdkError.apduCommandError.noInformationGiven".localized
+                
+            case APDUResponseCode.incorrectCommandParameters.rawValue: return "sdkError.apduCommandError.incorrectCommandParameters".localized
+                
+            case APDUResponseCode.functionNotSupported.rawValue: return "sdkError.apduCommandError.functionNotSupported".localized
+
+            case APDUResponseCode.appletNotFound.rawValue: return "sdkError.apduCommandError.appletNotFound".localized
+                
+            case APDUResponseCode.recordNotFound.rawValue:  return "sdkError.apduCommandError.recordNotFound".localized
+
             case APDUResponseCode.notEnoughMemory.rawValue: return "sdkError.apduCommandError.notEnoughMemory".localized
+
+            case APDUResponseCode.inconsistentWithTLV.rawValue: return "sdkError.apduCommandError.inconsistentWithTLV".localized
+                
+            case APDUResponseCode.incorrectParameters.rawValue: return "sdkError.apduCommandError.incorrectParameters".localized
+                
+            case APDUResponseCode.inconsistentWithParameters.rawValue: return "sdkError.apduCommandError.inconsistentWithParameters".localized
+                
+            case APDUResponseCode.dataNotFound.rawValue: return "sdkError.apduCommandError.dataNotFound".localized
+                
+            case APDUResponseCode.fileAlreadyExists.rawValue: return "sdkError.apduCommandError.fileAlreadyExists".localized
+                
+            case APDUResponseCode.nameAlreadyExists.rawValue: return "sdkError.apduCommandError.nameAlreadyExists".localized
 
             case APDUResponseCode.wrongParameters.rawValue: return "sdkError.apduCommandError.wrongParameters".localized
                 

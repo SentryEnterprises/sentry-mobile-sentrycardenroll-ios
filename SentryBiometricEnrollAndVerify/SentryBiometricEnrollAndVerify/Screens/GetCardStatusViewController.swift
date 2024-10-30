@@ -92,11 +92,7 @@ class GetCardStatusViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "getCardStatus.screen.navigationTitle".localized
         
-        #if INTERNAL_FEATURES
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(optionsTapped))
-        #else
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(infoTapped))
-        #endif
         
         versionLabel.text = "SentryCard Enroll \(AppSettings.getSecureCommunicationSetting() ? "🔒 " : "")\(AppSettings.getVersionAndBuildNumber())"
         

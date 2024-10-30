@@ -20,10 +20,32 @@ class ResetBiometricDataViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
+    @IBOutlet weak var resetStepsLabel: UILabel!
+    @IBOutlet weak var resetTitleLabel: UILabel!
+    @IBOutlet weak var resetInstructionsLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var placeCard: UIImageView!
+    @IBOutlet weak var placeCardLabel: UILabel!
+    @IBOutlet weak var arrowLeft: UIImageView!
+    @IBOutlet weak var arrowDown: UIImageView!
+    @IBOutlet weak var placeCardOutline: UIImageView!
+
     
     @IBAction func resetButtonTouched(_ sender: Any) {
         resetButton.isUserInteractionEnabled = false
+        
+        placeCard.isHidden = false
+        placeCardOutline.isHidden = false
+        arrowDown.isHidden = false
+        arrowLeft.isHidden = false
+        placeCardLabel.isHidden = false
+        
+        placeCard.image = UIImage(named: "card")
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+            self.placeCardOutline.layer.opacity = 0.1
+        }
+
         resetData()
     }
     
@@ -32,7 +54,14 @@ class ResetBiometricDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Reset Biometric Data"
+        navigationItem.title = "resetData.screen.navigationTitle".localized
+        
+        resetInstructionsLabel.text = "resetData.screen.instructions".localized
+        resetButton.setTitle("resetData.screen.button".localized, for: .normal)
+        resetTitleLabel.text = "resetData.screen.title".localized
+        resetStepsLabel.text = "resetData.screen.steps".localized
+        
+        sentrySDK.connectionDelegate = self
     }
     
     
@@ -43,14 +72,22 @@ class ResetBiometricDataViewController: UIViewController {
         Task { [weak self] in
             defer {
                 self?.resetButton.isUserInteractionEnabled = true
+                
+                self?.placeCard.isHidden = true
+                self?.placeCardOutline.isHidden = true
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardLabel.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.placeCard.layer.removeAllAnimations()
             }
             
             do {
                 // perform a biometric data reset on the card. starts NFC scanning.
                 try await self?.sentrySDK.resetCard()
                 
-                let alert = UIAlertController(title: "Data Reset", message: "Biometric data reset. This card is no longer enrolled.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                let alert = UIAlertController(title: "resetData.finished.title".localized, message: "resetData.finished.message".localized, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
             } catch (let error) {
                 print("!!! Error resetting biometric data: \(error)")
@@ -69,11 +106,33 @@ class ResetBiometricDataViewController: UIViewController {
                 
                 // if the user cancelled or the session timed out, don't display this as an error
                 if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             }
+        }
+    }
+}
+
+
+extension ResetBiometricDataViewController: SentrySDKConnectionDelegate {
+    func connected(session: NFCReaderSession, isConnected: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            if isConnected {
+                print("*** Showing card connected ***")
+                self?.placeCardOutline.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardLabel.isHidden = true
+                self?.placeCard.layer.opacity = 0.8
+                self?.placeCard.image = UIImage(named: "card_highlight")
+                
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                    self?.placeCard.layer.opacity = 0.5
+                }
+            } 
         }
     }
 }
