@@ -9,14 +9,16 @@ import UIKit
 import Lottie
 import CoreNFC
 import SentrySDK
+import AVFoundation
 
 /**
  * Add the enrollment tutorial animation to the SentryCard Enroll app
- Add the green card graphics to the SentryCard Enroll app
+ * Add the green card graphics to the SentryCard Enroll app
  Change enrollment in the SentryCard Enroll app to use the new static fingerprint graphics
  Two finger enrollment looks good and is ready to be ported to the SentryCard Enroll app
  * Add the card reset back to the SentryCard Enroll app, with verbiage that specifically says this is only for non-production cards, and include the card placement graphics
  * Change "leave finger..." to "place finger..." text for the final verification touch
+ add the padlock stuff to the verify screen
  */
 
 
@@ -28,13 +30,18 @@ import SentrySDK
 class FingerprintEnrollmentViewController: UIViewController {
     // MARK: - Private Properties
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
-    private let animationView = LottieAnimationView(name: "finger_position")
+    
+    private let animationView = LottieAnimationView(name: "CheckmarkAnimation")
+    
     private var resetIsNeeded = false
+    private var dingSound: AVAudioPlayer?
     
     
     // MARK: - Outlets and Actions
     
-    @IBOutlet weak var hintLabel: UILabel!
+    @IBOutlet weak var fingerprintImage: UIImageView!
+    @IBOutlet weak var preparingLabel: UILabel!
+    @IBOutlet weak var preparingOverlay: UIView!
     @IBOutlet weak var instructionContainer: UIStackView!
     @IBOutlet weak var arrowLeft: UIImageView!
     @IBOutlet weak var arrowDown: UIImageView!
@@ -101,6 +108,18 @@ class FingerprintEnrollmentViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "fingerprintEnrollment.screen.navigationTitle".localized
         
+        let soundFile = Bundle.main.url(forResource: "ding", withExtension: "wav")
+        if let soundFile = soundFile {
+            do {
+                dingSound = try AVAudioPlayer(contentsOf: soundFile)
+            } catch {
+                print("Audio player creation error: \(error)")
+            }
+        } else {
+            print("Unable to load sound file.")
+        }
+        
+        placeCard.image = UIImage(named: "card")
         placeCard.layer.opacity = self.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
         
         sentrySDK.connectionDelegate = self
@@ -108,11 +127,12 @@ class FingerprintEnrollmentViewController: UIViewController {
         
         titleLabel.text = "fingerprintEnrollment.screen.instructionsTitle".localized
         messageLabel.text = "fingerprintEnrollment.screen.instructions".localized
-        hintLabel.text = "fingerprintEnrollment.hint.message".localized
+    //    hintLabel.text = "fingerprintEnrollment.hint.message".localized
         scanCardButton.setTitle("fingerprintEnrollment.screen.button".localized, for: .normal)
         placeCardHereLabel.text = "global.placeCardHere".localized
         sentrySDK.cardCommunicationErrorText = "nfcScanning.communicationError".localized
         sentrySDK.establishConnectionText = "nfcScanning.establishConnection".localized
+        preparingLabel.text = "fingerprintEnrollment.preparing".localized
     }
     
     
@@ -120,6 +140,9 @@ class FingerprintEnrollmentViewController: UIViewController {
     
     // scans the card and performs fingerprint enrollment
     private func startBiometricEnrollment() {
+        lottieAnimationViewContainer.isHidden = true
+        preparingOverlay.isHidden = false
+        
         Task { [weak self] in
             defer {
                 self?.scanCardButton.isUserInteractionEnabled = true
@@ -181,14 +204,28 @@ class FingerprintEnrollmentViewController: UIViewController {
     // modifies UI elements based on the state of connection
     private func showStep1() {
         self.placeCardImage.isHidden = false
-        self.lottieAnimationViewContainer.isHidden = true
-        self.hintLabel.isHidden = true
+        self.fingerprintImage.isHidden = true
     }
     
     private func showStep2() {
         self.placeCardImage.isHidden = true
-        self.lottieAnimationViewContainer.isHidden = false
-        self.hintLabel.isHidden = false
+        self.fingerprintImage.isHidden = false
+    }
+    
+    private func showFingerprint(forStep: Int) {
+        var actualStep = forStep
+        if forStep < 0 { actualStep = 0 }
+        if forStep > 5 { actualStep = 5 }
+        
+        switch actualStep {
+        case 0 : fingerprintImage.image = UIImage(named: "finger_center")
+        case 1 : fingerprintImage.image = UIImage(named: "finger_left")
+        case 2 : fingerprintImage.image = UIImage(named: "finger_bottom")
+        case 3 : fingerprintImage.image = UIImage(named: "finger_right")
+        case 4 : fingerprintImage.image = UIImage(named: "finger_top")
+        case 5 : fingerprintImage.image = UIImage(named: "finger_center")
+        default: fingerprintImage.image = UIImage(named: "finger_center")
+        }
     }
 }
 
@@ -205,13 +242,15 @@ extension FingerprintEnrollmentViewController: SentrySDKConnectionDelegate {
                 self?.arrowLeft.isHidden = true
                 self?.placeCardHereLabel.isHidden = true
                 self?.placeCard.layer.opacity = 0.8
+                self?.placeCard.image = UIImage(named: "card_highlight")
+                self?.preparingOverlay.isHidden = true
                 
                 UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
                     self?.placeCard.layer.opacity = 0.5
                 }
             } else {
                 print("*** Showing card not connected ***")
-                session.alertMessage = "global.positionCard".localized
+                session.alertMessage = "Position the card under phone as shown above."
                 
                 self?.showStep1()
                 self?.placeCard.layer.removeAllAnimations()
@@ -221,6 +260,7 @@ extension FingerprintEnrollmentViewController: SentrySDKConnectionDelegate {
                 self?.arrowLeft.isHidden = false
                 self?.placeCardHereLabel.isHidden = false
                 self?.placeCardOutline.layer.opacity = 1.0
+                self?.placeCard.image = UIImage(named: "card")
                 
                 UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
                     self?.placeCardOutline.layer.opacity = 0.1
@@ -230,13 +270,18 @@ extension FingerprintEnrollmentViewController: SentrySDKConnectionDelegate {
     }
 }
 
+
 extension FingerprintEnrollmentViewController: SentrySDKEnrollmentDelegate {
     func enrollmentComplete(session: NFCReaderSession) {
         DispatchQueue.main.async { [weak self] in
             session.alertMessage = "fingerprintEnrollment.complete.message".localized
             
             self?.placeCardImage.isHidden = false
+            self?.fingerprintImage.isHidden = true
             self?.lottieAnimationViewContainer.isHidden = true
+            self?.titleLabel.text = "fingerprintEnrollment.screen.instructionsTitle".localized
+            self?.messageLabel.text = "fingerprintEnrollment.screen.instructions".localized
+            self?.scanCardButton.setTitle("fingerprintEnrollment.screen.button".localized, for: .normal)
 
             let alert = UIAlertController(title:"fingerprintEnrollment.finished.title".localized,
                                           message: "fingerprintEnrollment.finished.message".localized,
@@ -247,10 +292,17 @@ extension FingerprintEnrollmentViewController: SentrySDKEnrollmentDelegate {
             self?.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     func fingerTransition(session: NFCReaderSession, nextFingerIndex: UInt8) {
-        DispatchQueue.main.async {
-            session.alertMessage = String(format: "fingerprintEnrollment.switch.finger".localized, nextFingerIndex)
+        DispatchQueue.main.async { [weak self] in
+            self?.placeCardImage.isHidden = true
+            self?.fingerprintImage.isHidden = true
+            self?.lottieAnimationViewContainer.isHidden = false
+            self?.titleLabel.text = "fingerprintEnrollment.screen.instructionsTitleNext".localized
+            self?.messageLabel.text = "fingerprintEnrollment.screen.instructionsNext".localized
+            self?.scanCardButton.setTitle("Continue", for: .normal)
+            
+            self?.animationView.play()
         }
     }
     
@@ -258,16 +310,17 @@ extension FingerprintEnrollmentViewController: SentrySDKEnrollmentDelegate {
         DispatchQueue.main.async { [weak self] in
             if currentStep == 0 {
                 session.alertMessage = String(format: "fingerprintEnrollment.ready.finger".localized, currentFingerIndex)
-            } else if currentStep < totalSteps {
-                let fromProgress = Double(currentStep - 1) / Double(totalSteps - 1)
-                let toProgress = Double(currentStep) / Double(totalSteps - 1)
-                self?.animationView.play(fromProgress: fromProgress, toProgress: toProgress)
-                
+            } else {
                 var stepsCompleted = Array(repeating: "✅", count: Int(currentStep))
                 stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(totalSteps - currentStep)))
                 session.alertMessage = "fingerprintEnrollment.fingerNumber".localized + "\(currentFingerIndex): " + stepsCompleted.joined(separator: " ")
-            } else {
-                session.alertMessage = "fingerprintEnrollment.finalVerify.message".localized
+                
+                self?.dingSound?.play()
+                self?.showFingerprint(forStep: Int(currentStep))
+                
+                if currentStep == totalSteps {
+                    session.alertMessage = "fingerprintEnrollment.finalVerify.message".localized
+                }
             }
         }
     }

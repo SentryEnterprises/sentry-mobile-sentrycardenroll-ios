@@ -54,18 +54,19 @@ class GetCardStatusViewController: UIViewController {
     @IBAction func scanCardButtonTouched(_ sender: Any) {
         scanCardButton.isUserInteractionEnabled = false
         
-        self.placeCard.layer.opacity = 0.0
-        self.placeCard.isHidden = false
-        self.placeCardOutline.layer.opacity = 0.0
-        self.placeCardOutline.isHidden = false
-        self.arrowDown.layer.opacity = 0.0
-        self.arrowDown.isHidden = false
-        self.arrowLeft.layer.opacity = 0.0
-        self.arrowLeft.isHidden = false
-        self.placeCardHereLabel.layer.opacity = 0.0
-        self.placeCardHereLabel.isHidden = false
+        placeCard.layer.opacity = 0.0
+        placeCard.isHidden = false
+        placeCardOutline.layer.opacity = 0.0
+        placeCardOutline.isHidden = false
+        arrowDown.layer.opacity = 0.0
+        arrowDown.isHidden = false
+        arrowLeft.layer.opacity = 0.0
+        arrowLeft.isHidden = false
+        placeCardHereLabel.layer.opacity = 0.0
+        placeCardHereLabel.isHidden = false
+        placeCard.image = UIImage(named: "card")
         
-        self.placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
+        placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
         
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
             self.placeCard.layer.opacity = self.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3
@@ -91,6 +92,8 @@ class GetCardStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "getCardStatus.screen.navigationTitle".localized
+        
+        sentrySDK.connectionDelegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(optionsTapped))
         
@@ -211,3 +214,26 @@ class GetCardStatusViewController: UIViewController {
     }
 }
 
+
+extension GetCardStatusViewController: SentrySDKConnectionDelegate {
+    func connected(session: NFCReaderSession, isConnected: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            if isConnected {
+                print("*** Showing card connected ***")
+                session.alertMessage = "fingerprintVerification.status.placeFinger".localized
+                
+                self?.placeCardOutline.isHidden = true
+                self?.placeCardOutline.layer.removeAllAnimations()
+                self?.arrowDown.isHidden = true
+                self?.arrowLeft.isHidden = true
+                self?.placeCardHereLabel.isHidden = true
+                self?.placeCard.layer.opacity = 0.8
+                self?.placeCard.image = UIImage(named: "card_highlight")
+                
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse]) {
+                    self?.placeCard.layer.opacity = 0.5
+                }
+            } 
+        }
+    }
+}

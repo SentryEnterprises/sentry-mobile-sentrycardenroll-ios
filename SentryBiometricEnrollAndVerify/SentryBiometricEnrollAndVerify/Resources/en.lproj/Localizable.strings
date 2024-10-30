@@ -46,6 +46,8 @@
 "fingerprintEnrollment.screen.button" = "Scan Fingerprint";
 "fingerprintEnrollment.screen.instructionsTitle" = "To Enroll Fingerprint:";
 "fingerprintEnrollment.screen.instructions" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Click \"Scan Fingerprint\" button below";
+"fingerprintEnrollment.screen.instructionsTitleNext" = "First Finger Enrolled!\nTo Enroll the Next Fingerprint:";
+"fingerprintEnrollment.screen.instructionsNext" = "• Place card on a flat, non-metallic surface\n• Place phone on top of card as shown\n• Use a different finger on the sensor\n• Click \"Continue\" button below";
 "fingerprintEnrollment.hint.message" = "Place and lift your finger at different angles on your card’s sensor.";
 "fingerprintEnrollment.connected.message" = "Place and lift your finger at different angles on your card’s sensor.";
 "fingerprintEnrollment.mismatch.title" = "Fingerprint Mismatch Error";
