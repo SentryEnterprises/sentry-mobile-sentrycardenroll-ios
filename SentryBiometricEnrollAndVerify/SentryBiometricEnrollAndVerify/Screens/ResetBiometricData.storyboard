@@ -18,15 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T84-ye-N3G">
-                                <rect key="frame" x="32" y="452.66666666666674" width="329" height="122"/>
-                                <string key="text">This resets the biometric fingerprint data on the card. The card will not be enrolled after this action.
-
-Lay the phone over the top of the card so that just the fingerprint sensor is visible.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5b4-xG-kLH" customClass="UIFancyButton" customModule="SentryCardEnroll" customModuleProvider="target">
                                 <rect key="frame" x="16" y="698" width="361" height="56"/>
                                 <constraints>
@@ -55,22 +46,49 @@ Lay the phone over the top of the card so that just the fingerprint sensor is vi
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="xlQ-at-6qR">
-                                <rect key="frame" x="33" y="323.33333333333331" width="327.33333333333331" height="105.33333333333331"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhR-4W-cG6">
+                                <rect key="frame" x="0.0" y="275" width="393" height="300"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Reset Data:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8f-d5-4AW">
-                                        <rect key="frame" x="90.666666666666671" y="0.0" width="145.66666666666663" height="25.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Biometrics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpw-18-iqB">
+                                        <rect key="frame" x="109.66666666666669" y="15.999999999999998" width="174" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="• Place card on a flat, non-metallic surface  • Place phone on top • Select &quot;Scan Card&quot;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-o2-1b6">
-                                        <rect key="frame" x="0.0" y="44.333333333333371" width="327.33333333333331" height="61"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="explaination" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77L-e8-Blc">
+                                        <rect key="frame" x="16" y="49.333333333333314" width="361" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Reset Data:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Au0-fv-GTf">
+                                        <rect key="frame" x="123.66666666666667" y="101.66666666666669" width="145.66666666666663" height="25.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8u-eA-R2Q">
+                                        <rect key="frame" x="16" y="135" width="361" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="S8u-eA-R2Q" secondAttribute="trailing" constant="16" id="3ZG-s4-Dvu"/>
+                                    <constraint firstItem="Hpw-18-iqB" firstAttribute="top" secondItem="LhR-4W-cG6" secondAttribute="top" constant="16" id="4UX-I6-xUo"/>
+                                    <constraint firstAttribute="height" constant="300" id="F2S-RZ-ZZc"/>
+                                    <constraint firstItem="S8u-eA-R2Q" firstAttribute="top" secondItem="Au0-fv-GTf" secondAttribute="bottom" constant="8" id="GAv-D5-4lL"/>
+                                    <constraint firstItem="Hpw-18-iqB" firstAttribute="centerX" secondItem="LhR-4W-cG6" secondAttribute="centerX" id="IYG-m5-4es"/>
+                                    <constraint firstItem="S8u-eA-R2Q" firstAttribute="leading" secondItem="LhR-4W-cG6" secondAttribute="leading" constant="16" id="JYf-Cr-qQr"/>
+                                    <constraint firstAttribute="trailing" secondItem="77L-e8-Blc" secondAttribute="trailing" constant="16" id="W3i-eq-ehe"/>
+                                    <constraint firstItem="77L-e8-Blc" firstAttribute="top" secondItem="Hpw-18-iqB" secondAttribute="bottom" constant="8" id="XSj-2O-egH"/>
+                                    <constraint firstItem="Au0-fv-GTf" firstAttribute="top" secondItem="77L-e8-Blc" secondAttribute="bottom" constant="32" id="aap-Db-hEC"/>
+                                    <constraint firstItem="Au0-fv-GTf" firstAttribute="centerX" secondItem="LhR-4W-cG6" secondAttribute="centerX" id="otq-b1-DmR"/>
+                                    <constraint firstItem="77L-e8-Blc" firstAttribute="leading" secondItem="LhR-4W-cG6" secondAttribute="leading" constant="16" id="wXI-o3-VN5"/>
+                                </constraints>
+                            </view>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Odh-Ud-eXs">
                                 <rect key="frame" x="192" y="220.33333333333334" width="40" height="37.666666666666657"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -107,22 +125,20 @@ Lay the phone over the top of the card so that just the fingerprint sensor is vi
                         <constraints>
                             <constraint firstItem="dSz-x8-MMn" firstAttribute="centerX" secondItem="7Vj-bk-j8o" secondAttribute="centerX" constant="-3" id="1kD-bU-OdA"/>
                             <constraint firstItem="7Vj-bk-j8o" firstAttribute="bottom" secondItem="BpD-yJ-eAo" secondAttribute="bottom" constant="40" id="2NY-2u-tT4"/>
-                            <constraint firstItem="T84-ye-N3G" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="GPh-35-ria"/>
                             <constraint firstItem="BpD-yJ-eAo" firstAttribute="centerY" secondItem="gqY-pt-aTT" secondAttribute="centerY" id="QIz-KK-qI4"/>
-                            <constraint firstItem="xlQ-at-6qR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-50" id="Wcv-fy-k9P"/>
+                            <constraint firstItem="LhR-4W-cG6" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="RjH-8A-zIm"/>
                             <constraint firstItem="BpD-yJ-eAo" firstAttribute="leading" secondItem="7Vj-bk-j8o" secondAttribute="leading" constant="100" id="Wf6-hS-tw1"/>
+                            <constraint firstAttribute="trailing" secondItem="LhR-4W-cG6" secondAttribute="trailing" id="X33-pB-OMV"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5b4-xG-kLH" secondAttribute="bottom" constant="64" id="X5D-iI-LM2"/>
                             <constraint firstItem="7Vj-bk-j8o" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="10" id="YJD-mg-grv"/>
                             <constraint firstItem="7Vj-bk-j8o" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="-65" id="bXC-vI-bFy"/>
-                            <constraint firstItem="T84-ye-N3G" firstAttribute="top" secondItem="xlQ-at-6qR" secondAttribute="bottom" constant="24" id="dQd-ep-RX6"/>
                             <constraint firstItem="7Vj-bk-j8o" firstAttribute="bottom" secondItem="Odh-Ud-eXs" secondAttribute="bottom" id="ePg-AB-Eqs"/>
                             <constraint firstItem="5b4-xG-kLH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="gDf-yL-fek"/>
                             <constraint firstItem="Odh-Ud-eXs" firstAttribute="centerX" secondItem="BpD-yJ-eAo" secondAttribute="centerX" id="jt3-9H-ZJS"/>
-                            <constraint firstItem="xlQ-at-6qR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ncJ-Rs-1ZR"/>
-                            <constraint firstAttribute="trailing" secondItem="T84-ye-N3G" secondAttribute="trailing" constant="32" id="u4P-6V-dZh"/>
                             <constraint firstItem="dSz-x8-MMn" firstAttribute="centerY" secondItem="7Vj-bk-j8o" secondAttribute="centerY" id="vSe-AA-7k0"/>
                             <constraint firstItem="BpD-yJ-eAo" firstAttribute="leading" secondItem="gqY-pt-aTT" secondAttribute="trailing" constant="12" id="wQ5-Wd-Pcw"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5b4-xG-kLH" secondAttribute="trailing" constant="16" id="xNd-xW-srs"/>
+                            <constraint firstItem="LhR-4W-cG6" firstAttribute="top" secondItem="Odh-Ud-eXs" secondAttribute="bottom" constant="16" id="yPO-dd-gOS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -132,14 +148,15 @@ Lay the phone over the top of the card so that just the fingerprint sensor is vi
                         <outlet property="placeCardLabel" destination="BpD-yJ-eAo" id="sTL-R4-IJB"/>
                         <outlet property="placeCardOutline" destination="dSz-x8-MMn" id="sLx-0d-pOq"/>
                         <outlet property="resetButton" destination="5b4-xG-kLH" id="KA8-mi-RQr"/>
-                        <outlet property="resetInstructionsLabel" destination="T84-ye-N3G" id="Y8o-eZ-WM1"/>
-                        <outlet property="resetStepsLabel" destination="DUG-o2-1b6" id="KQk-F1-ZiN"/>
-                        <outlet property="resetTitleLabel" destination="H8f-d5-4AW" id="Vjs-JJ-3XB"/>
+                        <outlet property="resetInstructionsLabel" destination="77L-e8-Blc" id="XtV-VY-fUQ"/>
+                        <outlet property="resetInstructionsTitleLabel" destination="Hpw-18-iqB" id="EiN-zn-3Ab"/>
+                        <outlet property="resetStepsLabel" destination="S8u-eA-R2Q" id="QOf-LK-3PA"/>
+                        <outlet property="resetTitleLabel" destination="Au0-fv-GTf" id="xab-dM-iwk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-2"/>
+            <point key="canvasLocation" x="139.69465648854961" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>

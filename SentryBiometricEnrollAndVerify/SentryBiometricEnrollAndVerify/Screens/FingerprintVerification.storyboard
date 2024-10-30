@@ -45,6 +45,18 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wj6-Mn-fPI">
                                         <rect key="frame" x="25.666666666666657" y="20.666666666666686" width="310" height="245"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lock.open.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-Ig-ous">
+                                                <rect key="frame" x="-0.66666666666665719" y="0.33333333333325754" width="310" height="243"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="few-Fr-PUO">
+                                                <rect key="frame" x="-0.66666666666665719" y="0.33333333333325754" width="310" height="243"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="245" id="hJF-9j-ZaD"/>
@@ -140,11 +152,12 @@
                         <outlet property="arrowLeft" destination="dda-JC-y5H" id="oSw-ZV-tiH"/>
                         <outlet property="instructionsLabel" destination="sgy-tW-ffw" id="9YJ-bn-CkN"/>
                         <outlet property="instructionsTitleLabel" destination="mct-jK-CTH" id="bPE-eA-J0m"/>
-                        <outlet property="lottieAnimationViewContainer" destination="wj6-Mn-fPI" id="aXo-gH-D1d"/>
+                        <outlet property="lockImage" destination="few-Fr-PUO" id="qL1-nz-C68"/>
                         <outlet property="placeCard" destination="Tk9-Sw-j6E" id="SxY-29-Tck"/>
                         <outlet property="placeCardHereLabel" destination="UiH-ym-Lhh" id="FW0-yO-710"/>
                         <outlet property="placeCardOutline" destination="jG4-8S-7nc" id="RAk-9R-oeg"/>
                         <outlet property="scanCardButton" destination="VhO-GA-gLx" id="v8J-ro-snC"/>
+                        <outlet property="unlockImage" destination="W6c-Ig-ous" id="kRO-at-xIK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -157,6 +170,8 @@
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="card" width="750.5" height="468"/>
         <image name="card_outline" width="243.36000061035156" height="153.36000061035156"/>
+        <image name="lock.fill" catalog="system" width="111" height="128"/>
+        <image name="lock.open.fill" catalog="system" width="128" height="110"/>
         <namedColor name="end_color">
             <color red="0.0" green="0.22745098039215686" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -168,6 +183,12 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

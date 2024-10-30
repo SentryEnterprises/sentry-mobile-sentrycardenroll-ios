@@ -20,6 +20,7 @@ class ResetBiometricDataViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
+    @IBOutlet weak var resetInstructionsTitleLabel: UILabel!
     @IBOutlet weak var resetStepsLabel: UILabel!
     @IBOutlet weak var resetTitleLabel: UILabel!
     @IBOutlet weak var resetInstructionsLabel: UILabel!
@@ -60,6 +61,7 @@ class ResetBiometricDataViewController: UIViewController {
         resetButton.setTitle("resetData.screen.button".localized, for: .normal)
         resetTitleLabel.text = "resetData.screen.title".localized
         resetStepsLabel.text = "resetData.screen.steps".localized
+        resetInstructionsTitleLabel.text = "resetData.screen.instructionsTitle".localized
         
         sentrySDK.connectionDelegate = self
     }

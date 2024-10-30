@@ -78,9 +78,10 @@
 "resetData.screen.button" = "Reset Biometric Data";
 "resetData.screen.title" = "To Reset Data:";
 "resetData.screen.steps" = "• Place card on a flat, non-metallic surface\n• Place phone on top\n• Select \"Scan Card\"";
-"resetData.screen.instructions" = "This resets the biometric fingerprint data on the card. The card will not be enrolled after this action.\n\nNOTE: This action works on non-production cards only!";
+"resetData.screen.instructionsTitle" = "Reset Biometrics";
+"resetData.screen.instructions" = "This resets the biometric fingerprint data on your SentryCard.  The SentryCard will not be enrolled after this action.\n\nNote: This action is restricted to Evaluation cards.";
 "resetData.finished.title" = "Data Reset";
-"resetData.finished.message" = "Biometric data reset. This card is no longer enrolled.";
+"resetData.finished.message" = "Biometric data reset. This SentryCard is no longer enrolled.";
 
 
 // MARK: - SDK Messages

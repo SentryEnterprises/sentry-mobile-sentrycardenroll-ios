@@ -21,6 +21,8 @@ class FingerprintVerificationViewController: UIViewController {
     
     // MARK: - Outlets and Actions
     
+    @IBOutlet weak var unlockImage: UIImageView!
+    @IBOutlet weak var lockImage: UIImageView!
     @IBOutlet weak var instructionsTitleLabel: UILabel!
     @IBOutlet weak var placeCardHereLabel: UILabel!
     @IBOutlet weak var arrowLeft: UIImageView!
@@ -30,24 +32,7 @@ class FingerprintVerificationViewController: UIViewController {
     @IBOutlet weak var scanCardButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
     
-    // sets up the Lottie animation (does not affect actual functionality)
-    @IBOutlet weak var lottieAnimationViewContainer: UIView! {
-        didSet {
-            let animationView = LottieAnimationView(name: "attach_card")
-            animationView.loopMode = .loop
-            
-            animationView.translatesAutoresizingMaskIntoConstraints = false
-            lottieAnimationViewContainer.addSubview(animationView)
-            
-            animationView.leadingAnchor.constraint(equalTo: lottieAnimationViewContainer.leadingAnchor).isActive = true
-            animationView.trailingAnchor.constraint(equalTo: lottieAnimationViewContainer.trailingAnchor).isActive = true
-            animationView.topAnchor.constraint(equalTo: lottieAnimationViewContainer.topAnchor).isActive = true
-            animationView.bottomAnchor.constraint(equalTo: lottieAnimationViewContainer.bottomAnchor).isActive = true
-            
-            animationView.play()
-        }
-    }
-    
+   
     // starts the scanning functionality
     @IBAction func verifyButtonTouched(_ sender: Any) {
         scanCardButton.isUserInteractionEnabled = false
@@ -62,6 +47,8 @@ class FingerprintVerificationViewController: UIViewController {
         arrowLeft.isHidden = false
         placeCardHereLabel.layer.opacity = 0.0
         placeCardHereLabel.isHidden = false
+        unlockImage.isHidden = true
+        lockImage.isHidden = false
         placeCard.image = UIImage(named: "card")
         
         placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
@@ -91,6 +78,9 @@ class FingerprintVerificationViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "fingerprintVerification.screen.navigationTitle".localized
         
+        placeCard.layer.opacity = 0.1
+        unlockImage.isHidden = true
+
         sentrySDK.connectionDelegate = self
         
         instructionsTitleLabel.text = "fingerprintVerification.screen.instructionsTitle".localized
@@ -126,20 +116,43 @@ class FingerprintVerificationViewController: UIViewController {
                 // perform a biometric validation on the card. starts NFC scanning.
                 if let result = try await self?.sentrySDK.validateFingerprint() {
                     // update UI elements based on the validation result
-                    if result == .matchValid {
-                        title = "fingerprintVerification.status.matchedTitle".localized
-                        instructions = "fingerprintVerification.status.matchedInstructions".localized
-                    } else if result == .matchFailed{
-                        title = "fingerprintVerification.status.matchFailTitle".localized
-                        instructions = "fingerprintVerification.status.matchFailInstructions".localized
-                    } else {
-                        title = "fingerprintVerification.status.notEnrolled".localized
-                        instructions = "fingerprintVerification.status.notEnrolledInstructions".localized
+                    if result == .matchFailed {
+                        DispatchQueue.main.async {
+                            self?.lockImage.isHidden = false
+                            self?.unlockImage.isHidden = true
+                            
+                            let duration: CGFloat = 0.3
+                            let repeatCount: Float = 4
+                            let angle: Float = Float.pi / 27
+                            
+                            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+                            rotationAnimation.duration = TimeInterval(duration/CGFloat(repeatCount))
+                            rotationAnimation.repeatCount = repeatCount
+                            rotationAnimation.autoreverses = true
+                            rotationAnimation.fromValue = -angle
+                            rotationAnimation.toValue = angle
+                            rotationAnimation.isRemovedOnCompletion = true
+                            
+                            CATransaction.begin()
+                            self?.lockImage.layer.add(rotationAnimation, forKey: "shakeAnimation")
+                            CATransaction.commit()
+                        }
                     }
                     
-                    let alert = UIAlertController(title: title, message: instructions, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
+                    if result == .matchValid {
+                        DispatchQueue.main.async {
+                            self?.lockImage.isHidden = true
+                            self?.unlockImage.isHidden = false
+                        }
+                    }
+                    
+                    if result == .notEnrolled {
+                        let alert = UIAlertController(title: "fingerprintVerification.status.notEnrolled".localized,
+                                                      message: "fingerprintVerification.status.notEnrolledInstructions".localized,
+                                                      preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
+                        self?.present(alert, animated: true, completion: nil)
+                    }
                 }
             } catch (let error) {
                 print("!!! Error validating fingerprint: \(error)")
