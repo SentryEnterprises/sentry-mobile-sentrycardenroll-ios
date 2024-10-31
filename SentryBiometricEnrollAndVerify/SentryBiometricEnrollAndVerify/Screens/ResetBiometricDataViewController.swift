@@ -18,6 +18,7 @@ class ResetBiometricDataViewController: UIViewController {
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
     
     
+    
     // MARK: - Outlets and Actions
     
     @IBOutlet weak var resetInstructionsTitleLabel: UILabel!
@@ -88,9 +89,11 @@ class ResetBiometricDataViewController: UIViewController {
                 // perform a biometric data reset on the card. starts NFC scanning.
                 try await self?.sentrySDK.resetCard()
                 
-                let alert = UIAlertController(title: "resetData.finished.title".localized, message: "resetData.finished.message".localized, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
-                self?.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "resetData.finished.title".localized, message: "resetData.finished.message".localized, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                }
             } catch (let error) {
                 print("!!! Error resetting biometric data: \(error)")
                 

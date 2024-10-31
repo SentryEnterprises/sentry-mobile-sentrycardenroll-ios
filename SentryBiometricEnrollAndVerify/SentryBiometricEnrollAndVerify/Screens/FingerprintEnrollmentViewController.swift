@@ -12,19 +12,6 @@ import SentrySDK
 import AVFoundation
 
 /**
- * Add the enrollment tutorial animation to the SentryCard Enroll app
- * Add the green card graphics to the SentryCard Enroll app
- Change enrollment in the SentryCard Enroll app to use the new static fingerprint graphics
- Two finger enrollment looks good and is ready to be ported to the SentryCard Enroll app
- * Add the card reset back to the SentryCard Enroll app, with verbiage that specifically says this is only for non-production cards, and include the card placement graphics
- * Change "leave finger..." to "place finger..." text for the final verification touch
- add the padlock stuff to the verify screen
- */
-
-
-
-
-/**
  Fingerprint enrollment screen. Scans the card, and allows the user to record several fingerprint scans.
  */
 class FingerprintEnrollmentViewController: UIViewController {
@@ -306,7 +293,7 @@ extension FingerprintEnrollmentViewController: SentrySDKEnrollmentDelegate {
         }
     }
     
-    func enrollmentStatus(session: NFCReaderSession, currentFingerIndex: UInt8, currentStep: UInt8, totalSteps: UInt8) {
+    func enrollmentStatus(session: NFCReaderSession, currentFingerIndex: UInt8, currentStep: UInt8, totalSteps: UInt8, isNewTouch: Bool) {
         DispatchQueue.main.async { [weak self] in
             if currentStep == 0 {
                 session.alertMessage = String(format: "fingerprintEnrollment.ready.finger".localized, currentFingerIndex)
@@ -315,7 +302,10 @@ extension FingerprintEnrollmentViewController: SentrySDKEnrollmentDelegate {
                 stepsCompleted.append(contentsOf: Array(repeating: "⬛️", count: Int(totalSteps - currentStep)))
                 session.alertMessage = "fingerprintEnrollment.fingerNumber".localized + "\(currentFingerIndex): " + stepsCompleted.joined(separator: " ")
                 
-                self?.dingSound?.play()
+                if isNewTouch {
+                    self?.dingSound?.play()
+                }
+                
                 self?.showFingerprint(forStep: Int(currentStep))
                 
                 if currentStep == totalSteps {

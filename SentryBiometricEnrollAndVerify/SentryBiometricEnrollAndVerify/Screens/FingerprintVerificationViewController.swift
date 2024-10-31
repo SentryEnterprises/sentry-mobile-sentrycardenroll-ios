@@ -17,7 +17,8 @@ class FingerprintVerificationViewController: UIViewController {
     // MARK: - Private Properties
     
     private let sentrySDK = SentrySDK(enrollCode: AppSettings.getEnrollCode(), useSecureCommunication: AppSettings.getSecureCommunicationSetting())
-
+    private var currentTask: Task<Void, Error>?
+    
     
     // MARK: - Outlets and Actions
     
@@ -96,84 +97,93 @@ class FingerprintVerificationViewController: UIViewController {
     
     // scans the card and performs a fingerprint validation
     private func verifyFingerprint() {
-        Task { [weak self] in
-            defer {
-                self?.scanCardButton.isUserInteractionEnabled = true
+        if let currentTask = currentTask {
+            print("********** Cancelling Task")
+            currentTask.cancel()
+        }
+        
+        currentTask = Task { [weak self] in
+            Task { [weak self] in
+                defer {
+                    print("\n\n\n========== DEFER \n\n")
+                    
+                    self?.scanCardButton.isUserInteractionEnabled = true
+                    
+                    self?.placeCard.isHidden = true
+                    self?.placeCardOutline.isHidden = true
+                    self?.arrowDown.isHidden = true
+                    self?.arrowLeft.isHidden = true
+                    self?.placeCardHereLabel.isHidden = true
+                    self?.placeCardOutline.layer.removeAllAnimations()
+                    self?.placeCard.layer.removeAllAnimations()
+                    
+                    
+                    self?.currentTask = nil
+                }
                 
-                self?.placeCard.isHidden = true
-                self?.placeCardOutline.isHidden = true
-                self?.arrowDown.isHidden = true
-                self?.arrowLeft.isHidden = true
-                self?.placeCardHereLabel.isHidden = true
-                self?.placeCardOutline.layer.removeAllAnimations()
-                self?.placeCard.layer.removeAllAnimations()
-            }
-
-            do {
-                var title = ""
-                var instructions = ""
-                
-                // perform a biometric validation on the card. starts NFC scanning.
-                if let result = try await self?.sentrySDK.validateFingerprint() {
-                    // update UI elements based on the validation result
-                    if result == .matchFailed {
-                        DispatchQueue.main.async {
-                            self?.lockImage.isHidden = false
-                            self?.unlockImage.isHidden = true
-                            
-                            let duration: CGFloat = 0.3
-                            let repeatCount: Float = 4
-                            let angle: Float = Float.pi / 27
-                            
-                            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
-                            rotationAnimation.duration = TimeInterval(duration/CGFloat(repeatCount))
-                            rotationAnimation.repeatCount = repeatCount
-                            rotationAnimation.autoreverses = true
-                            rotationAnimation.fromValue = -angle
-                            rotationAnimation.toValue = angle
-                            rotationAnimation.isRemovedOnCompletion = true
-                            
-                            CATransaction.begin()
-                            self?.lockImage.layer.add(rotationAnimation, forKey: "shakeAnimation")
-                            CATransaction.commit()
+                do {
+                    // perform a biometric validation on the card. starts NFC scanning.
+                    if let result = try await self?.sentrySDK.validateFingerprint() {
+                        // update UI elements based on the validation result
+                        if result == .matchFailed {
+                            DispatchQueue.main.async {
+                                self?.lockImage.isHidden = false
+                                self?.unlockImage.isHidden = true
+                                
+                                let duration: CGFloat = 0.3
+                                let repeatCount: Float = 4
+                                let angle: Float = Float.pi / 27
+                                
+                                let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+                                rotationAnimation.duration = TimeInterval(duration/CGFloat(repeatCount))
+                                rotationAnimation.repeatCount = repeatCount
+                                rotationAnimation.autoreverses = true
+                                rotationAnimation.fromValue = -angle
+                                rotationAnimation.toValue = angle
+                                rotationAnimation.isRemovedOnCompletion = true
+                                
+                                CATransaction.begin()
+                                self?.lockImage.layer.add(rotationAnimation, forKey: "shakeAnimation")
+                                CATransaction.commit()
+                            }
+                        }
+                        
+                        if result == .matchValid {
+                            DispatchQueue.main.async {
+                                self?.lockImage.isHidden = true
+                                self?.unlockImage.isHidden = false
+                            }
+                        }
+                        
+                        if result == .notEnrolled {
+                            let alert = UIAlertController(title: "fingerprintVerification.status.notEnrolled".localized,
+                                                          message: "fingerprintVerification.status.notEnrolledInstructions".localized,
+                                                          preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
+                            self?.present(alert, animated: true, completion: nil)
                         }
                     }
+                } catch (let error) {
+                    print("!!! Error validating fingerprint: \(error)")
                     
-                    if result == .matchValid {
-                        DispatchQueue.main.async {
-                            self?.lockImage.isHidden = true
-                            self?.unlockImage.isHidden = false
-                        }
+                    var errorMessage = error.localizedDescription
+                    
+                    if let readerError = error as? NFCReaderError {
+                        errorMessage = readerError.errorDescription ?? error.localizedDescription
                     }
                     
-                    if result == .notEnrolled {
-                        let alert = UIAlertController(title: "fingerprintVerification.status.notEnrolled".localized,
-                                                      message: "fingerprintVerification.status.notEnrolledInstructions".localized,
-                                                      preferredStyle: .alert)
+                    if let sdkError = error as? SentrySDKError {
+                        errorMessage = sdkError.errorDescription ?? error.localizedDescription
+                    }
+                    
+                    let errorCode = (error as NSError).code
+                    
+                    // if the user cancelled or the session timed out, don't display this as an error
+                    if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
+                        let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
                         self?.present(alert, animated: true, completion: nil)
                     }
-                }
-            } catch (let error) {
-                print("!!! Error validating fingerprint: \(error)")
-                
-                var errorMessage = error.localizedDescription
-                
-                if let readerError = error as? NFCReaderError {
-                    errorMessage = readerError.errorDescription ?? error.localizedDescription
-                }
-                
-                if let sdkError = error as? SentrySDKError {
-                    errorMessage = sdkError.errorDescription ?? error.localizedDescription
-                }
-                
-                let errorCode = (error as NSError).code
-
-                // if the user cancelled or the session timed out, don't display this as an error
-                if errorCode != NFCReaderError.readerSessionInvalidationErrorUserCanceled.rawValue && errorCode != NFCReaderError.readerSessionInvalidationErrorSessionTimeout.rawValue {
-                    let alert = UIAlertController(title: "global.error".localized, message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "global.ok".localized, style: .default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
                 }
             }
         }

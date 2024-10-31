@@ -9,7 +9,7 @@
 
 // MARK: - Global
 "global.ok" = "OK";
-"global.error" = "Error";
+"global.error" = "Communication Failure";
 "global.placeCardHere" = "Place Card Under Phone Here";
 "global.unavailable" = "Unavailable";
 "global.notInstalled" = "NOT INSTALLED";
@@ -59,6 +59,7 @@
 "fingerprintEnrollment.switch.finger" = "Next, switch fingers. Place and lift finger #%i on your card’s sensor.";
 "fingerprintEnrollment.ready.finger" = "Ready for finger #%i!";
 "fingerprintEnrollment.fingerNumber" = "Finger #";
+"fingerprintEnrollment.preparing" = "Preparing card for next finger enrollment...";
 
 
 // MARK: - Version Information Screen
@@ -92,21 +93,21 @@
 // MARK: - NFC Reader Error Messages
 
 // these messages will be seen by the user
-"nfcReader.error.unsupportedFeature" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
-"nfcReader.error.securityViolation" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
-"nfcReader.error.invalidParameter" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
-"nfcReader.error.invalidParameterLength" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
-"nfcReader.error.parameterOutOfBound" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
+"nfcReader.error.unsupportedFeature" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.error.securityViolation" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.error.invalidParameter" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.error.invalidParameterLength" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.error.parameterOutOfBound" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
 "nfcReader.error.radioDisabled" = "The NFC communication hardware appears to be disabled.";
-"nfcReader.transeiveError.tagConnectionLost" = "Connection to the card was lost. Move the card away from the phone and try again.";
-"nfcReader.transeiveError.retryExceeded" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
-"nfcReader.transeiveError.tagResponseError" = "Connection made with the card, but the card did not respond. Move the card away from the phone and try again.";
-"nfcReader.transeiveError.sessionInvalidated" = "Communication with the card was lost. Move the card away from the phone and try again.";
-"nfcReader.transeiveError.tagNotConnected" = "Connection made with the card, but the card did not respond. Move the card away from the phone and try again";
-"nfcReader.transeiveError.packetTooLong" = "Connection made with the card, but the card did not respond in the expected manner. Move the card away from the phone and try again.";
+"nfcReader.transeiveError.tagConnectionLost" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.transeiveError.retryExceeded" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.transeiveError.tagResponseError" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.transeiveError.sessionInvalidated" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.transeiveError.tagNotConnected" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.transeiveError.packetTooLong" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
 "nfcReader.sessionInvalidationError.sessionTimeout" = "No compatible device was detected within the time limit.";
-"nfcReader.sessionInvalidationError.sessionTerminatedUnexpectedly" = "The communication session was terminated unexpectedly. Move the card away from the phone and try again.";
-"nfcReader.sessionInvalidationError.systemIsBusy" = "The NFC reader needs more time to reset. Move the card away from the phone and try again.";
+"nfcReader.sessionInvalidationError.sessionTerminatedUnexpectedly" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"nfcReader.sessionInvalidationError.systemIsBusy" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
 
 // these messages are only seen during development, the user should never see these messages
 "nfcReader.sessionInvalidationError.userCanceled" = "The user cancelled the connection.";
@@ -116,14 +117,14 @@
 // MARK: - SDK Error Messages
 
 // these messages will be seen by the user
-"sdkError.cvmApplet.error" = "The biometric verification attempt failed to respond properly. Please try again.";
+"sdkError.cvmApplet.error" = "Communication with the card has failed. Please move the phone away from the card briefly to reset the card, then try again.";
 "sdkError.enrollModeNotAvailable" = "The SentryCard is already enrolled. To re-enroll, go into Options and reset biometric enrollment data.";
 "sdkError.enrollVerificationError" = "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.";
-"sdkError.apduCommandError.communicationFailure" = "There was an error communicating with the card. Move the card away from the phone and try again.";
+"sdkError.apduCommandError.communicationFailure" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
 "sdkError.apduCommandError.fingerRemoved" = "The finger was removed from the sensor before the scan completed. Please try again.";
 "sdkError.apduCommandError.poorImageQuality" = "The image scanned by the sensor was poor quality, please try again.";
 "sdkError.apduCommandError.userTimeoutExpired" = "No finger was detected on the sensor. Please try again.";
-"sdkError.apduCommandError.hostInterfaceTimeoutExpired" = "The card did not respond in the expected amount of time. Please try again.";
+"sdkError.apduCommandError.hostInterfaceTimeoutExpired" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
 
 
 // these messages should only be seen by the user in rare circumstances (i.e. if they edited settings data, or they have the wrong card, or other serious issues)

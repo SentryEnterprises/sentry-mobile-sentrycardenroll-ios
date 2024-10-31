@@ -45,6 +45,8 @@ extension SentrySDKError: @retroactive LocalizedError {
             
         case .cvmAppletError: return "sdkError.cvmApplet.error".localized
             
+        case .cvmErrorNoMatchPerformed: return "sdkError.cvmApplet.error".localized
+            
         case .bioverifyAppletNotInstalled: return "sdkError.bioverifyApplet.notInstalled".localized
             
         case .bioVerifyAppletWrongVersion: return "sdkError.bioVerifyApplet.wrongVersion".localized
