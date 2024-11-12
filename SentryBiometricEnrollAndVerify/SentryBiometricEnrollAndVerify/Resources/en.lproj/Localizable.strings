@@ -120,11 +120,11 @@
 "sdkError.cvmApplet.error" = "Communication with the card has failed. Please move the phone away from the card briefly to reset the card, then try again.";
 "sdkError.enrollModeNotAvailable" = "The SentryCard is already enrolled. To re-enroll, go into Options and reset biometric enrollment data.";
 "sdkError.enrollVerificationError" = "The system was unable to verify that the enrolled fingerprints match the finger on the sensor. Please restart enrollment and try again.";
-"sdkError.apduCommandError.communicationFailure" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"sdkError.apduCommandError.communicationFailure" = "Communication with the card has failed. Please move the phone away from the card briefly to reset the card, then try again.";
 "sdkError.apduCommandError.fingerRemoved" = "The finger was removed from the sensor before the scan completed. Please try again.";
 "sdkError.apduCommandError.poorImageQuality" = "The image scanned by the sensor was poor quality, please try again.";
 "sdkError.apduCommandError.userTimeoutExpired" = "No finger was detected on the sensor. Please try again.";
-"sdkError.apduCommandError.hostInterfaceTimeoutExpired" = "Communication with the card has failed.  Please move the phone away from the card briefly to reset the card, then try again.";
+"sdkError.apduCommandError.hostInterfaceTimeoutExpired" = "Communication with the card has failed. Please move the phone away from the card briefly to reset the card, then try again.";
 
 
 // these messages should only be seen by the user in rare circumstances (i.e. if they edited settings data, or they have the wrong card, or other serious issues)
@@ -162,18 +162,18 @@
 "sdkError.apduCommandError.commandAborted" = "Command aborted – more exact diagnosis not possible (e.g. operating system error).";
 "sdkError.apduCommandError.noMatchFound" = "No match found.";
 "sdkError.apduCommandError.conditionOfUseNotSatisfied" = "Conditions of use not satisfied.";
-"sdkError.apduCommandError.noInformationGiven" = "(6A00) No information given.";
-"sdkError.apduCommandError.incorrectCommandParameters" = "(6A80) Incorrect parameters in the command data field.";
-"sdkError.apduCommandError.functionNotSupported" = "(6A81) Function not supported.";
-"sdkError.apduCommandError.appletNotFound" = "(6A82) Applet not found.";
-"sdkError.apduCommandError.recordNotFound" = "(6A83) Record not found.";
+"sdkError.apduCommandError.noInformationGiven" = "No information given.";
+"sdkError.apduCommandError.incorrectCommandParameters" = "Incorrect parameters in the command data field.";
+"sdkError.apduCommandError.functionNotSupported" = "Function not supported.";
+"sdkError.apduCommandError.appletNotFound" = "Applet not found.";
+"sdkError.apduCommandError.recordNotFound" = "Record not found.";
 "sdkError.apduCommandError.notEnoughMemory" = "Not enough memory space in the file.";
-"sdkError.apduCommandError.inconsistentWithTLV" = "(6A85) Inconsistent with TLV structure.";
-"sdkError.apduCommandError.incorrectParameters" = "(6A86) Incorrect parameters P1-P2.";
-"sdkError.apduCommandError.inconsistentWithParameters" = "(6A87) Inconsistent with parameters P1-P2.";
-"sdkError.apduCommandError.dataNotFound" = "(6A88) Referenced data or DO not found.";
-"sdkError.apduCommandError.fileAlreadyExists" = "(6A89) File already exists or sensor is already calibrated.";
-"sdkError.apduCommandError.nameAlreadyExists" = "(6A8A) DF name already exists.";
+"sdkError.apduCommandError.inconsistentWithTLV" = "Inconsistent with TLV structure.";
+"sdkError.apduCommandError.incorrectParameters" = "Incorrect parameters P1-P2.";
+"sdkError.apduCommandError.inconsistentWithParameters" = "Inconsistent with parameters P1-P2.";
+"sdkError.apduCommandError.dataNotFound" = "Referenced data or DO not found.";
+"sdkError.apduCommandError.fileAlreadyExists" = "File already exists or sensor is already calibrated.";
+"sdkError.apduCommandError.nameAlreadyExists" = "DF name already exists.";
 "sdkError.apduCommandError.calibrationError" = "The fingerprint sensor is returning a calibration error.";
 "sdkError.dataSizeNotSupported" = "Unable to store data to SentryCard: maximum size supported is 2048 bytes.";
 "sdkError.invalidFingerIndex" = "Invalid finger index";
