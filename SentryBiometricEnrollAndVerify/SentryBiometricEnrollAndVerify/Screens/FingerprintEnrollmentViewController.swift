@@ -57,18 +57,19 @@ class FingerprintEnrollmentViewController: UIViewController {
     @IBAction func scanCardButtonTouched(_ sender: Any) {
         scanCardButton.isUserInteractionEnabled = false     // guards against double-tap
         
-        self.placeCard.layer.opacity = 0.0
-        self.placeCard.isHidden = false
-        self.placeCardOutline.layer.opacity = 0.0
-        self.placeCardOutline.isHidden = false
-        self.arrowDown.layer.opacity = 0.0
-        self.arrowDown.isHidden = false
-        self.arrowLeft.layer.opacity = 0.0
-        self.arrowLeft.isHidden = false
-        self.placeCardHereLabel.layer.opacity = 0.0
-        self.placeCardHereLabel.isHidden = false
+        placeCard.image = UIImage(named: "card")
+        placeCard.layer.opacity = 0.0
+        placeCard.isHidden = false
+        placeCardOutline.layer.opacity = 0.0
+        placeCardOutline.isHidden = false
+        arrowDown.layer.opacity = 0.0
+        arrowDown.isHidden = false
+        arrowLeft.layer.opacity = 0.0
+        arrowLeft.isHidden = false
+        placeCardHereLabel.layer.opacity = 0.0
+        placeCardHereLabel.isHidden = false
         
-        self.placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
+        placeCard.transform = CGAffineTransform(translationX: UIScreen.main.bounds.width, y: -self.placeCard.bounds.height)
         
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
             self.placeCard.layer.opacity = self.traitCollection.userInterfaceStyle == .dark ? 0.5 : 0.3

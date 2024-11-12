@@ -15,7 +15,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "card_black_highlight.png",
+      "filename" : "SentryCard_LightMode_Highlight.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -26,7 +26,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "card_white_highlight.png",
+      "filename" : "SentryCard_DarkMode_Highlight.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
