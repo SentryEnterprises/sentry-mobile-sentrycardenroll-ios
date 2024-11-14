@@ -40,7 +40,8 @@ class FingerprintEnrollmentTutorialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Fingerprint Enrollment"
+        navigationItem.title = "fingerprintEnrollmentTutorial.screen.navigationTitle".localized
+        continueButton.setTitle("fingerprintEnrollmentTutorial.screen.button".localized, for: .normal)
     }
 }
 

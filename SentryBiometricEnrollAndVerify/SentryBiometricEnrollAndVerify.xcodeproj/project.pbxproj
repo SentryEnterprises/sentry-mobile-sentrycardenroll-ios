@@ -91,7 +91,6 @@
 		14B73D652BEBDC3500AE9CA7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		14B73D662BEBDC3500AE9CA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		14E228A92C6BB1FC00B9D842 /* finger_position.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = finger_position.json; sourceTree = "<group>"; };
-		14E7740C2BE54C6E0046D1E5 /* installEnroll.jcsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = installEnroll.jcsh; sourceTree = "<group>"; };
 		14E7740E2BE579040046D1E5 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		14E774102BE579C70046D1E5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,7 +121,6 @@
 			children = (
 				14B73D652BEBDC3500AE9CA7 /* LICENSE */,
 				14B73D662BEBDC3500AE9CA7 /* README.md */,
-				14E774092BE549760046D1E5 /* Scripts */,
 				14902F2B2BDFF2CD007A26B9 /* SentryBiometricEnrollAndVerify */,
 				14902F2A2BDFF2CD007A26B9 /* Products */,
 				14902F512BE01676007A26B9 /* Frameworks */,
@@ -222,14 +220,6 @@
 				1436CCE52CD29E0C006C3D2C /* CheckmarkAnimation.json */,
 			);
 			path = "Lottie Animations";
-			sourceTree = "<group>";
-		};
-		14E774092BE549760046D1E5 /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				14E7740C2BE54C6E0046D1E5 /* installEnroll.jcsh */,
-			);
-			path = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

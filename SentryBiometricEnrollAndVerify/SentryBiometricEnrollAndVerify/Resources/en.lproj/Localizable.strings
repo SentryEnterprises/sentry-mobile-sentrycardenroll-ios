@@ -41,6 +41,11 @@
 "fingerprintVerification.status.placeFinger" = "Place your finger on the sensor.";
 
 
+// MARK: - Fingerprint Enrollment Tutorial Screen
+"fingerprintEnrollmentTutorial.screen.navigationTitle" = "Fingerprint Enrollment";
+"fingerprintEnrollmentTutorial.screen.button" = "Continue";
+
+
 // MARK: - Fingerprint Enrollment Screen
 "fingerprintEnrollment.screen.navigationTitle" = "Fingerprint Enrollment";
 "fingerprintEnrollment.screen.button" = "Scan Fingerprint";
