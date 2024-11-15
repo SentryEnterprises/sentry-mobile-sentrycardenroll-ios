@@ -15,7 +15,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "SentryEnterprisesBlack.png",
+      "filename" : "sentrycard_black.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -26,7 +26,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "SentryEnterprisesWhite.png",
+      "filename" : "sentrycard_white.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
