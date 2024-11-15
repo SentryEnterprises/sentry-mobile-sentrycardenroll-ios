@@ -15,7 +15,7 @@
  Users can set the enroll code used by this application through the iPhone Settings application:
     1. Close the application (the application must be fully closed, not just in the background).
     2. Open Settings.
-    3. Navigate to 'Sentry Enroll'.
+    3. Navigate to 'SentryCard Enroll'.
     4. Enter the desired enroll code in the `Sentry Enroll Settings` box.
  
     NOTE: The enroll code MUST be 4-6 characters in length. Less than four (4) characters causes the app to throw an error. Any characters after
